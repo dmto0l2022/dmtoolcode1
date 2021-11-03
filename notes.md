@@ -75,3 +75,55 @@
   end
 
  
+## Limit Interface
+
+<p>
+    <%= link_to 'New limit &raquo;', new_limit_path %>
+</p>
+<h2>Listing all limits</h2>
+
+<% form_tag limits_path, :id => 'limits_search', :class => 'remote', :method => :get do %>
+
+  <p class='fieldWrapper'>
+  <% content_tag :label do %>
+    Search for limits:
+  <% end %>
+  <%= text_field_tag("limits_search[text]", session[:limits_search][1]['text'], :autocomplete => 'off') %>
+  <%= image_tag 'bar-spinner.gif', :alt => 'Searching...', :id => 'spinner', :style => 'margin-left:9px;display:none' %>
+  </p>
+  
+  <table class='form'>
+    <tr>
+      <td><%= select_tag "limits_search[official][]",
+                         options_for_select([["All Limits", "all"], ["Official Limits", "1"]],session[:limits_search][1]['official'] || 'all'),
+                         {:size => 6} %></td>
+      <td><%= select_tag "limits_search[result_type][]",
+                         options_for_select([["All" , "all"], ["Experiment" , "Exp"], ["Projection", "Proj"], ["Theory" , "Th"], ["Other" , "Other"], ["Personal" , "Personal"]],session[:limits_search][1]['result_type'] || 'all'),
+                         {:multiple => true, :size => 6} %></td>
+        <!-- CAN COMMENT OUT THE BELOW LINE(S) IF IT DOESN'T WORK -->
+<!--      <td><%= select_tag "limits_search[measurement_type][]",
+                         options_for_select([["All" , "all"],  ["Direct" , "Dir"], ["Indirect" , "Ind"]],session[:limits_search][1]['measurement_type'] || 'all'),
+                         {:multiple => true, :size => 6} %></td>
+    -->    
+        <td><%= select_tag "limits_search[spin_dependency][]",
+                         options_for_select(Limit.spin_dependencies.sort,session[:limits_search][1]['spin_dependency'] || 'all'),
+                         {:multiple => true, :size => 6} %></td>
+      <td><%= select_tag "limits_search[experiment][]",
+                         options_for_select(Limit.experiments.sort,session[:limits_search][1]['experiment'] || 'all'),
+                         {:multiple => true, :size => 6} %></td>
+      <td><%= select_tag "limits_search[year][]",
+                         options_for_select([["All", "all"], ["2000", "2000"], ["2001", "2001"], ["2002", "2002"],["2003", "2003"], ["2004", "2004"], ["2005", "2005"],["2006", "2006"], ["2007", "2007"], ["2008", "2008"], ["2009", "2009"], ["2010", "2010"], ["2011", "2011"], ["2012", "2012"],["2013", "2013"],["2014", "2014"],["2014", "2014"],["2015", "2015"],["2016", "2016"],["2017", "2017"],["2018", "2018"],["2019", "2019"],["2020", "2020"]],session[:limits_search][1]['year'] || 'all'),
+                         {:multiple => true, :size => 6} %></td>
+      <td><%= select_tag "limits_search[greatest_hit][]",
+                         options_for_select([["All", "all"], ["Greatest Hits", "1"]],session[:limits_search][1]['greatesthit'] || 'all'),
+                         {:multiple => false, :size => 6} %></td>
+    </tr>
+  </table>
+
+<% end %>
+<% toggle_code = "$('spinner').toggle();" %>
+<%= observe_form 'limits_search', :url => limits_path, :method => :get, :frequency => 1, :before => toggle_code, :complete => toggle_code %>
+
+<div id='search_results'>
+<%= render :partial => 'search_results' %>
+</div>
