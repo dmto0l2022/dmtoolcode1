@@ -77,21 +77,7 @@
  
 ## Limit Interface
 
-<p>
-    <%= link_to 'New limit &raquo;', new_limit_path %>
-</p>
-<h2>Listing all limits</h2>
 
-<% form_tag limits_path, :id => 'limits_search', :class => 'remote', :method => :get do %>
-
-  <p class='fieldWrapper'>
-  <% content_tag :label do %>
-    Search for limits:
-  <% end %>
-  <%= text_field_tag("limits_search[text]", session[:limits_search][1]['text'], :autocomplete => 'off') %>
-  <%= image_tag 'bar-spinner.gif', :alt => 'Searching...', :id => 'spinner', :style => 'margin-left:9px;display:none' %>
-  </p>
-  
   <table class='form'>
     <tr>
       <td><%= select_tag "limits_search[official][]",
@@ -120,10 +106,4 @@
     </tr>
   </table>
 
-<% end %>
-<% toggle_code = "$('spinner').toggle();" %>
-<%= observe_form 'limits_search', :url => limits_path, :method => :get, :frequency => 1, :before => toggle_code, :complete => toggle_code %>
 
-<div id='search_results'>
-<%= render :partial => 'search_results' %>
-</div>
