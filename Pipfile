@@ -9,6 +9,10 @@ pandas = "*"
 matplotlib = "*"
 jupyter-dash = "*"
 dash-bootstrap-components = "*"
+sqlalchemy = "*"
+psycopg2 = "*"
+configparser = "*"
+mysqlclient = "*"
 
 [dev-packages]
 
