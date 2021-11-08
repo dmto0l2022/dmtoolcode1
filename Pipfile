@@ -14,6 +14,7 @@ psycopg2 = "*"
 configparser = "*"
 mysqlclient = "*"
 flask-login = "*"
+kaleido = "*"
 
 [dev-packages]
 
