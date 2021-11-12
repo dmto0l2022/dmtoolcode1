@@ -9,12 +9,14 @@ pandas = "*"
 matplotlib = "*"
 jupyter-dash = "*"
 dash-bootstrap-components = "*"
-sqlalchemy = "*"
-psycopg2 = "*"
+SQLAlchemy = "*"
 configparser = "*"
 mysqlclient = "*"
-flask-login = "*"
-kaleido = "*"
+Flask-Login = "*"
+Flask-MySQL = "*"
+Flask-SQLAlchemy = "*"
+flask-sqlalchemy = "*"
+psycopg = "*"
 
 [dev-packages]
 
