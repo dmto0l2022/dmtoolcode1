@@ -17,6 +17,7 @@ Flask-MySQL = "*"
 Flask-SQLAlchemy = "*"
 flask-sqlalchemy = "*"
 psycopg = "*"
+statsmodels = "*"
 
 [dev-packages]
 
