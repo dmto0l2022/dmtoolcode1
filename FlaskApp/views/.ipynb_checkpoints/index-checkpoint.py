@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template
 
-index_blueprint = Blueprint('index', __name__, url_prefix='/dash2')
+index_blueprint = Blueprint('index', __name__, url_prefix='/home')
 
 ## https://realpython.com/flask-blueprint/
 
