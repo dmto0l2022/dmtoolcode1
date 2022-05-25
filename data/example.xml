@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<limit>
+  <data-comment>DAMA/LIBRA first results interpreted by Savage et. al., 3 sigma chi squared, SI </data-comment>
+  <data-label>DAMA/LIBRA, 2008, no ion channeling, 3sigma chi sq, SI</data-label>
+  <data-reference>&lt;a href="https://arxiv.org/pdf/0808.3607v3.pdf"&gt;arXiv:0808.3607v3&lt;/a&gt;</data-reference>
+  <data-values>{[7.46 3.46e-4; 7.67 2.18e-4; 8.41 1.71e-4; 9.36 1.30e-4; 10.7 1.08e-4; 12.7 9.26e-5; 15.1 9.85e-5; 14.7 1.61e-4; 13.7 2.40e-4; 12.4 2.97e-4; 11.2 3.36e-4; 9.84 3.46e-4; 8.84 3.68e-4; 7.95 3.79e-4],[37.4 6.44e-6; 40.1 4.88e-6; 47.2 4.32e-6; 58.0 4.88e-6; 69.8 6.44e-6; 82.8 9.59e-6; 96.1 1.52e-5; 106 2.56e-5; 112 3.58e-5; 110 4.87e-5; 93.4 4.17e-5; 86.4 3.58e-5; 81.0 2.98e-5; 71.8 2.26e-5; 61.9 1.72e-5; 53.3 1.30e-5; 45.3 9.89e-6; 40.7 8.23e-6]}</data-values>
+  <date-of-announcement type="date" nil="true"></date-of-announcement>
+  <date-of-run-end type="date" nil="true"></date-of-run-end>
+  <date-of-run-start type="date" nil="true"></date-of-run-start>
+  <default-color>Blk</default-color>
+  <default-style>Line</default-style>
+  <experiment>DAMA/LIBRA</experiment>
+  <measurement-type>Dir</measurement-type>
+  <nomhash type="yaml">--- 
+pauser: false
+kaskaf: true
+</nomhash>
+  <public type="boolean">true</public>
+  <result-type>Exp</result-type>
+  <spin-dependency>SI</spin-dependency>
+  <x-rescale>1</x-rescale>
+  <x-units>GeV</x-units>
+  <y-rescale>1e-36</y-rescale>
+  <y-units>cm^2</y-units>
+  <year type="integer">2009</year>
+</limit>
+
