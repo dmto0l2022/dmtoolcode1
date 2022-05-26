@@ -31,3 +31,23 @@
 
       X rescale 1
       show example
+      
+      Data Values : big text field
+      show example
+
+      More Data Formatting Help
+
+      Result Type Experiment Drop Down
+      Spin Dependency :
+      Measurement Type :
+      [why]
+
+      By checking the box below, you make this limit viewable by any user
+      Public [X]
+
+      The Following Users will be able to view and edit this limit.
+      Enter logins separated by commas
+      To remove a login put a dash before the login.
+      Other users : big text field
+
+      [Save Button]
