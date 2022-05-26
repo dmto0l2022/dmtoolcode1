@@ -23,6 +23,26 @@
 
         Sets the marker symbol type. Adding 100 is equivalent to appending "-open" to a symbol name. Adding 200 is equivalent to appending "-dot" to a symbol name. Adding 300 is equivalent to appending "-open-dot" or "dot-open" to a symbol name.
 
+## Plotly Line Styles
+
+         line
+        Code: fig.update_traces(line=dict(...), selector=dict(type='scatter'))
+        Type: dict containing one or more of the keys listed below.
+
+            color
+            Code: fig.update_traces(line_color=<VALUE>, selector=dict(type='scatter'))
+            Type: color
+
+            Sets the line color.
+            dash
+            Code: fig.update_traces(line_dash=<VALUE>, selector=dict(type='scatter'))
+            Type: string
+            Default: "solid"
+
+            Sets the dash style of lines. Set to a dash type string ("solid", "dot", "dash", "longdash", "dashdot", or "longdashdot") 
+            or a dash length list in px (eg "5px,10px,2px,2px").
+
+
 # Line Styles
 
     <option value="hex">6-pt stars</option>
