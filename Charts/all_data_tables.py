@@ -59,6 +59,8 @@ limits_table_df = limits_df[['rowid','id','spin_dependency',
                              'experiment','official','greatest_hit','data_label',
                              'result_type','data_reference','year']].copy()
 
+limits_table_df['expid'] = limits_table_df['rowid']
+
 limit_types_list = ['All Limits', 'Official Limits']
 limit_types_df = pd.DataFrame(data=limit_types_list,columns=['label'])
 #limit_types_df
@@ -91,7 +93,7 @@ years_table = dash_table.DataTable(
     style_cell={'textAlign': 'left'},
     selected_rows=[],
     style_table={
-        'height': 200,
+        'height': 250,
     },
     #style_data={
     #    'width': '25px', 'minWidth': '25px', 'maxWidth': '25px',
@@ -117,7 +119,7 @@ limit_types_table = dash_table.DataTable(
     style_cell={'textAlign': 'left'},
     selected_rows=[],
     style_table={
-        'height': 200,
+        'height': 250,
     }
     #style_data={
      #   'width': '25px', 'minWidth': '25px', 'maxWidth': '25px',
@@ -140,7 +142,7 @@ experiments_table = dash_table.DataTable(
          'width': '90%'},
     ],
     fixed_rows={'headers': True},
-    style_table={'height': 200},  # defaults to 500
+    style_table={'height': 250},  # defaults to 500
     style_cell={'textAlign': 'left'},
     selected_rows=[]
     #style_data={
@@ -167,7 +169,7 @@ result_types_table = dash_table.DataTable(
     fixed_rows={'headers': True},
     selected_rows=[],
     style_table={
-        'height': 200,
+        'height': 250,
     }#,
     #style_data={
     #    'width': '25px', 'minWidth': '25px', 'maxWidth': '25px',
@@ -193,7 +195,7 @@ spin_dependency_table = dash_table.DataTable(
     fixed_rows={'headers': True},
     selected_rows=[],
     style_table={
-        'height': 200,
+        'height': 250,
     }
     #style_data={
     #    'width': '25px', 'minWidth': '25px', 'maxWidth': '25px',
@@ -218,7 +220,7 @@ greatest_hit_table = dash_table.DataTable(
          'width': '90%'},
     ],
     style_cell={'textAlign': 'left'},
-    style_table={'height': 200,}
+    style_table={'height': 250,}
     #style_data={
     #    'width': '25px', 'minWidth': '25px', 'maxWidth': '25px',
         ##'overflow': 'hidden',
@@ -229,7 +231,7 @@ greatest_hit_table = dash_table.DataTable(
 limits_table = dash_table.DataTable(
     id='limits_table',
     data=limits_table_df.to_dict('records'),
-    columns=[{'name': 'rowid', 'id': 'rowid'},
+    columns=[{'name': 'expid', 'id': 'expid'},
              {'name': 'data_reference', 'id': 'data_reference'},
              {'name': 'data_label', 'id': 'data_label'},
              #{'name': 'spin_dependency', 'id': 'spin_dependency'},
@@ -237,16 +239,57 @@ limits_table = dash_table.DataTable(
              #{'name': 'year', 'id': 'year'},
              ],
     #fixed_rows={'headers': True},
-    page_size=7,
+    page_size=5,
     filter_action='native',
-    row_selectable='multi',
-    selected_rows=[],
-    style_table={'height': 600,},
+    #row_selectable='multi',
+    #selected_rows=[],
+    style_table={'height': 300,},
     style_cell_conditional=[
-        {'if': {'column_id': 'rowid'},
+        {'if': {'column_id': 'expid'},
          'width': '5%'},
         {'if': {'column_id': 'data_reference'},
          'width': '45%'},
+        {'if': {'column_id': 'data_label'},
+         'width': '45%'},
+    ],
+    style_data={
+        'whiteSpace': 'normal',
+        'height': 'auto',
+    },
+)
+
+plots_table_df = pd.DataFrame(data=None, columns=['expid','data_reference','data_label'])
+plots_table_df.set_index('expid')
+
+plots_table = dash_table.DataTable(
+    id='plots_table',
+    data=plots_table_df.to_dict('records'),
+    columns=[{'name': 'tablerowid', 'id': 'tablerowid'},
+             {'name': 'expid', 'id': 'expid'},
+             {'name': 'data_reference', 'id': 'data_reference'},
+             {'name': 'data_label', 'id': 'data_label'},
+             #{'name': 'spin_dependency', 'id': 'spin_dependency'},
+             #{'name': 'result_type', 'id': 'result_type'},
+             #{'name': 'year', 'id': 'year'},
+             ],
+    #fixed_rows={'headers': True},
+    page_size=4,
+    #sort_action='native',
+    #sort_mode='multi',
+    #sort_as_null=['', 'No'],
+    #sort_by=[{'column_id': 'expid', 'direction': 'desc'}],
+    filter_action='native',
+    row_deletable=True,
+    #row_selectable='multi',
+    #selected_rows=[],
+    style_table={'height': 300,},
+    style_cell_conditional=[
+        {'if': {'column_id': 'expid'},
+         'width': '5%'},
+        {'if': {'column_id': 'tablerowid'},
+         'width': '5%'},
+        {'if': {'column_id': 'data_reference'},
+         'width': '40%'},
         {'if': {'column_id': 'data_label'},
          'width': '45%'},
     ],
