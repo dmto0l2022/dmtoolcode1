@@ -82,7 +82,7 @@ years_table = dash_table.DataTable(
         {'name': 'Year', 'id': 'year', 'type': 'numeric'},
     ],
     data=years_df.to_dict('records'),
-    filter_action='native',
+    filter_action='none',
     row_selectable='multi',
     fixed_rows={'headers': True},
     #page_size=5,
@@ -90,7 +90,18 @@ years_table = dash_table.DataTable(
         {'if': {'column_id': 'year'},
          'width': '90%'},
     ],
-    style_cell={'textAlign': 'left'},
+    style_cell={'textAlign': 'left','padding': '0px','font_size': '12px',
+            'overflow': 'hidden',
+            'textOverflow': 'ellipsis',
+        },
+    css=[{
+        'selector': '.dash-spreadsheet td div',
+        'rule': '''
+            line-height: 12px;
+            display: block;
+            overflow-y: hidden;
+        '''
+    }],
     selected_rows=[],
     style_table={
         'height': 250,
@@ -108,7 +119,7 @@ limit_types_table = dash_table.DataTable(
         {'name': 'Limit Type', 'id': 'label', 'type': 'text'},
     ],
     data=limit_types_df.to_dict('records'),
-    filter_action='native',
+   filter_action='none',
     row_selectable='multi',
     #page_size=5,
     style_cell_conditional=[
@@ -116,7 +127,18 @@ limit_types_table = dash_table.DataTable(
          'width': '90%'},
     ],
     fixed_rows={'headers': True},
-    style_cell={'textAlign': 'left'},
+    style_cell={'textAlign': 'left','padding': '0px','font_size': '12px',
+            'overflow': 'hidden',
+            'textOverflow': 'ellipsis',
+        },
+    css=[{
+        'selector': '.dash-spreadsheet td div',
+        'rule': '''
+            line-height: 12px;
+            display: block;
+            overflow-y: hidden;
+        '''
+    }],
     selected_rows=[],
     style_table={
         'height': 250,
@@ -134,7 +156,7 @@ experiments_table = dash_table.DataTable(
         {'name': 'Experiment', 'id': 'label', 'type': 'text'},
     ],
     data=experiments_df.to_dict('records'),
-    filter_action='native',
+   filter_action='none',
     row_selectable='multi',
     #page_size=5,
     style_cell_conditional=[
@@ -143,7 +165,18 @@ experiments_table = dash_table.DataTable(
     ],
     fixed_rows={'headers': True},
     style_table={'height': 250},  # defaults to 500
-    style_cell={'textAlign': 'left'},
+    style_cell={'textAlign': 'left','padding': '0px','font_size': '12px',
+            'overflow': 'hidden',
+            'textOverflow': 'ellipsis',
+        },
+    css=[{
+        'selector': '.dash-spreadsheet td div',
+        'rule': '''
+            line-height: 12px;
+            display: block;
+            overflow-y: hidden;
+        '''
+    }],
     selected_rows=[]
     #style_data={
     #    'width': '25px', 'minWidth': '25px', 'maxWidth': '25px',
@@ -158,14 +191,25 @@ result_types_table = dash_table.DataTable(
         {'name': 'ResultType', 'id': 'label', 'type': 'text'},
     ],
     data=result_types_df.to_dict('records'),
-    filter_action='native',
+    filter_action='none',
     row_selectable='multi',
     #page_size=5,
     style_cell_conditional=[
         {'if': {'column_id': 'ResultType'},
          'width': '90%'},
     ],
-    style_cell={'textAlign': 'left'},
+    style_cell={'textAlign': 'left','padding': '0px','font_size': '12px',
+            'overflow': 'hidden',
+            'textOverflow': 'ellipsis',
+        },
+    css=[{
+        'selector': '.dash-spreadsheet td div',
+        'rule': '''
+            line-height: 12px;
+            display: block;
+            overflow-y: hidden;
+        '''
+    }],
     fixed_rows={'headers': True},
     selected_rows=[],
     style_table={
@@ -184,14 +228,25 @@ spin_dependency_table = dash_table.DataTable(
         {'name': 'SpinDependency', 'id': 'label', 'type': 'text'},
     ],
     data=spin_dependency_df.to_dict('records'),
-    filter_action='native',
+    filter_action='none',
     row_selectable='multi',
     #page_size=5,
     style_cell_conditional=[
         {'if': {'column_id': 'SpinDependency'},
          'width': '90%'},
     ],
-    style_cell={'textAlign': 'left'},
+    style_cell={'textAlign': 'left','padding': '0px','font_size': '12px',
+            'overflow': 'hidden',
+            'textOverflow': 'ellipsis',
+        },
+    css=[{
+        'selector': '.dash-spreadsheet td div',
+        'rule': '''
+            line-height: 12px;
+            display: block;
+            overflow-y: hidden;
+        '''
+    }],
     fixed_rows={'headers': True},
     selected_rows=[],
     style_table={
@@ -212,14 +267,25 @@ greatest_hit_table = dash_table.DataTable(
     data=greatest_hit_df.to_dict('records'),
     #page_size=5,
     fixed_rows={'headers': True},
-    filter_action='native',
+    filter_action='none',
     row_selectable='multi',
     selected_rows=[],
     style_cell_conditional=[
         {'if': {'column_id': 'SpinDependency'},
          'width': '90%'},
     ],
-    style_cell={'textAlign': 'left'},
+    style_cell={'textAlign': 'left','padding': '0px','font_size': '12px',
+            'overflow': 'hidden',
+            'textOverflow': 'ellipsis',
+        },
+    css=[{
+        'selector': '.dash-spreadsheet td div',
+        'rule': '''
+            line-height: 12px;
+            display: block;
+            overflow-y: hidden;
+        '''
+    }],
     style_table={'height': 250,}
     #style_data={
     #    'width': '25px', 'minWidth': '25px', 'maxWidth': '25px',
@@ -234,16 +300,30 @@ limits_table = dash_table.DataTable(
     columns=[{'name': 'expid', 'id': 'expid'},
              {'name': 'data_reference', 'id': 'data_reference'},
              {'name': 'data_label', 'id': 'data_label'},
+             {'name': 'experiment', 'id': 'experiment'},
              #{'name': 'spin_dependency', 'id': 'spin_dependency'},
-             #{'name': 'result_type', 'id': 'result_type'},
-             #{'name': 'year', 'id': 'year'},
+             {'name': 'result_type', 'id': 'result_type'},
+             {'name': 'year', 'id': 'year'},
              ],
     #fixed_rows={'headers': True},
     page_size=5,
     filter_action='native',
     #row_selectable='multi',
     #selected_rows=[],
-    style_table={'height': 300,},
+    style_cell={'textAlign': 'left','padding': '0px','font_size': '12px',
+            'overflow': 'hidden',
+            'textOverflow': 'ellipsis',
+        },
+    css=[{
+        'selector': '.dash-spreadsheet td div',
+        'rule': '''
+            line-height: 15px;
+            max-height: 45px; min-height:30px; height: 30px;
+            display: block;
+            overflow-y: hidden;
+        '''
+    }],
+    style_table={'height': 320,},
     style_cell_conditional=[
         {'if': {'column_id': 'expid'},
          'width': '5%'},
@@ -256,6 +336,14 @@ limits_table = dash_table.DataTable(
         'whiteSpace': 'normal',
         'height': 'auto',
     },
+    
+    #tooltip_data=[
+    #    {
+    #        column: {'value': str(value), 'type': 'markdown'}
+    #        for column, value in row.items()
+    #    } for row in data
+    #],
+    tooltip_duration=None,
 )
 
 plots_table_df = pd.DataFrame(data=None, columns=['expid','data_reference','data_label'])
@@ -274,6 +362,19 @@ plots_table = dash_table.DataTable(
              ],
     #fixed_rows={'headers': True},
     page_size=4,
+    style_cell={'textAlign': 'left','padding': '0px','font_size': '12px',
+            'overflow': 'hidden',
+            'textOverflow': 'ellipsis',
+        },
+    css=[{
+        'selector': '.dash-spreadsheet td div',
+        'rule': '''
+            line-height: 15px;
+            max-height: 45px; min-height:30px; height: 30px;
+            display: block;
+            overflow-y: hidden;
+        '''
+    }],
     #sort_action='native',
     #sort_mode='multi',
     #sort_as_null=['', 'No'],
@@ -282,7 +383,7 @@ plots_table = dash_table.DataTable(
     row_deletable=True,
     #row_selectable='multi',
     #selected_rows=[],
-    style_table={'height': 300,},
+    style_table={'height': 200,},
     style_cell_conditional=[
         {'if': {'column_id': 'expid'},
          'width': '5%'},
