@@ -1,5 +1,5 @@
 """Application entry point."""
-from minimal import init_app
+from minimal_app import init_app
 
 app = init_app()
 
