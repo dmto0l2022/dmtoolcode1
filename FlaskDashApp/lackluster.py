@@ -11,9 +11,13 @@ app = dash.Dash(
     url_base_pathname='/dash'
 )
 
-app.layout = html.Div(id='dash-container')
+app.layout = html.Div('Lack Luster Dash App', id='dash-container')
 
 
 @server.route("/dash")
 def my_dash_app():
     return app.index()
+
+
+if __name__ == '__main__':
+    app.run_server(debug=True)
