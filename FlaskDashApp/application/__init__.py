@@ -12,7 +12,7 @@ def init_app():
         from . import routes
 
         # Import Dash application
-        from .dash.dashboard import create_dashboard
+        from .dash.mindash import create_dashboard
         app = create_dashboard(app)
 
         return app
