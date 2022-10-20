@@ -5,7 +5,7 @@ from dash import html
 
 
 server = Flask(__name__)
-app = dash.Dash(
+app = Dash(
     __name__,
     server=server,
     url_base_pathname='/dash'
