@@ -8,52 +8,65 @@ import pandas as pd
 import time
 import os
 
-server = flask.Flask('app')
-server.secret_key = "1234567890" # os.environ.get('secret_key', 'secret')
 
-df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/hello-world-stock.csv')
+def init_dashboard(server):
+    """Create a Plotly Dash dashboard."""
 
-app = dash.Dash('app', server=server)
+    # Create Dash Layout
+    #dash_app.layout = html.Div(id='dash-container')
 
-app.scripts.config.serve_locally = False
-dcc._js_dist[0]['external_url'] = 'https://cdn.plot.ly/plotly-basic-latest.min.js'
+    server = flask.Flask('app')
+    server.secret_key = "1234567890" # os.environ.get('secret_key', 'secret')
 
-app.layout = html.Div([
-    html.H1('Stock Tickers'),
-    dcc.Dropdown(
-        id='my-dropdown',
-        options=[
-            {'label': 'Tesla', 'value': 'TSLA'},
-            {'label': 'Apple', 'value': 'AAPL'},
-            {'label': 'Coke', 'value': 'COKE'}
-        ],
-        value='TSLA'
-    ),
-    dcc.Graph(id='my-graph')
-], className="container")
+    df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/hello-world-stock.csv')
 
-@app.callback(Output('my-graph', 'figure'),
-              [Input('my-dropdown', 'value')])
-def update_graph(selected_dropdown_value):
-    dff = df[df['Stock'] == selected_dropdown_value]
-    return {
-        'data': [{
-            'x': dff.Date,
-            'y': dff.Close,
-            'line': {
-                'width': 3,
-                'shape': 'spline'
-            }
-        }],
-        'layout': {
-            'margin': {
-                'l': 30,
-                'r': 20,
-                'b': 30,
-                't': 20
+    
+    dash_app = dash.Dash(
+        server=server,
+        routes_pathname_prefix='/dashapp/',
+        external_stylesheets=[
+            '/static/styles.css',
+        ]
+    )
+
+    dash_app.scripts.config.serve_locally = False
+    dcc._js_dist[0]['external_url'] = 'https://cdn.plot.ly/plotly-basic-latest.min.js'
+
+    dash_app.layout = html.Div([
+        html.H1('Stock Tickers'),
+        dcc.Dropdown(
+            id='my-dropdown',
+            options=[
+                {'label': 'Tesla', 'value': 'TSLA'},
+                {'label': 'Apple', 'value': 'AAPL'},
+                {'label': 'Coke', 'value': 'COKE'}
+            ],
+            value='TSLA'
+        ),
+        dcc.Graph(id='my-graph')
+    ], className="container")
+
+    @app.callback(Output('my-graph', 'figure'),
+                  [Input('my-dropdown', 'value')])
+    def update_graph(selected_dropdown_value):
+        dff = df[df['Stock'] == selected_dropdown_value]
+        return {
+            'data': [{
+                'x': dff.Date,
+                'y': dff.Close,
+                'line': {
+                    'width': 3,
+                    'shape': 'spline'
+                }
+            }],
+            'layout': {
+                'margin': {
+                    'l': 30,
+                    'r': 20,
+                    'b': 30,
+                    't': 20
+                }
             }
         }
-    }
-
-if __name__ == '__main__':
-    app.run_server()
+    
+    return dash_app.server
