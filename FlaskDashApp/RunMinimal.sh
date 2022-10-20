@@ -1,1 +1,1 @@
-uwsgi --http :9090 --wsgi-file minimal.py
+uwsgi --http :9090 --wsgi-file minimal_wsgi.py
