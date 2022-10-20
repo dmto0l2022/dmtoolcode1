@@ -56,7 +56,7 @@ def init_dashboard_functions(server):
     dcc._js_dist[0]['external_url'] = 'https://cdn.plot.ly/plotly-basic-latest.min.js'
 
     dash_app.layout = html.Div([
-        html.H1('Stock Tickers'),
+        html.H1('Min Dash - Stock Tickers'),
         dcc.Dropdown(
             id='my-dropdown',
             options=[
