@@ -1,6 +1,6 @@
 """Initialize Flask app."""
 from flask import Flask
-
+from routes import *
 
 def init_app():
     """Construct core Flask application with embedded Dash app."""
@@ -10,7 +10,6 @@ def init_app():
     with app.app_context():
         # Import parts of our core Flask app
         
-        from routes import *
         app.register_blueprint(routes)
         
         #from . import routes
