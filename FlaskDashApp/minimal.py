@@ -4,7 +4,7 @@ from dash import html
 
 app = Dash(
     __name__,
-    external_stylesheets=['/static/dist/css/style.css'],
+    external_stylesheets=['/static/style.css'],
     external_scripts=external_scripts,
     routes_pathname_prefix='/dash/'
 )
