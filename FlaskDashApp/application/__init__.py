@@ -1,6 +1,6 @@
 """Initialize Flask app."""
 from flask import Flask
-from routes import *
+from .routes import *
 
 def init_app():
     """Construct core Flask application with embedded Dash app."""
