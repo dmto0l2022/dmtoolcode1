@@ -46,7 +46,7 @@ def init_dashboard(server):
         dcc.Graph(id='my-graph')
     ], className="container")
 
-    @app.callback(Output('my-graph', 'figure'),
+    @dash_app.callback(Output('my-graph', 'figure'),
                   [Input('my-dropdown', 'value')])
     def update_graph(selected_dropdown_value):
         dff = df[df['Stock'] == selected_dropdown_value]
