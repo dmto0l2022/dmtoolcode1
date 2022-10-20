@@ -1,0 +1,19 @@
+from flask import Flask
+from dash import Dash
+from dash import dcc
+from dash import html
+
+
+server = Flask(__name__)
+app = dash.Dash(
+    __name__,
+    server=server,
+    url_base_pathname='/dash'
+)
+
+app.layout = html.Div(id='dash-container')
+
+
+@server.route("/dash")
+def my_dash_app():
+    return app.index()
