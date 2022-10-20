@@ -9,6 +9,7 @@ import time
 import os
 
 
+
 def init_dashboard(server):
     """Create a Plotly Dash dashboard."""
 
@@ -19,7 +20,6 @@ def init_dashboard(server):
     server.secret_key = "1234567890" # os.environ.get('secret_key', 'secret')
 
     df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/hello-world-stock.csv')
-
     
     dash_app = dash.Dash(
         server=server,
@@ -72,11 +72,11 @@ def init_dashboard(server):
     return dash_app.server
 
 
-def init_callbacks(dash_app):
+def init_callbacks(dash_app, df_in):
     @dash_app.callback(Output('my-graph', 'figure'),
                   [Input('my-dropdown', 'value')])
     def update_graph(selected_dropdown_value):
-        dff = df[df['Stock'] == selected_dropdown_value]
+        dff = df_in[df_in['Stock'] == selected_dropdown_value]
         return {
             'data': [{
                 'x': dff.Date,
@@ -133,6 +133,6 @@ def init_dashboard_functions(server):
         dcc.Graph(id='my-graph')
     ], className="container")
     
-    init_callbacks(dash_app)
+    init_callbacks(dash_app, df)
     
     return dash_app.server
