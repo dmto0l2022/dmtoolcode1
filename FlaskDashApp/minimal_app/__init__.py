@@ -8,7 +8,7 @@ def init_app():
 
     with app.app_context():
         # Import Dash application
-        from minimal import init_dashboard
+        from minimal_app.minimal import init_dashboard
         app = init_dashboard(app)
 
         return app
