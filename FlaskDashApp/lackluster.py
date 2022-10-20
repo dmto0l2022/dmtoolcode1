@@ -8,13 +8,13 @@ server = Flask(__name__)
 app = Dash(
     __name__,
     server=server,
-    url_base_pathname='/dash'
+    url_base_pathname='/dash/'
 )
 
 app.layout = html.Div('Lack Luster Dash App', id='dash-container')
 
 
-@server.route("/dash")
+@server.route("/dash/")
 def my_dash_app():
     return app.index()
 
