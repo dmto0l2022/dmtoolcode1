@@ -4,5 +4,9 @@ https://hackersandslackers.com/plotly-dash-with-flask/
 
     source RunHelloWorld.sh
 
+# Struggling with Routing
 
+Maybe Blueprints will help
+
+https://explore-flask.readthedocs.io/en/latest/blueprints.html
 
