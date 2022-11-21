@@ -33,7 +33,6 @@ MARIADB_DATABASE = environ.get("MARIADB_DATABASE")
 
 MARIADB_URI = "mariadb+mariadbconnector://" + MARIADB_USERNAME + ":" + MARIADB_PASSWORD + "@10.154.0.20:3306/" + MARIADB_DATABASE
 
-
 from sqlalchemy import create_engine
 import pandas as pd
 
@@ -41,9 +40,41 @@ from dash import dash_table
 
 #import psycopg2
 #engine = create_engine('mysql://pythonuser:pythonuser@localhost:3306/RubyDB')
-engine = create_engine(MARIADB_URI)
-
+engine = create_engine(MARIADB_URI, echo=True)
+#self.engine = create_engine(db_uri, echo=True)
 ##sqlquery = '''SELECT id, name FROM RubyDB.experiments;'''
+
+'''
+table_df = pd.read_sql_table(
+    "nyc_jobs",
+    con=engine,
+    schema='public',
+    index_col='job_id',
+    coerce_float=True,
+    columns=[
+        'job_id',
+        'business_title',
+        'job_category',
+        'posting_date',
+        'posting_updated'
+    ],
+    parse_dates=[
+        'created_at',
+        'updated_at'
+    ],
+    chunksize=500
+)
+
+sql_df = pd.read_sql(
+    "SELECT * FROM nyc_jobs",
+    con=engine,
+    parse_dates=[
+        'created_at',
+        'updated_at'
+    ]
+)
+'''
+
 
 experiments_sql = '''select distinct experiment as label, experiment as value 
 FROM RubyDB.limits;'''
