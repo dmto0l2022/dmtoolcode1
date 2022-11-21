@@ -25,6 +25,10 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 import mariadb
 
+from sqlalchemy.ext.declarative import declarative_base
+
+Base = declarative_base()
+
 ##engine = sqlalchemy.create_engine("mariadb+mariadbconnector://app_user:Password123!@127.0.0.1:3306/company")
 
 MARIADB_USERNAME = environ.get("MARIADB_USERNAME")
@@ -43,6 +47,34 @@ from dash import dash_table
 engine = create_engine(MARIADB_URI, echo=True)
 #self.engine = create_engine(db_uri, echo=True)
 ##sqlquery = '''SELECT id, name FROM RubyDB.experiments;'''
+
+'''
+# CREATE THE TABLE MODEL TO USE IT FOR QUERYING
+class Students(Base):
+ 
+    __tablename__ = 'students'
+ 
+    first_name = db.Column(db.String(50),
+                           primary_key=True)
+    last_name  = db.Column(db.String(50),
+                           primary_key=True)
+    course     = db.Column(db.String(50))
+    score      = db.Column(db.Float)
+ 
+# CREATE A SESSION OBJECT TO INITIATE QUERY IN DATABASE
+from sqlalchemy.orm import sessionmaker
+Session = sessionmaker(bind = engine)
+session = Session()
+ 
+# SQLAlCHEMY ORM QUERY TO FETCH ALL RECORDS
+df = pandas.read_sql_query(
+    sql = session.query(Students.first_name,
+                        Students.last_name).filter(
+      Students.score > 80).statement,
+    con = engine
+)
+
+'''
 
 '''
 table_df = pd.read_sql_table(
