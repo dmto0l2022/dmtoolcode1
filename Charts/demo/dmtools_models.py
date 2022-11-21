@@ -1,9 +1,93 @@
+import datetime as dt
+from flask import current_app as app
+##from app import login_manager
+login = app.login_manager
+#from app import db
+db = app.extensions['sqlalchemy'].db
 
- __tablename__ = 'students'
+from werkzeug.security import generate_password_hash, check_password_hash
 
-class Experiments(models.Model):
+from flask_login import UserMixin
+
+from sqlalchemy import CHAR, Column, DECIMAL, Enum, ForeignKey, text, DateTime
+from sqlalchemy.dialects.mysql import INTEGER, SMALLINT
+from sqlalchemy.orm import relationship
+from sqlalchemy.ext.declarative import declarative_base
+
+#from flask_dance.consumer.backend.sqla import OAuthConsumerMixin, SQLAlchemyBackend
+# flask_dance.consumer.storage.sqla
+from flask_dance.consumer.storage.sqla import OAuthConsumerMixin, SQLAlchemyStorage
+
+Base = declarative_base()
+metadata = Base.metadata
+
+#@login_manager.user_loader
+#def load_user(user_id):
+#    return User.query.get(user_id)
+
+#@login_manager.load_user
+
+## https://stackoverflow.com/questions/51209763/attributeerror-type-object-user-has-no-attribute-get
+
+@login.user_loader
+def load_user(user):
+    return User.query.get(user) ## added .query.
+
+
+
+class User(UserMixin , db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(64), index=True, unique=True)
+    email = db.Column(db.String(120), index=True, unique=True)
+    password_hash = db.Column(db.String(128))
+    name = db.Column(db.String(256))
+
+    def set_password(self, password):
+        self.password_hash = generate_password_hash(password)
+
+    def check_password(self, password):
+        return check_password_hash(self.password_hash, password)
     
-     __tablename__ = 'students'
+    def __repr__(self):
+        return '<User {}>'.format(self.username)
+
+class OAuth(OAuthConsumerMixin, db.Model):
+    provider_user_id = db.Column(db.String(256), unique=True)
+    user_id = db.Column(db.Integer, db.ForeignKey(User.id))
+    user = db.relationship(User)    
+    
+class Post(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    body = db.Column(db.String(140))
+    timestamp = db.Column(db.DateTime, index=True, default=dt.datetime.utcnow)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    
+    def __repr__(self):
+        return '<Post {}>'.format(self.body)    
+    
+class Country(Base):
+    __tablename__ = 'country'
+
+    Code = Column(CHAR(3), primary_key=True, server_default=text("''"))
+    Name = Column(CHAR(52), nullable=False, server_default=text("''"))
+    Continent = Column(Enum('Asia', 'Europe', 'North America', 'Africa', 'Oceania', 'Antarctica', 'South America'), nullable=False, server_default=text("'Asia'"))
+    Region = Column(CHAR(26), nullable=False, server_default=text("''"))
+    SurfaceArea = Column(DECIMAL(10, 2), nullable=False, server_default=text("0.00"))
+    IndepYear = Column(SMALLINT(6))
+    Population = Column(INTEGER(11), nullable=False, server_default=text("0"))
+    LifeExpectancy = Column(DECIMAL(3, 1))
+    GNP = Column(DECIMAL(10, 2))
+    GNPOld = Column(DECIMAL(10, 2))
+    LocalName = Column(CHAR(45), nullable=False, server_default=text("''"))
+    GovernmentForm = Column(CHAR(45), nullable=False, server_default=text("''"))
+    HeadOfState = Column(CHAR(60))
+    Capital = Column(INTEGER(11))
+    Code2 = Column(CHAR(2), nullable=False, server_default=text("''"))
+
+
+class Experiments(Base):
+    
+     __tablename__ = 'Experiments'
         
     name = models.CharField(max_length=255, blank=True, null=True)
 
