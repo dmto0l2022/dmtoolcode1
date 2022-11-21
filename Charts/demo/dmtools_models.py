@@ -1,5 +1,10 @@
 
+ __tablename__ = 'students'
+
 class Experiments(models.Model):
+    
+     __tablename__ = 'students'
+        
     name = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
