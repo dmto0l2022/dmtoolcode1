@@ -9,8 +9,8 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 from flask_login import UserMixin
 
-from sqlalchemy import CHAR, Column, DECIMAL, Enum, ForeignKey, text, DateTime
-from sqlalchemy.dialects.mysql import INTEGER, SMALLINT
+from sqlalchemy import CHAR, Column, DECIMAL, Enum, ForeignKey, text, DateTime, Date
+from sqlalchemy.dialects.mysql import INTEGER, SMALLINT, LONGBLOB, MEDIUMTEXT, TINYINT
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
 
@@ -32,7 +32,6 @@ metadata = Base.metadata
 @login.user_loader
 def load_user(user):
     return User.query.get(user) ## added .query.
-
 
 
 class User(UserMixin , db.Model):
@@ -65,144 +64,68 @@ class Post(db.Model):
     def __repr__(self):
         return '<Post {}>'.format(self.body)    
     
-class Country(Base):
-    __tablename__ = 'country'
 
-    Code = Column(CHAR(3), primary_key=True, server_default=text("''"))
-    Name = Column(CHAR(52), nullable=False, server_default=text("''"))
-    Continent = Column(Enum('Asia', 'Europe', 'North America', 'Africa', 'Oceania', 'Antarctica', 'South America'), nullable=False, server_default=text("'Asia'"))
-    Region = Column(CHAR(26), nullable=False, server_default=text("''"))
-    SurfaceArea = Column(DECIMAL(10, 2), nullable=False, server_default=text("0.00"))
-    IndepYear = Column(SMALLINT(6))
-    Population = Column(INTEGER(11), nullable=False, server_default=text("0"))
-    LifeExpectancy = Column(DECIMAL(3, 1))
-    GNP = Column(DECIMAL(10, 2))
-    GNPOld = Column(DECIMAL(10, 2))
-    LocalName = Column(CHAR(45), nullable=False, server_default=text("''"))
-    GovernmentForm = Column(CHAR(45), nullable=False, server_default=text("''"))
-    HeadOfState = Column(CHAR(60))
-    Capital = Column(INTEGER(11))
-    Code2 = Column(CHAR(2), nullable=False, server_default=text("''"))
+class Experiment(Base):
+    __tablename__ = 'experiments'
+
+    id = Column(INTEGER(11), primary_key=True)
+    name = Column(String(255))
 
 
-class Experiments(Base):
-    
-     __tablename__ = 'Experiments'
+class LimitDisplay(Base):
+    __tablename__ = 'limit_displays'
+
+    id = Column(INTEGER(11), primary_key=True)
+    limit_id = Column(INTEGER(11))
+    plot_id = Column(INTEGER(11))
+    color = Column(String(255), server_default=text("'k'"))
+    style = Column(String(255), server_default=text("'line'"))
+    created_at = Column(DateTime)
+    updated_at = Column(DateTime)
+
+
+class LimitOwnership(Base):
+    __tablename__ = 'limit_ownerships'
+
+    id = Column(INTEGER(11), primary_key=True)
+    user_id = Column(INTEGER(11))
+    limit_id = Column(INTEGER(11))
+    created_at = Column(DateTime)
+    updated_at = Column(DateTime)
+
+
+
+class Limit(Base):
+    __tablename__ = 'limits'
+
+    id = Column(INTEGER(11), primary_key=True)
+    spin_dependency = Column(String(255))
+    result_type = Column(String(255), server_default=text("'Personal'"))
+    measurement_type = Column(String(60))
+    nomhash = Column(LONGBLOB)
+    x_units = Column(String(255), server_default=text("'GeV'"))
+    y_units = Column(String(255), server_default=text("'cm^2'"))
+    x_rescale = Column(String(255), server_default=text("'1'"))
+    y_rescale = Column(String(255), server_default=text("'1'"))
+    default_color = Column(String(255), server_default=text("'Blk'"))
+    default_style = Column(String(255), server_default=text("'Line'"))
+    data_values = Column(MEDIUMTEXT)
+    data_label = Column(String(255))
+    file_name = Column(String(255))
+    data_comment = Column(String(255))
+    data_reference = Column(String(255))
+    created_at = Column(DateTime)
+    updated_at = Column(DateTime)
+    creator_id = Column(INTEGER(11))
+    experiment = Column(String(255))
+    rating = Column(INTEGER(11), server_default=text("0"))
+    date_of_announcement = Column(Date)
+    public = Column(TINYINT(1), server_default=text("0"))
+    official = Column(TINYINT(1), server_default=text("0"))
+    date_official = Column(Date)
+    greatest_hit = Column(TINYINT(1), server_default=text("0"))
+    date_of_run_start = Column(Date)
+    date_of_run_end = Column(Date)
+    year = Column(INTEGER(11))
         
-    name = models.CharField(max_length=255, blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'experiments'
-
-
-class LimitDisplays(models.Model):
-    limit_id = models.IntegerField(blank=True, null=True)
-    plot_id = models.IntegerField(blank=True, null=True)
-    color = models.CharField(max_length=255, blank=True, null=True)
-    style = models.CharField(max_length=255, blank=True, null=True)
-    created_at = models.DateTimeField(blank=True, null=True)
-    updated_at = models.DateTimeField(blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'limit_displays'
-
-
-class LimitOwnerships(models.Model):
-    user_id = models.IntegerField(blank=True, null=True)
-    limit_id = models.IntegerField(blank=True, null=True)
-    created_at = models.DateTimeField(blank=True, null=True)
-    updated_at = models.DateTimeField(blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'limit_ownerships'
-
-
-class Limits(models.Model):
-    spin_dependency = models.CharField(max_length=255, blank=True, null=True)
-    result_type = models.CharField(max_length=255, blank=True, null=True)
-    measurement_type = models.CharField(max_length=60, blank=True, null=True)
-    nomhash = models.TextField(blank=True, null=True)
-    x_units = models.CharField(max_length=255, blank=True, null=True)
-    y_units = models.CharField(max_length=255, blank=True, null=True)
-    x_rescale = models.CharField(max_length=255, blank=True, null=True)
-    y_rescale = models.CharField(max_length=255, blank=True, null=True)
-    default_color = models.CharField(max_length=255, blank=True, null=True)
-    default_style = models.CharField(max_length=255, blank=True, null=True)
-    data_values = models.TextField(blank=True, null=True)
-    data_label = models.CharField(max_length=255, blank=True, null=True)
-    file_name = models.CharField(max_length=255, blank=True, null=True)
-    data_comment = models.CharField(max_length=255, blank=True, null=True)
-    data_reference = models.CharField(max_length=255, blank=True, null=True)
-    created_at = models.DateTimeField(blank=True, null=True)
-    updated_at = models.DateTimeField(blank=True, null=True)
-    creator_id = models.IntegerField(blank=True, null=True)
-    experiment = models.CharField(max_length=255, blank=True, null=True)
-    rating = models.IntegerField(blank=True, null=True)
-    date_of_announcement = models.DateField(blank=True, null=True)
-    public = models.IntegerField(blank=True, null=True)
-    official = models.IntegerField(blank=True, null=True)
-    date_official = models.DateField(blank=True, null=True)
-    greatest_hit = models.IntegerField(blank=True, null=True)
-    date_of_run_start = models.DateField(blank=True, null=True)
-    date_of_run_end = models.DateField(blank=True, null=True)
-    year = models.IntegerField(blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'limits'
-
-
-class PlotOwnerships(models.Model):
-    user_id = models.IntegerField(blank=True, null=True)
-    plot_id = models.IntegerField(blank=True, null=True)
-    created_at = models.DateTimeField(blank=True, null=True)
-    updated_at = models.DateTimeField(blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'plot_ownerships'
-
-
-class Plots(models.Model):
-    name = models.CharField(max_length=255, blank=True, null=True)
-    x_min = models.CharField(max_length=255, blank=True, null=True)
-    x_max = models.CharField(max_length=255, blank=True, null=True)
-    y_min = models.CharField(max_length=255, blank=True, null=True)
-    y_max = models.CharField(max_length=255, blank=True, null=True)
-    x_units = models.CharField(max_length=255, blank=True, null=True)
-    y_units = models.CharField(max_length=255, blank=True, null=True)
-    user_id = models.IntegerField(blank=True, null=True)
-    created_at = models.DateTimeField(blank=True, null=True)
-    updated_at = models.DateTimeField(blank=True, null=True)
-    plot_png = models.TextField(blank=True, null=True)
-    legend_png = models.TextField(blank=True, null=True)
-    plot_eps = models.TextField(blank=True, null=True)
-    legend_eps = models.TextField(blank=True, null=True)
-    no_id = models.IntegerField(blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'plots'
-
-
-class SchemaMigrations(models.Model):
-    version = models.CharField(unique=True, max_length=255)
-
-    class Meta:
-        managed = False
-        db_table = 'schema_migrations'
-
-
-class SimpleCaptchaData(models.Model):
-    key = models.CharField(max_length=40, blank=True, null=True)
-    value = models.CharField(max_length=6, blank=True, null=True)
-    created_at = models.DateTimeField(blank=True, null=True)
-    updated_at = models.DateTimeField(blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'simple_captcha_data'
-
+ 
