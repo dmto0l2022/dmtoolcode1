@@ -2,3 +2,7 @@
 
 https://github.com/AnnMarieW/dash-multi-page-app-demos/tree/main/multi_page_store
 
+# App Spanning Dropdown
+
+https://github.com/AnnMarieW/dash-multi-page-app-demos/tree/main/multi_page_sync_components
+
