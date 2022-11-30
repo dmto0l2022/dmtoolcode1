@@ -1,0 +1,59 @@
+:root {
+  --header_height: 5vh;
+  --footer_height: 5vh;
+  --sidebar_width: 5vw;
+  --adbar_width: 5vw;
+  --content_width: 90vw;
+  --content_height: 90vh;
+}
+
+.center {
+  text-align: center;
+  color: red;
+}
+
+.COLUMN_DIV {
+    height:100%,
+    background-color:orange,
+    border:2px solid black,
+    color: purple}
+
+.ALL_ROW {
+    width:100%,
+    height:100%
+    }
+
+.TOP_CHART_ROW {
+    width:100%;
+    height:70%;
+    }
+
+.BOTTOM_CHART_ROW {
+    width:100%,
+    height:30%
+    }
+
+.BOTTOM_TABLE_ROW {
+    width:100%;
+    height:30%;
+}
+
+.NOPADDING_CONTENT {
+    padding: 0 !important,
+    padding-left: 0,
+    padding-right:0,
+    margin-left:0,
+    margin-right: 0,
+    border:1px solid black
+    }
+
+.GRAPH {
+    display: block,
+    height: 100%,
+    width: 100%,
+    }
+
+.TABLE_ROW {
+    width:100%;
+    height:50%;
+}
