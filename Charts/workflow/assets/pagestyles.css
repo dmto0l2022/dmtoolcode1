@@ -32,7 +32,16 @@
     background-color: lightblue;
     }
 
-.PAGE_SIDEBAR {
+.PAGE_SIDE_RIGHT {
+    position: fixed;
+    top: var(--header_height);
+    right: 0;
+    bottom: var(--footer_height);
+    width: var(--sidebar_width);
+    background-color: lightgreen;
+    }
+
+.PAGE_SIDE_LEFT {
     position: fixed;
     top: var(--header_height);
     left: 0;

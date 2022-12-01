@@ -13,3 +13,4 @@ class table40style():
                     'whiteSpace': 'inherit',
                     "fontSize":'9px',
                 }
+    css_12pt = [{'selector': '.dash-spreadsheet tr', 'rule': 'height: 12px;'}]
