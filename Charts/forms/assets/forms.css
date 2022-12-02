@@ -1,0 +1,149 @@
+:root {
+  --header_height: 5vh;
+  --footer_height: 5vh;
+  --sidebar_width: 5vw;
+  --adbar_width: 5vw;
+  --content_width: 90vw;
+  --content_height: 90vh;
+}
+
+
+.center {
+  text-align: center;
+  color: red;
+}
+
+.PAGE_NOPADDING {
+    padding: 0 !important;
+    padding-left: 0;
+    padding-right:0;
+    margin-left:0;
+    margin-right: 0;
+    border:1px black;
+    border-style: solid;
+}
+
+.PAGE_HEADER {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--header_height);
+    background-color: Gray;
+    }
+
+.HEADER_TEXT {
+    color: #a569bd;
+    background-color: Black;
+    }
+
+.HEADER_COLUMN {
+    height: 100%,
+    background-color: black,
+    padding:0px,
+    margin:0px,
+    textAlign: center
+}
+
+.PAGE_SIDE_RIGHT {
+    position: fixed;
+    top: var(--header_height);
+    right: 0;
+    bottom: var(--footer_height);
+    width: var(--sidebar_width);
+    background-color: lightgreen;
+    }
+
+.PAGE_SIDE_LEFT {
+    position: fixed;
+    top: var(--header_height);
+    left: 0;
+    bottom: var(--footer_height);
+    width: var(--sidebar_width);
+    background-color: lightgreen;
+    }
+
+.PAGE_ADBAR {
+    position: fixed;
+    top: var(--header_height);
+    right: 0;
+    bottom: var(--footer_height);
+    width: var(--adbar_width);
+    background-color: lightgreen;
+    }
+
+.PAGE_FOOTER {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: var(--footer_height);
+    background-color: gray;
+    }
+
+.PAGE_CONTENT {
+    position: fixed;
+    top: var(--header_height);
+    height: var(--content_height);
+    width : var(--content_width);
+    left: var(--sidebar_width);
+    background-color: LightGray;
+    }
+
+
+.PAGE_PARENT_CONTAINER {
+    height:100vh;
+    width: 100vw;
+    background-color:pink;
+}
+
+.center {
+  text-align: center;
+  color: red;
+}
+
+.COLUMN_DIV {
+    height:100%,
+    background-color:orange,
+    border:2px solid black,
+    color: purple}
+
+.ALL_ROW {
+    width:100%,
+    height:100%
+    }
+
+.TOP_CHART_ROW {
+    width:100%;
+    height:70%;
+    }
+
+.BOTTOM_CHART_ROW {
+    width:100%,
+    height:30%
+    }
+
+.BOTTOM_TABLE_ROW {
+    width:100%;
+    height:30%;
+}
+
+.NOPADDING_CONTENT {
+    padding: 0 !important,
+    padding-left: 0,
+    padding-right:0,
+    margin-left:0,
+    margin-right: 0,
+    border:1px solid black
+    }
+
+.GRAPH {
+    display: block,
+    height: 100%,
+    width: 100%,
+    }
+
+.TABLE_ROW {
+    width:100%;
+    height:50%;
+}
