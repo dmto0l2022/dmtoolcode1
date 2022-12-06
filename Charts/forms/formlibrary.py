@@ -41,7 +41,7 @@ password_input = html.Div(
     className="mb-3",
 )
 
-#### email form
+#### email & password form
 
 emailform_title = html.Div(html.P(children='Please Login', className = "NOPADDING_CONTENT FORM_TITLE"))
 
