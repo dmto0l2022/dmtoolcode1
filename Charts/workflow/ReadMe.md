@@ -6,3 +6,6 @@ https://github.com/AnnMarieW/dash-multi-page-app-demos/tree/main/multi_page_stor
 
 https://github.com/AnnMarieW/dash-multi-page-app-demos/tree/main/multi_page_sync_components
 
+# Embedding url in iframe
+
+https://dlukes.github.io/flask-wsgi-url-prefix.html
