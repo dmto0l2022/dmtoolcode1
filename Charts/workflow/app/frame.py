@@ -102,5 +102,56 @@ class PageFrame():
         self.content_frame = [self.page_header,self.page_l_sidebar,self.page_r_sidebar,self.page_footer]
         
 
+    def NavigationHeader(self):
+    
+        self.page_header_1 =  dbc.Row(
+                    [
+                        dbc.Col(
+                            html.P("Need Help", className="HEADER_TEXT"),
+                            width=3,
+                            className = "HEADER_COLUMN",
+                        ),
+                        dbc.Col(
+                            html.P("FAQ",className="HEADER_TEXT"),
+                            width=3,
+                            className = "HEADER_COLUMN",
+                        ),
+                        dbc.Col(
+                            html.P("Found A Bug", className="HEADER_TEXT"),
+                            width=3,
+                            className = "HEADER_COLUMN",
+                        ),
+                        dbc.Col(
+                            html.P("What's New", className="HEADER_TEXT"),
+                            width=3,
+                            className = "HEADER_COLUMN",
+                        ),
+                    ],
+                    className="PAGE_HEADER_1",
+                )
+
+        
+
+            self.page_header_2 = dbc.Row(
+                        [
+                            dbc.Col(
+                                html.P("Plots", className="HEADER_TEXT"),
+                                width=3,
+                                className = "HEADER_COLUMN",
+                            ),
+                            dbc.Col(
+                                html.P("Data",  className="HEADER_TEXT"),
+                                width=3,
+                                className = "HEADER_COLUMN",
+                            ),
+                             dbc.Col(
+                                html.P("Logged in as pauser (log out)", className="HEADER_TEXT"),
+                                width=6,
+                                className = "HEADER_COLUMN",
+                             ),
+                        ],
+                        className="PAGE_HEADER_2",
+                    )
+
     
     

@@ -5,10 +5,19 @@
   --adbar_width: 5vw;
   --content_width: 90vw;
   --content_height: 90vh;
+  --form_width: 40vw;
+  --form_height: 40vh;
 }
 
 
-.center {
+.center_div {
+  border: 5px solid;
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}
+
+.center_text {
   text-align: center;
   color: red;
 }

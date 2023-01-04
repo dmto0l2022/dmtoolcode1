@@ -15,8 +15,6 @@ from plotly.subplots import make_subplots
 
 from dash import Dash, Input, Output, callback, State
 
-##from jupyter_dash import JupyterDash
-
 import dash_bootstrap_components as dbc
 
 import pandas as pd
@@ -27,7 +25,7 @@ ts40 = ts.table40style
 ts40.style_table_40
 ts40.style_cell_9pt
 
-from pages.sidebar import sidebar
+
 
 #COMPONENT_STYLE = "/assets/my_component.css"
 pages_styles = "/assets/pagestyles.css"
@@ -42,23 +40,14 @@ app = dash.Dash(__name__, use_pages=True,
                 meta_tags=[{'name': 'viewport', 'content': 'width=device-width, initial-scale=1'}],
                 suppress_callback_exceptions=True)
 
-#app = JupyterDash(__name__,
-#                  use_pages=True,
-#                  #requests_pathname_prefix="/dash1/",
-#                  #routes_pathname_prefix='/dash1/',
-#                  external_stylesheets=external_stylesheets,
-#                  meta_tags=[{'name': 'viewport', 'content': 'width=device-width, initial-scale=1'}],
-#                 suppress_callback_exceptions=True)
-# Create server variable with Flask server object for use with gunicorn
-# server = app.server
-
+from pages.sidebar import sidebar
 
 import frame as frame
 page_frame = frame.PageFrame()
-
 page_frame.SetSideBarComponents(sidebar())
-
 page_frame.PopulateFrame()
+
+
 
 import plotly.graph_objects as go
 import plotly.express as px
@@ -140,10 +129,6 @@ fig3.update_layout(
     yaxis_title="Y AXIS TITLE",
 )
 
-
-# In[ ]:
-
-
 twographrows = [
     dbc.Row([
             dbc.Col([
@@ -156,10 +141,6 @@ twographrows = [
             ])
         ], class_name = 'BOTTOM_CHART_ROW CONTENT_NOPADDING' ),
 ]
-
-
-# In[ ]:
-
 
 solar_df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/solar.csv')
 
@@ -243,90 +224,6 @@ def GetThreeColumns(column_1_in, column_2_in, column_3_in):
 
 threecolumnrow = GetThreeColumns(column_1_var, column_2_var, column_3_var) 
 
-header = html.Div([
-    html.P('Dashboard Template')], className = "PAGE_HEADER" , #style={**HEADER_STYLE,**NOPADDING},
-)
-
-fdivs = [html.P("ACG / WT")]
-footer = html.Div(fdivs, className = "PAGE_FOOTER PAGE_NOPADDING",) #style={**FOOTER_STYLE,**NOPADDING},)
-
-
-
-#legend_out_graph
-#footer = html.Div(fdivs, style=FOOTER_STYLE,)
-#footer = html.Div(filters, style=FOOTER_STYLE,)
-
-adbar = html.Div([
-    html.P('R')],
-    className = "PAGE_ADBAR PAGE_NOPADDING"
-    #style={**ADBAR_STYLE,**NOPADDING},
-)
-
-sidebar = html.Div(
-    [html.P("L", className="lead")],
-    #filters,
-    className = "PAGE_SIDEBAR PAGE_NOPADDING",
-    #style={**SIDEBAR_STYLE,**NOPADDING},
-)
-
-# In[10]:
-
-
-headertext = "Dark Matter Tool"
-footertext = "ACG"
-
-def GetHeaderAndFooter(headertext, footertext):
-
-
-    hdivs = html.P(headertext)
-    header1 = html.Div([hdivs], className = "FULL_DIV PAGE_NOPADDING",)
-
-    fdivs = [html.P(footertext)]
-    
-    footer1 = html.Div(fdivs, className = "FULL_DIV PAGE_NOPADDING",)
-
-    #headerrow_out =  html.Div(children=[header1],className = "row PAGE_HEADER PAGE_NOPADDING",)
-
-    #footerrow_out =  html.Div(children=[footer1],className = "row PAGE_FOOTER PAGE_NOPADDING",)
-    
-    header_out =  html.Div(children=[header1],className = "PAGE_HEADER PAGE_NOPADDING",)
-
-    footer_out =  html.Div(children=[footer1],className = "PAGE_FOOTER PAGE_NOPADDING",)
-    
-    return header_out, footer_out
-
-page_header, page_footer = GetHeaderAndFooter(headertext, footertext)
-
-
-l_sidebar_in = 'L sidebar'
-r_sidebar_in = 'R sidebar'
-
-def GetSideBars(l_sidebar_in, r_sidebar_in):
-
-    l_sidebar_out =  html.Div(children='L sidebar',
-                                  className="PAGE_NOPADDING PAGE_SIDE_LEFT",)
-    
-    r_sidebar_out =  html.Div(children='R sidebar',
-                                  className="PAGE_NOPADDING PAGE_SIDE_RIGHT",)
-    
-    
-    return l_sidebar_out, r_sidebar_out
-
-
-page_l_sidebar, page_r_sidebar = GetSideBars(l_sidebar_in, r_sidebar_in) 
-
-
-# In[12]:
-
-
-page_l_sidebar
-
-
-# In[13]:
-
-
-#content_frame = page_frame.content_frame
-#content_frame
 
 #content = [html.Div([
 #    html.H1('Multi-page app with Dash Pages'),#
@@ -345,28 +242,19 @@ page_l_sidebar
 #])]
 
 
-content = [html.Div([
-    html.H1('Multi-page app with Dash Pages'),
-    dash.page_container
-])]
-# In[ ]:
-
-
-
+#content = [html.Div([
+#    html.H1('Multi-page app with Dash Pages'),
+#    dash.page_container
+#])]
 
 #cdivs = [html.P("content", style=NOPADDING)]
 #cdivs = [layout7]
-#cdivs = threecolumnrow
-cdivs = dash.page_container
+cdivs = threecolumnrow
+#cdivs = dash.page_container
 
 content = [html.Div(cdivs,className = "PAGE_CONTENT PAGE_NOPADDING",)]
 
-content_frame = [page_header,page_l_sidebar,page_r_sidebar,page_footer]
-#content_frame = [page_l_sidebar,page_r_sidebar]
-
-#content_frame = [page_header,page_footer]
-
-
+content_frame = page_frame.content_frame
 
 full_layout = content_frame + content
 #full_layout = content_frame
@@ -377,14 +265,6 @@ layout_empty = html.Div(full_layout,
                   )
 
 
-
-maincolumn = dbc.Col(
-            [
-               html.P('Main Column')
-            ],
-            width=10,)
-
-
 chartrow = dbc.Row([
     dbc.Col([
         dcc.Graph(id='basicgraph', responsive=True, style={
@@ -392,24 +272,6 @@ chartrow = dbc.Row([
         })
     ])
 ], className="CONTENT_NOPADDING CHART_ROW",)
-
-#charttwotablecolumn = dbc.Col(
-#            [
-#                chartrow,row3_1,row3_2
-#            ],
-#            width=10,)
-            
-
-#fourcolumns =  html.Div(className="row ALL_ROW CONTENT_NOPADDING",
-#                        children=[l_sidebar_col,##column_chart,
-#                                                  maincolumn,
-#                                                  r_sidebar_col,],
-#                       )
-
-#layout4 = html.Div([headerrow,fourcolumns,footerrow],
-#                   className="container-fluid PAGE_PARENT_CONTAINER",
-#                  )
-
 
 app.layout = layout_empty
 
