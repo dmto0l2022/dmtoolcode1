@@ -100,6 +100,7 @@ class PageFrame():
         
     def PopulateFrame(self):
         self.content_frame = [self.page_header,self.page_l_sidebar,self.page_r_sidebar,self.page_footer]
+        
 
     
     
