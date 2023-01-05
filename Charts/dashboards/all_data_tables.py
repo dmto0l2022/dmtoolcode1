@@ -13,7 +13,8 @@ import mariadb
 
 MARIADB_USERNAME = environ.get("MARIADB_USERNAME")
 MARIADB_PASSWORD = environ.get("MARIADB_PASSWORD")
-MARIADB_DATABASE = environ.get("MARIADB_DATABASE")
+#MARIADB_DATABASE = environ.get("MARIADB_DATABASE")
+MARIADB_DATABASE = 'data'
 MARIADB_CONTAINER = environ.get("MARIADB_CONTAINER")
 
 MARIADB_URI = "mariadb+mariadbconnector://" + MARIADB_USERNAME + ":" + \
@@ -77,6 +78,27 @@ limits_table_df = limits_df[['rowid','id','spin_dependency',
                              'result_type','data_reference','year']].copy()
 
 limits_table_df['expid'] = limits_table_df['rowid']
+
+limits_metadata_sql = '''SELECT id, spin_dependency, result_type, measurement_type, nomhash, x_units, y_units, x_rescale, y_rescale, default_color, default_style, data_label, file_name, data_comment, data_reference, created_at, updated_at, creator_id, experiment, rating, date_of_announcement, public, official, date_official, greatest_hit, date_of_run_start, date_of_run_end, `year`
+FROM `data`.limits_metadata;'''
+
+limits_metadata_df = pd.read_sql_query(limits_metadata_sql, engine)
+limits_metadata_df['rowid'] = limits_metadata_df.index
+
+#####
+
+limits_traces_sql = '''SELECT distinct limit_id, trace_id, trace_name FROM `data`.limits_data;;'''
+limits_traces_df = pd.read_sql_query(limits_traces_sql, engine)
+limits_traces_df['rowid'] = limits_traces_df.index
+
+#####
+
+limits_data_sql = '''SELECT id, limit_id, trace_id, trace_name, x, y FROM `data`.limits_data;;'''
+
+limits_data_df = pd.read_sql_query(limits_data_sql, engine)
+limits_data_df['rowid'] = limits_data_df.index
+
+#####
 
 limit_types_list = ['All Limits', 'Official Limits']
 limit_types_df = pd.DataFrame(data=limit_types_list,columns=['label'])
