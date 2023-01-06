@@ -90,6 +90,11 @@ limits_metadata_df['rowid'] = limits_metadata_df.index
 limits_traces_sql = '''SELECT distinct limit_id, trace_id, trace_name FROM `data`.limits_data;;'''
 limits_traces_df = pd.read_sql_query(limits_traces_sql, engine)
 limits_traces_df['rowid'] = limits_traces_df.index
+limits_traces_df['line_color'] = 'black'
+limits_traces_df['line'] = 'solid'
+limits_traces_df['fill_color'] = 'LightGrey'
+limits_traces_df['symbol'] = 'square'
+limits_traces_df['symbol_color'] = 'blue'
 
 #####
 
