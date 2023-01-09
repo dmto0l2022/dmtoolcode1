@@ -1,11 +1,11 @@
-from all_data_tables import limits_metadata_df
-from all_data_tables import limits_data_df
-from all_data_tables import limits_traces_df
+#from all_data_tables import limits_metadata_df
+#from all_data_tables import limits_data_df
+#from all_data_tables import limits_traces_df
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import pandas as pd
 
-def UpdateGraph(plotseries_table_in):
+def UpdateGraph(alldata, plotseries_table_in):
     #result_ids = [1,262]
     
     plot_series_df = pd.DataFrame(plotseries_table_in)
@@ -20,8 +20,8 @@ def UpdateGraph(plotseries_table_in):
     fig3 = go.Figure()
 
     for index, row in plot_series_df.iterrows():
-        trace_data = limits_data_df[(limits_data_df['limit_id']==row['limit_id'])
-                                        & (limits_data_df['trace_id']==row['trace_id'])]
+        trace_data = alldata.limits_data_df[(alldata.limits_data_df['limit_id']==row['limit_id'])
+                                        & (alldata.limits_data_df['trace_id']==row['trace_id'])]
 
     
         trace2add = trace_data
