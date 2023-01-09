@@ -99,7 +99,7 @@ class DMTool():
     
         self.ddf = pd.read_csv(self.dstring, sep=",")
     
-        self.MakeDMTool()
+        #self.MakeDMTool()
     
     #################################
     def ReadLetterO(self):
@@ -117,69 +117,69 @@ class DMTool():
         
         #odf_out = odf_out.assign(x=50)
         
-        odf_out = pd.concat([odf_out, odf_stage])
+        odf_out = pd.concat([odf_out, odf_stage],ignore_index=True)
         self.odf = odf_out
    
-    def MakeDMTool(self):
+    def MakeDMTool(self,limit_id_in,trace_id_in):
         
         def add100(x_in):
             return (x_in + 100)
         
         dmtool_out = self.ddf.copy()
         
-        dmtool_out['limit_id'] = 1
-        dmtool_out['trace_id'] = 1
+        dmtool_out['limit_id'] = limit_id_in
+        dmtool_out['trace_id'] = trace_id_in
         dmtool_out['trace_name'] = 'd'
         
         #"M"
         df_working = self.mdf.copy()
-        df_working['limit_id'] = 1
-        df_working['trace_id'] = 2
+        df_working['limit_id'] = limit_id_in
+        df_working['trace_id'] = trace_id_in + 1
         df_working['trace_name'] = 'm'
         
       
 
         df_working['x'] = df_working['x'].apply(add100)
         
-        dmtool_out = pd.concat([dmtool_out, df_working])
+        dmtool_out = pd.concat([dmtool_out, df_working], ignore_index=True)
         
         #"T"
         
         df_working = self.tdf.copy()
-        df_working['limit_id'] = 1
-        df_working['trace_id'] = 3
+        df_working['limit_id'] = limit_id_in
+        df_working['trace_id'] = trace_id_in + 2
         df_working['trace_name'] = 't'
 
         df_working['x'] = df_working['x'].apply(add100)
         df_working['x'] = df_working['x'].apply(add100)
         
-        dmtool_out = pd.concat([dmtool_out, df_working])
+        dmtool_out = pd.concat([dmtool_out, df_working], ignore_index=True)
         
         #"O1 & O2"
         
         df_working = self.odf.copy()
-        df_working['limit_id'] = 1
-        df_working['trace_id'] = 4
+        df_working['limit_id'] = limit_id_in
+        df_working['trace_id'] = trace_id_in + 3
         df_working['trace_name'] = 'o1'
 
         df_working['x'] = df_working['x'].apply(add100)
         df_working['x'] = df_working['x'].apply(add100)
         df_working['x'] = df_working['x'].apply(add100)
         
-        dmtool_out = pd.concat([dmtool_out, df_working])
+        dmtool_out = pd.concat([dmtool_out, df_working], ignore_index=True)
         
-        df_working['limit_id'] = 1
-        df_working['trace_id'] = 5
+        df_working['limit_id'] = limit_id_in
+        df_working['trace_id'] = trace_id_in + 4
         df_working['trace_name'] = 'o2'
         df_working['x'] = df_working['x'].apply(add100)
         
-        dmtool_out = pd.concat([dmtool_out, df_working])
+        dmtool_out = pd.concat([dmtool_out, df_working], ignore_index=True)
         
         #"L"
         
         df_working = self.ldf.copy()
-        df_working['limit_id'] = 1
-        df_working['trace_id'] = 6
+        df_working['limit_id'] = limit_id_in
+        df_working['trace_id'] = trace_id_in + 5
         df_working['trace_name'] = 'l'
 
         df_working['x'] = df_working['x'].apply(add100)
@@ -188,7 +188,7 @@ class DMTool():
         df_working['x'] = df_working['x'].apply(add100)
         df_working['x'] = df_working['x'].apply(add100)
         
-        dmtool_out = pd.concat([dmtool_out, df_working])
+        dmtool_out = pd.concat([dmtool_out, df_working], ignore_index=True)
         
         ## out
         

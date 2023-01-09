@@ -107,7 +107,7 @@ class DashDataAndTables():
 
         self.greatest_hit_df = pd.read_sql_query(greatest_hit_sql, self.engine)
 
-        limits_sql = '''SELECT
+        limits_sql_old = '''SELECT
         id, spin_dependency, result_type, measurement_type, nomhash, x_units, y_units, x_rescale,
         y_rescale, default_color, default_style,
         data_values, data_label, file_name, data_comment,
@@ -115,6 +115,13 @@ class DashDataAndTables():
         public, official, date_official, greatest_hit, date_of_run_start, date_of_run_end, `year`
         FROM RubyDB.limits;'''
 
+        limits_sql = '''SELECT
+        id, spin_dependency, result_type, measurement_type, nomhash, x_units, y_units, x_rescale,
+        y_rescale, default_color, default_style, data_label, file_name, data_comment,
+        data_reference, created_at, updated_at, creator_id, experiment, rating, date_of_announcement,
+        public, official, date_official, greatest_hit, date_of_run_start, date_of_run_end, `year`
+        FROM data.limits_metadata;'''
+        
         self.limits_df = pd.read_sql_query(limits_sql, self.engine)
         self.limits_df['rowid'] = self.limits_df.index
 
