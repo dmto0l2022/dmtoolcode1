@@ -70,43 +70,40 @@ class DashDataAndTables():
 
     def populate_dataframes(self):
         #do some parsing
-        experiments_sql = '''select distinct experiment as label, experiment as value 
-                            FROM RubyDB.limits;'''
-
-        self.experiments_df = pd.read_sql_query(experiments_sql, self.engine)
-
-
-        result_types_sql = '''SELECT distinct
-        case
-        when result_type = "Th" then "Theory"
-        when result_type = "Proj" then "Project"
-        when result_type = "Exp" then "Experiment"
-        else result_type end label,
-        result_type as value
-        FROM RubyDB.limits;'''
-
-        self.result_types_df = pd.read_sql_query(result_types_sql, self.engine)
-
-        spin_dependency_sql = '''SELECT distinct
-        case
-        when spin_dependency = 'SD' then 'spin-dependent'
-        when spin_dependency = 'SI' then 'spin-indpendent'
-        else spin_dependency end label,
-        spin_dependency as value
-        FROM RubyDB.limits;'''
-
-        self.spin_dependency_df = pd.read_sql_query(spin_dependency_sql, self.engine)
         
-        greatest_hit_sql = '''select distinct
-        case
-        when greatest_hit = 0 then 'No'
-        when greatest_hit = 1 then 'Yes'
-        else greatest_hit end label,
-         greatest_hit value
-        FROM RubyDB.limits;'''
-
-        self.greatest_hit_df = pd.read_sql_query(greatest_hit_sql, self.engine)
-
+        self.all_dropdown_pairs = \
+            pd.read_sql('SELECT variable,label, value FROM dropdown_valuepairs', con=self.engine)
+        
+        self.experiments_df = \
+            self.all_dropdown_pairs[self.all_dropdown_pairs['variable']=='experiment'].copy()
+        
+        self.experiments_df.reset_index(drop=True, inplace=True)
+        
+        self.result_types_df  = \
+            self.all_dropdown_pairs[self.all_dropdown_pairs['variable']=='result_type'].copy()
+        
+        self.result_types_df.reset_index(drop=True, inplace=True)
+        
+        self.spin_dependency_df  = \
+            self.all_dropdown_pairs[self.all_dropdown_pairs['variable']=='spin_dependence'].copy()
+        
+        self.spin_dependency_df.reset_index(drop=True, inplace=True)
+        
+        self.greatest_hit_df = \
+            self.all_dropdown_pairs[self.all_dropdown_pairs['variable']=='greatest_hits'].copy()
+        
+        self.greatest_hit_df.reset_index(drop=True, inplace=True)
+        
+        self.limit_types_df = \
+            self.all_dropdown_pairs[self.all_dropdown_pairs['variable']=='limit_type'].copy()
+        
+        self.limit_types_df.reset_index(drop=True, inplace=True)
+        
+        self.years_df = \
+            self.all_dropdown_pairs[self.all_dropdown_pairs['variable']=='year'].copy()
+        
+        self.years_df.reset_index(drop=True, inplace=True)
+        
         limits_sql_old = '''SELECT
         id, spin_dependency, result_type, measurement_type, nomhash, x_units, y_units, x_rescale,
         y_rescale, default_color, default_style,
@@ -136,7 +133,8 @@ class DashDataAndTables():
                                 default_style, data_label, file_name, data_comment, data_reference,
                                 created_at, updated_at, creator_id, experiment, rating,
                                 date_of_announcement, public, official, date_official, greatest_hit,
-                                date_of_run_start, date_of_run_end, `year` FROM `data`.limits_metadata;'''
+                                date_of_run_start, date_of_run_end, `year` FROM
+                                `data`.limits_metadata;'''
 
         self.limits_metadata_df = pd.read_sql_query(limits_metadata_sql, self.engine)
         self.limits_metadata_df['rowid'] = self.limits_metadata_df.index
@@ -161,18 +159,6 @@ class DashDataAndTables():
 
         #####
 
-        limit_types_list = ['All Limits', 'Official Limits']
-        self.limit_types_df = pd.DataFrame(data=limit_types_list,columns=['label'])
-        #limit_types_df
-
-        years = list(range(2001,2023))
-        #years = map(str, range(2001, 2023))
-        
-        self.years_df = pd.DataFrame(data=years,columns=['year'])
-        #years_df['rowid'] = years_df.index
-        #years_df
-        #years_dict = years_df.to_dict('records')
-        #years_dict
 
         ###########################################################################
 
@@ -184,7 +170,7 @@ class DashDataAndTables():
         self.years_table = dash_table.DataTable(
             id='years_table',
             columns=[
-                {'name': 'Year', 'id': 'year', 'type': 'numeric'},
+                {'name': 'Year', 'id': 'label', 'type': 'text'},
             ],
             data=self.years_df.to_dict('records'),
             filter_action='none',
@@ -381,7 +367,7 @@ class DashDataAndTables():
             row_selectable='multi',
             selected_rows=[],
             style_cell_conditional=[
-                {'if': {'column_id': 'SpinDependency'},
+                {'if': {'column_id': 'GreatestHit'},
                  'width': '90%'},
             ],
             style_cell={'textAlign': 'left','padding': '0px','font_size': '12px',
@@ -406,8 +392,8 @@ class DashDataAndTables():
             #}
         )
 
-        self.limits_table = dash_table.DataTable(
-            id='limits_table',
+        self.limits_table_MAIN = dash_table.DataTable(
+            id='limits_table_main',
             data=self.limits_table_df.to_dict('records'),
             columns=[{'name': 'expid', 'id': 'expid'},
                      {'name': 'data_reference', 'id': 'data_reference'},
@@ -458,6 +444,56 @@ class DashDataAndTables():
             tooltip_duration=None,
         )
 
+        self.filter_table_df = pd.DataFrame(data=[],columns=['variable','value'])
+        
+        self.limits_table = dash_table.DataTable(
+            id='limits_table',
+            data=self.filter_table_df.to_dict('records'),
+            columns=[{'name': 'variable', 'id': 'variable'},
+                     {'name': 'label', 'id': 'label'},
+                     {'name': 'value', 'id': 'value'},
+                     ],
+            #fixed_rows={'headers': True},
+            page_size=5,
+            filter_action='none',
+            #row_selectable='multi',
+            #selected_rows=[],
+            style_cell={'textAlign': 'left','padding': '0px','font_size': '12px',
+                    'overflow': 'hidden',
+                    'textOverflow': 'ellipsis',
+                },
+            css=[{
+                'selector': '.dash-spreadsheet td div',
+                'rule': '''
+                    line-height: 15px;
+                    max-height: 45px; min-height:30px; height: 30px;
+                    display: block;
+                    overflow-y: hidden;
+                '''
+            }],
+            style_table={'height': '25vh',},
+            style_cell_conditional=[
+                {'if': {'column_id': 'variable'},
+                 'width': '25%'},
+                {'if': {'column_id': 'label'},
+                 'width': '25%'},
+                {'if': {'column_id': 'value'},
+                 'width': '25%'},
+            ],
+            style_data={
+                'whiteSpace': 'normal',
+                'height': 'auto',
+            },
+            style_header=style_header_var,
+            #tooltip_data=[
+            #    {
+            #        column: {'value': str(value), 'type': 'markdown'}
+            #        for column, value in row.items()
+            #    } for row in data
+            #],
+            tooltip_duration=None,
+        )
+        
         self.plots_table_df = pd.DataFrame(data=None, columns=['expid','data_reference','data_label'])
         self.plots_table_df.set_index('expid')
 
