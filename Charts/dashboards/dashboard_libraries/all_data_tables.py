@@ -72,7 +72,7 @@ class DashDataAndTables():
         #do some parsing
         
         self.all_dropdown_pairs = \
-            pd.read_sql('SELECT variable,label, value FROM dropdown_valuepairs', con=self.engine)
+            pd.read_sql('SELECT variable,label, value, data_type FROM dropdown_valuepairs', con=self.engine)
         
         self.experiments_df = \
             self.all_dropdown_pairs[self.all_dropdown_pairs['variable']=='experiment'].copy()
@@ -84,10 +84,10 @@ class DashDataAndTables():
         
         self.result_types_df.reset_index(drop=True, inplace=True)
         
-        self.spin_dependency_df  = \
+        self.spin_dependence_df  = \
             self.all_dropdown_pairs[self.all_dropdown_pairs['variable']=='spin_dependence'].copy()
         
-        self.spin_dependency_df.reset_index(drop=True, inplace=True)
+        self.spin_dependence_df.reset_index(drop=True, inplace=True)
         
         self.greatest_hit_df = \
             self.all_dropdown_pairs[self.all_dropdown_pairs['variable']=='greatest_hits'].copy()
@@ -322,7 +322,7 @@ class DashDataAndTables():
             columns=[
                 {'name': 'SpinDependency', 'id': 'label', 'type': 'text'},
             ],
-            data=self.spin_dependency_df.to_dict('records'),
+            data=self.spin_dependence_df.to_dict('records'),
             filter_action='none',
             row_selectable='multi',
             #page_size=5,
@@ -392,7 +392,7 @@ class DashDataAndTables():
             #}
         )
 
-        self.limits_table_MAIN = dash_table.DataTable(
+        self.limits_table = dash_table.DataTable(
             id='limits_table_main',
             data=self.limits_table_df.to_dict('records'),
             columns=[{'name': 'expid', 'id': 'expid'},
@@ -444,10 +444,10 @@ class DashDataAndTables():
             tooltip_duration=None,
         )
 
-        self.filter_table_df = pd.DataFrame(data=[],columns=['variable','value'])
+        self.filter_table_df = pd.DataFrame(data=[],columns=['variable','label','value'])
         
-        self.limits_table = dash_table.DataTable(
-            id='limits_table',
+        self.debug_dropdown_table = dash_table.DataTable(
+            id='debug_dropdown_table',
             data=self.filter_table_df.to_dict('records'),
             columns=[{'name': 'variable', 'id': 'variable'},
                      {'name': 'label', 'id': 'label'},
