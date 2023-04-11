@@ -4,6 +4,7 @@ style_table={
                 #'maxHeight': '50ex',
                 'height': '44vh', ## does not know any detail about parent container
                 'overflowY': 'scroll', # 'auto'
+                'overflowX': 'scroll',
                 'width': '100%',
                 'minWidth': '100%',
             }
