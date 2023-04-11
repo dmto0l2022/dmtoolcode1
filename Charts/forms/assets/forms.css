@@ -134,11 +134,11 @@
 
 .CENTRE_FORM {
   background: orange;
-  width: 40vw;
-  height: 40vh;
+  width: 60vw;
+  height: 60vh;
   position: fixed;
-  top: 30vh;
-  left: 30vw;
+  top: 20vh;
+  left: 20vw;
   margin: 0 0 0 0;
   border:4px solid black;
 }
