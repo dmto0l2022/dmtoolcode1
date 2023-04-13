@@ -132,6 +132,16 @@
   position: relative;
 }
 
+.CENTRE_FORM_CONTAINER {
+    height: 600px;
+    width: 700px;
+    margin: 0px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 .CENTRE_FORM {
   background: orange;
   width: 60vw;
@@ -153,6 +163,15 @@
     }
 
 .FORM_CANCEL_BUTN {
+    position: fixed;
+    top: 60vh;
+    left: 61vw;
+    height: 4vh;
+    width: 4vw;
+    background-color: red;
+    }
+
+.FORM_SAVE_BUTN {
     position: fixed;
     top: 60vh;
     left: 61vw;

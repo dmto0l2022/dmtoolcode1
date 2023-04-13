@@ -3,6 +3,11 @@ from dash import dcc
 from dash import html
 import dash_bootstrap_components as dbc
 
+
+################################################
+## NEW PLOT FORM
+################################################
+
 newplot_input = html.Div(
     [
         dbc.Label("New Plot"),
@@ -14,6 +19,160 @@ newplot_input = html.Div(
     ],
 )
 
+
+#newplotform = dbc.Form([newplot_input, newplot_input2, email_input, password_input, input_groups])
+
+newplot_input2 = dbc.Row(
+    [
+        html.Div(children="New Plot", className="FORM_TEXT"),
+        dbc.Col([
+            dbc.Label("Name", width=2),
+            dbc.Input(
+                type="text",
+                id="newplot-input2",
+                placeholder="Enter New Plot Name",
+                style={"width": "25vh", "height": "5vh", "color": "blue"},
+            ),]
+        ),
+    ],
+)
+
+
+#######################################
+
+
+newplot_title = html.Div(html.P(children='New Plot', className = "NOPADDING_CONTENT FORM_TITLE"))
+
+label_1 = html.Div(dbc.Label("Name", align="center", className="FORM_TEXT"))
+
+newplot_input3 = html.Div(
+    [
+        dbc.Col(dbc.Label("Name", align="end", className="FORM_TEXT"),width=2),
+        dbc.Col(
+            dbc.Input(
+                type="text", id="newplot-input3",
+                placeholder="Enter New Plot Name",
+            ),
+            width=4,
+        ),
+    ],
+    className="row",
+)
+
+#newplotform = html.Div([newplot_title , newplot_input3], style={"padding":"0px", "margin":"0px", "background-color":"red"})
+
+newplotform = html.Div(
+    [newplot_title,newplot_input3],
+    #[newplot_title, label_1],
+    className = "NOPADDING_CONTENT CENTRE_FORM"
+)
+
+################################################
+
+newplot_input = dbc.Row(
+    [
+        dbc.Label("New Plot", width=2),
+        dbc.Col(
+            [dbc.Input(
+                type="text", id="newplot_input", placeholder="Enter New Plot Name"
+            ),
+            dbc.FormText("Enter unique name for your plot",color="secondary")],
+            width=10,
+            style={"height": "100%","background-color": "blue", "padding":"0px", "margin":"0px"},
+        ),
+    ],
+style={"height": "50%"},
+)
+
+
+################################################
+## EDIT EXISTING
+################################################
+
+## X RESCALE
+xrescale_input = html.Div(
+    [
+        dbc.Label("Xrescale", html_for="example-Xrescale"),
+        dbc.Input(type="Xrescale", id="example-Xrescale", placeholder="Enter Xrescale"),
+        dbc.FormText(
+            "Enter XRescale",
+            color="secondary",
+        ),
+    ],
+)
+
+## DATA VALUE
+datavalue_input = html.Div(
+    [
+        dbc.Label("Data Value", html_for="example-datavalue"),
+        dbc.Input(type="DataValue", id="example-DataValue", placeholder="Enter Data Value"),
+        dbc.FormText(
+            "Enter Data Value",
+            color="secondary",
+        ),
+    ],
+)
+
+resultype_input = html.Div(
+    [
+        dbc.Label("Result Type", html_for="example-resultype"),
+        dbc.Input(type="ResultType", id="example-resultype", placeholder="Enter Result Type"),
+        dbc.FormText(
+            "Enter Result Type",
+            color="secondary",
+        ),
+    ],
+)
+
+spindependency_input = html.Div(
+    [
+        dbc.Label("Spin Dependency", html_for="example-spindependency"),
+        dbc.Input(type="SpinDependency", id="example-spindependency", placeholder="Enter Spin Dependency"),
+        dbc.FormText(
+            "Enter Spin Dependency",
+            color="secondary",
+        ),
+    ],
+)
+
+measuretype_input = html.Div(
+    [
+        dbc.Label("Measure Type", html_for="example-measuretype"),
+        dbc.Input(type="MeasureType", id="example-measuretype", placeholder="Enter Measure Type"),
+        dbc.FormText(
+            "Enter Measure Type",
+            color="secondary",
+        ),
+    ],
+)
+
+
+public_input = html.Div(
+    [
+        dbc.Label("Public", html_for="example-public"),
+        dbc.Input(type="Public", id="example-public", placeholder="Enter Public"),
+        dbc.FormText(
+            "Enter Public",
+            color="secondary",
+        ),
+    ],
+)
+
+otherusers_input = html.Div(
+    [
+        dbc.Label("Other Users", html_for="example-otherusers"),
+        dbc.Input(type="Other Users", id="example-otherusers", placeholder="Enter Other Users"),
+        dbc.FormText(
+            "Enter Other Users",
+            color="secondary",
+        ),
+    ],
+)
+
+
+#############################################
+## LOGIN
+#############################################
 
 email_input = html.Div(
     [
@@ -76,6 +235,8 @@ enter_emailandpassword  = dbc.Row(
 
 #submit_button =  dbc.Col(dbc.Button("Submit", color="primary"), width="auto")
 
+save_button =  html.Div(dbc.Button("Save", color="primary"), className = "FORM_SAVE_BUTN")
+
 submit_button =  html.Div(dbc.Button("Submit", color="primary"), className = "FORM_SUBMIT_BUTN")
 
 cancel_button =  html.Div(dbc.Button("Cancel", color="secondary"), className = "FORM_CANCEL_BUTN")
@@ -89,71 +250,9 @@ login_form = html.Div(
 )
 
 
-#newplotform = dbc.Form([newplot_input, newplot_input2, email_input, password_input, input_groups])
+###############
 
-newplot_input2 = dbc.Row(
-    [
-        html.Div(children="New Plot", className="FORM_TEXT"),
-        dbc.Col([
-            dbc.Label("Name", width=2),
-            dbc.Input(
-                type="text",
-                id="newplot-input2",
-                placeholder="Enter New Plot Name",
-                style={"width": "25vh", "height": "5vh", "color": "blue"},
-            ),]
-        ),
-    ],
-)
-
-
-#######################################
-
-
-newplot_title = html.Div(html.P(children='New Plot', className = "NOPADDING_CONTENT FORM_TITLE"))
-
-label_1 = html.Div(dbc.Label("Name", align="center", className="FORM_TEXT"))
-
-newplot_input3 = html.Div(
-    [
-        dbc.Col(dbc.Label("Name", align="end", className="FORM_TEXT"),width=2),
-        dbc.Col(
-            dbc.Input(
-                type="text", id="newplot-input3",
-                placeholder="Enter New Plot Name",
-            ),
-            width=4,
-        ),
-    ],
-    className="row",
-)
-
-#newplotform = html.Div([newplot_title , newplot_input3], style={"padding":"0px", "margin":"0px", "background-color":"red"})
-
-newplotform = html.Div(
-    #[newplot_title,newplot_input3],
-    [newplot_title, label_1],
-    className = "NOPADDING_CONTENT CENTRE_FORM"
-)
-
-################################################
-
-newplot_input = dbc.Row(
-    [
-        dbc.Label("New Plot", width=2),
-        dbc.Col(
-            [dbc.Input(
-                type="text", id="newplot_input", placeholder="Enter New Plot Name"
-            ),
-            dbc.FormText("Enter unique name for your plot",color="secondary")],
-            width=10,
-            style={"height": "100%","background-color": "blue", "padding":"0px", "margin":"0px"},
-        ),
-    ],
-style={"height": "50%"},
-)
-'''
-newplotform = dbc.Container(
+newplotform_container = dbc.Container(
     [
         dbc.Row(
             [
@@ -168,8 +267,17 @@ newplotform = dbc.Container(
         ),
         newplot_input,
     ],
-    style={"height": "50px"},
+    #style={"height": "600px","width": "700px","background-color": "green","padding":"0px", "margin":"auto"},
+    #style={"height": "600px","width": "700px", "margin": "0px",\
+    #       "position": "absolute","top": "50%", "left": "50%", \
+    #       "transform": "translate(-50%, -50%)"},
+    className = "CENTRE_FORM_CONTAINER",
 )
+
+'''
+
+"margin": "0px", "position": "absolute","top": "50%", "left": "50%", "transform": "translate(-50%, -50%)"
+
 
 page_header_0 =  dbc.Row(
             [
