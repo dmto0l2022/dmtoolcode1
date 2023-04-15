@@ -14,9 +14,14 @@ Fields
 
 # Generic
     Example - Modal
-    Hover Text
+    Hover Text - this is only for charts
+    Tooltips - Appear when hovering over field
     Help - Modal
     Why - Modal
+
+# Modal Code Helpful
+
+    https://community.plotly.com/t/any-way-to-create-an-instructions-popout/18828/7
 
 # Example Modals
     Data Reference
