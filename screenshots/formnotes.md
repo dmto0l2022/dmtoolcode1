@@ -81,7 +81,7 @@ Table
 
 Fields
 
-  Edit Limit
+# Edit Limit
 
   Upload xml file [browse] No File selected
 
@@ -92,6 +92,7 @@ Fields
   Data Label : DAMA...
 
   show example
+    
   Data labels must be less than 60 characters long
 
   Data Reference : <a ref....
@@ -157,6 +158,7 @@ XML upload examples and info on XML file uploads can be found [here]
 
 Data Label: large text field
 show example
+                      
 Data labels must be less than 60 characters long
 
 Data reference : big text field
