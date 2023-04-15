@@ -12,11 +12,11 @@ Row 2
     Plots
     Data
   
-# All Plots
+All Plots
 
-# New Plot
+New Plot
     Name : Enter Plot Name
-# Code
+Code
 
         newplot_input = dbc.Row(
             [
@@ -51,7 +51,7 @@ Row 2
             style={"height": "50px"},
         )
 
-Editing Plot
+# Edit Plot
 
 Plot Name : Testing
 
@@ -133,7 +133,7 @@ Fields
 
   [Save Button]
 
-List All Limits
+# List All Limits
 
 6 Columns with Drop Down
 Official Type Spin Experiment Year Greatest Hits
@@ -141,14 +141,14 @@ Official Type Spin Experiment Year Greatest Hits
 Table
 Result Reference [Show] [Edit] [Copy] [Destroy]
 
-Listing Plots
+# Listing Plots
 
   Table
   PlotName [Show] [Edit] [Copy] [Destroy] FullTimeStamp
 
 [All Limits]
 
-New Limit
+# New Limit
 
 Upload xml file [Browse] No File Selected
 [Load Limit from File]
@@ -195,7 +195,7 @@ Other users: Large Text Box
 
 [Save]
 
-Show Existing
+# Show Existing
 
 Data Label : 
 Data Reference :
@@ -207,6 +207,8 @@ Spin Dependency :
 [Nominate for Greatest Hits] [Recant Nomination]
 
 Download in [XML] Format
+                      
+# Form Help & References                      
 
 https://dash-bootstrap-components.opensource.faculty.ai/docs/components/form/
 
