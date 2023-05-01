@@ -202,6 +202,178 @@
   padding: 2px;
 }
 
+.FORM_COLUMN_LABEL{
+  color: black;
+  font-size: 20px;
+  font-weight: bold;
+  text-align:right;
+  padding:0 !important;
+  margin: 0 !important;
+  border-style: solid;
+  width: 100%;
+}
+
+
+.FORM_LABEL_COLUMN {
+    padding:0 !important;
+    margin: 0 !important;
+    border-style: solid;
+    width: 1;
+}
+
+
+.FORM_COLUMN_RANGEINPUT {
+  font:bold;
+  font-size: 14px;
+  width:140px;
+}
+
+.FORM_RANGEINPUT_COLUMN {
+  padding:0 !important;
+  margin: 0 !important;
+  border-style: solid;
+}
+
+.FORM_COLUMN_TEXTINPUT {
+  font:bold;
+  font-size: 14px;
+  height: 100%;
+  width:100%;
+}
+
+.FORM_TEXTINPUT_COLUMN {
+  padding:0 !important;
+  margin: 0 !important;
+  border-style: solid;
+}
+
+.FORM_COLUMN_NUMBERINPUT {
+  font:bold;
+  font-size: 14px;
+  height: 100%;
+  width:100%;
+}
+
+.FORM_NUMBERINPUT_COLUMN {
+  padding:0 !important;
+  margin: 0 !important;
+  border-style: solid;
+}
+
+.FORM_COLUMN_DROPDOWNINPUT {
+  font:bold;
+  font-size: 14px;
+  height: 100%;
+  width:100%;
+}
+
+.FORM_DROPDOWNINPUT_COLUMN {
+  padding:0 !important;
+  margin: 0 !important;
+  border-style: solid;
+}
+
+
+
+.FORM_TEXTINPUT_COLUMN {
+  padding:0 !important;
+  margin: 0 !important;
+  border-style: solid;
+}
+
+.FORM_TEXTAREAINPUT_COLUMN {
+  padding:0 !important;
+  margin: 0 !important;
+  border-style: solid;
+}
+
+.FORM_COLUMN_TEXTAREAINPUT{
+  font:bold;
+  font-size: 14px;
+  height: 100%;
+  width:100%;
+}
+
+
+.FORM_CHECKBOXINPUT_COLUMN {
+  padding:0 !important;
+  margin: 0 !important;
+  border-style: solid;
+}
+
+.FORM_COLUMN_CHECKBOXINPUT{
+  font:bold;
+  font-size: 20px;
+  height: 100%;
+  width:100%;
+}
+
+.FORM_RADIOINPUT_COLUMN {
+  padding:0 !important;
+  margin: 0 !important;
+  border-style: solid;
+}
+
+.FORM_COLUMN_RADIOINPUT{
+  font:bold;
+  font-size: 20px;
+  height: 100%;
+  width:100%;
+}
+
+
+.FORM_COLUMN_UPLOAD {
+    width: 100%;
+    height: 60px;
+    Height: 60px;
+    border: 1px;
+    border-style: dashed;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.FORM_UPLOAD_COLUMN {
+  padding:0 !important;
+  margin: 0 !important;
+  border-style: solid;
+}
+
+
+.FORM_SINGLEDATE_COLUMN {
+  padding:0 !important;
+  margin: 0 !important;
+  border-style: solid;
+}
+
+.FORM_COLUMN_SINGLEDATE{
+  font:bold;
+  font-size: 20px;
+  height: 100%;
+  width:100%;
+}
+
+.FORM_COLUMN_EXAMPLE {
+  font:bold;
+  font-size: 12px;
+  border-style: none;
+  height: 100%;
+  width:100%;
+  text-decoration: underline;
+}
+
+.FORM_EXAMPLE_COLUMN {
+  padding:0 !important;
+  margin: 0 !important;
+  border-style: solid;
+}
+
+.FORM_SELECTFILE{
+  text-align: left;
+  color: black;
+  font-size: 20px;
+  font-weight: bold;
+}
+
 .FORM_DATA{
   text-align: left;
   color: black;
