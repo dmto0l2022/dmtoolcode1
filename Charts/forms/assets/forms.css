@@ -352,6 +352,32 @@
   width:100%;
 }
 
+.FORM_YEARDROPDOWN_COLUMN {
+  padding:0 !important;
+  margin: 0 !important;
+  border-style: solid;
+}
+
+.FORM_COLUMN_YEARDROPDOWN{
+  font:bold;
+  font-size: 20px;
+  height: 100%;
+  width:100%;
+}
+
+.FORM_COLOR_COLUMN {
+  padding:0 !important;
+  margin: 0 !important;
+  border-style: solid;
+}
+
+.FORM_COLUMN_COLOR{
+  font:bold;
+  font-size: 20px;
+  height: 100%;
+  width:100%;
+}
+
 .FORM_COLUMN_EXAMPLE {
   font:bold;
   font-size: 12px;
