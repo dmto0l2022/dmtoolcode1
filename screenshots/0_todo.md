@@ -38,67 +38,67 @@ Fields
 
 # Fields
 
-Plot Name - Text
+    Plot Name - Text
 
-X Range:
-    Lower Bound - Text
-    Upper Bound - Text
-    Scale - Dropdown
+    X Range:
+        Lower Bound - Text
+        Upper Bound - Text
+        Scale - Dropdown
 
-Trace
-    Trace ID - Integer
-    Trace Name - Text
-    Trace Color - Dropdown
-    Trace Symbol - Dropdown
-    Trace Line Style - Dropdown
-    Trace Fill Color - Dropdown
+    Trace
+        Trace ID - Integer
+        Trace Name - Text
+        Trace Color - Dropdown
+        Trace Symbol - Dropdown
+        Trace Line Style - Dropdown
+        Trace Fill Color - Dropdown
 
-Remove Site Address
-    Check Box
+    Remove Site Address
+        Check Box
 
-Upload XML File - Select File
+    Upload XML File - Select File
 
-Load Limit from Uploaded File
+    Load Limit from Uploaded File
 
-Help on XML File and Examples
+    Help on XML File and Examples
 
-Data Label - Text - < 60 chars
+    Data Label - Text - < 60 chars
 
-Data Reference - Big Text
+    Data Reference - Big Text
 
-Data Comment - Big Text
+    Data Comment - Big Text
 
-Experiment - Dropdown
+    Experiment - Dropdown
 
-Date of Announcement - Date
+    Date of Announcement - Date
 
-Year - Dropdown - Integer
+    Year - Dropdown - Integer
 
-Y Rescale - Exponential
+    Y Rescale - Exponential
 
-X Rescale - Exponential
+    X Rescale - Exponential
 
-Data Values - big text field
+    Data Values - big text field
 
-Data Formatting Help
+    Data Formatting Help
 
-Result Type - Dropdown
+    Result Type - Dropdown
 
-Spin Dependency - Dropdown
+    Spin Dependency - Dropdown
 
-Measurement Type - 
+    Measurement Type - 
 
-Public Limit - Checkbox
+    Public Limit - Checkbox
 
-Other Users - CSV of Users
+    Other Users - CSV of Users
 
-Official - Dropdown
+    Official - Dropdown
 
 
-Experiment Type - Dropdown
+    Experiment Type - Dropdown
 
-Year - Dropdown
+    Year - Dropdown
 
-Greatest Hits - Dropdown
+    Greatest Hits - Dropdown
 
-Plot Name - Text
+    Plot Name - Text
