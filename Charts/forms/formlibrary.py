@@ -59,7 +59,7 @@ import dash_bootstrap_components as dbc
 
 # Spin Dependency - Dropdown
 
-# Measurement Type -
+# Measurement Type - Dropdown
 
 # Public Limit - Checkbox
 
@@ -93,8 +93,6 @@ newplot_input = html.Div(
     ],
 )
 
-
-#newplotform = dbc.Form([newplot_input, newplot_input2, email_input, password_input, input_groups])
 
 newplot_input2 = dbc.Row(
     [
@@ -244,6 +242,8 @@ otherusers_input = html.Div(
 )
 
 
+
+
 #############################################
 ## LOGIN
 #############################################
@@ -348,160 +348,4 @@ newplotform_container = dbc.Container(
     className = "CENTRE_FORM_CONTAINER",
 )
 
-'''
 
-"margin": "0px", "position": "absolute","top": "50%", "left": "50%", "transform": "translate(-50%, -50%)"
-
-
-page_header_0 =  dbc.Row(
-            [
-                dbc.Col(
-                    html.P("DM Tools Plotter", className="HEADER_TEXT"),
-                    width=12,
-                    className = "HEADER_COLUMN",
-                ),
-            ] , ##className="PAGE_HEADER_0",
-                justify="center",
-        )
-
-'''
-page_header_0 = dbc.Row(
-            [
-                dbc.Col(html.Div("One of three columns"), width=4),
-                dbc.Col(
-                    html.Div("DM Tools Plotter", className="HEADER_TEXT"), width=4
-                        ),
-                dbc.Col(html.Div("One of three columns"), width=4),
-            ],
-    className="PAGE_HEADER_0",
-        )
-
-
-
-page_header_1 =  dbc.Row(
-            [
-                dbc.Col(
-                    html.P("Need Help", className="HEADER_TEXT"),
-                    width=3,
-                    className = "HEADER_COLUMN",
-                ),
-                dbc.Col(
-                    html.P("FAQ",className="HEADER_TEXT"),
-                    width=3,
-                    className = "HEADER_COLUMN",
-                ),
-                dbc.Col(
-                    html.P("Found A Bug", className="HEADER_TEXT"),
-                    width=3,
-                    className = "HEADER_COLUMN",
-                ),
-                dbc.Col(
-                    html.P("What's New", className="HEADER_TEXT"),
-                    width=3,
-                    className = "HEADER_COLUMN",
-                ),
-            ],
-            className="PAGE_HEADER_1",
-        )
-
-##header1 = html.Div(
-page_header_1 =  dbc.Row(
-            [
-                dbc.Col(
-                    html.P("Need Help", className="HEADER_TEXT"),
-                    width=3,
-                    className = "HEADER_COLUMN",
-                ),
-                dbc.Col(
-                    html.P("FAQ",className="HEADER_TEXT"),
-                    width=3,
-                    className = "HEADER_COLUMN",
-                ),
-                dbc.Col(
-                    html.P("Found A Bug", className="HEADER_TEXT"),
-                    width=3,
-                    className = "HEADER_COLUMN",
-                ),
-                dbc.Col(
-                    html.P("What's New", className="HEADER_TEXT"),
-                    width=3,
-                    className = "HEADER_COLUMN",
-                ),
-            ],
-            className="PAGE_HEADER_1",
-        )
-
-#header2 = html.Div(
-page_header_2 = dbc.Row(
-            [
-                dbc.Col(
-                    html.P("Plots", className="HEADER_TEXT"),
-                    width=3,
-                    className = "HEADER_COLUMN",
-                ),
-                dbc.Col(
-                    html.P("Data",  className="HEADER_TEXT"),
-                    width=3,
-                    className = "HEADER_COLUMN",
-                ),
-                 dbc.Col(
-                    html.P("Logged in as pauser (log out)", className="HEADER_TEXT"),
-                    width=6,
-                    className = "HEADER_COLUMN",
-                 ),
-            ],
-            className="PAGE_HEADER_2",
-        )
-##, style=HEADER_STYLE,)
-
-input_groups = html.Div(
-    [
-        dbc.InputGroup(
-            [dbc.InputGroupText("@"), dbc.Input(placeholder="Username")],
-            className="mb-3",
-        ),
-        dbc.InputGroup(
-            [
-                dbc.Input(placeholder="Recipient's username"),
-                dbc.InputGroupText("@example.com"),
-            ],
-            className="mb-3",
-        ),
-        dbc.InputGroup(
-            [
-                dbc.InputGroupText("$"),
-                dbc.Input(placeholder="Amount", type="number"),
-                dbc.InputGroupText(".00"),
-            ],
-            className="mb-3",
-        ),
-        dbc.InputGroup(
-            [
-                dbc.InputGroupText("Total:"),
-                dbc.InputGroupText("$"),
-                dbc.Input(placeholder="Amount", type="number"),
-                dbc.InputGroupText(".00"),
-                dbc.InputGroupText("only"),
-            ],
-            className="mb-3",
-        ),
-        dbc.InputGroup(
-            [
-                dbc.InputGroupText("With textarea"),
-                dbc.Textarea(),
-            ],
-            className="mb-3",
-        ),
-        dbc.InputGroup(
-            [
-                dbc.Select(
-                    options=[
-                        {"label": "Option 1", "value": 1},
-                        {"label": "Option 2", "value": 2},
-                    ]
-                ),
-                dbc.InputGroupText("With select"),
-            ]
-        ),
-    ]
-)

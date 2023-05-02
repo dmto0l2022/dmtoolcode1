@@ -358,6 +358,88 @@
   border-style: solid;
 }
 
+.FORM_COLUMN_EXPERIMENTDROPDOWN{
+  font:bold;
+  font-size: 20px;
+  height: 100%;
+  width:100%;
+}
+
+.FORM_EXPERIMENTDROPDOWN_COLUMN {
+  padding:0 !important;
+  margin: 0 !important;
+  border-style: solid;
+}
+
+.FORM_COLUMN_RESCALEX {
+  font:bold;
+  font-size: 20px;
+  height: 100%;
+  width:100%;
+}
+
+.FORM_RESCALEX_COLUMN {
+  padding:0 !important;
+  margin: 0 !important;
+  border-style: solid;
+}
+
+
+.FORM_COLUMN_RESCALEY {
+  font:bold;
+  font-size: 20px;
+  height: 100%;
+  width:100%;
+}
+
+.FORM_LIMITTYPE_COLUMN {
+  padding:0 !important;
+  margin: 0 !important;
+  border-style: solid;
+}
+
+.FORM_COLUMN_LIMITTYPE {
+  font:bold;
+  font-size: 20px;
+  height: 100%;
+  width:100%;
+}
+
+.FORM_RESULTTYPE_COLUMN {
+  padding:0 !important;
+  margin: 0 !important;
+  border-style: solid;
+}
+
+.FORM_COLUMN_RESULTTYPE {
+  font:bold;
+  font-size: 20px;
+  height: 100%;
+  width:100%;
+}
+
+.FORM_SPIN_COLUMN {
+  padding:0 !important;
+  margin: 0 !important;
+  border-style: solid;
+}
+
+.FORM_COLUMN_SPIN {
+  font:bold;
+  font-size: 20px;
+  height: 100%;
+  width:100%;
+}
+
+
+
+.FORM_RESCALEY_COLUMN {
+  padding:0 !important;
+  margin: 0 !important;
+  border-style: solid;
+}
+
+
 .FORM_COLUMN_YEARDROPDOWN{
   font:bold;
   font-size: 20px;
