@@ -371,6 +371,19 @@
   border-style: solid;
 }
 
+.FORM_COLUMN_SCALE {
+  font:bold;
+  font-size: 20px;
+  height: 100%;
+  width:100%;
+}
+
+.FORM_SCALE_COLUMN {
+  padding:0 !important;
+  margin: 0 !important;
+  border-style: solid;
+}
+
 .FORM_COLUMN_RESCALEX {
   font:bold;
   font-size: 20px;
