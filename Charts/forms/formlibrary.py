@@ -5,6 +5,12 @@ import dash_bootstrap_components as dbc
 import pandas as pd
 from datetime import date
 
+#######################################################
+## form variables
+
+label_column_width = 2
+data_column_width = 2
+
 ######################### fields ######################
 
 
@@ -17,14 +23,14 @@ plotname_input_row = html.Div(
                 dbc.Col(
                     html.Label('Enter Plot Name :',className='FORM_COLUMN_LABEL'),
                     className='FORM_LABEL_COLUMN',
-                    width=2
+                    width = label_column_width
                 ),
                 dbc.Col(
                     dcc.Input(id='plotnameinputid',
                               type='text',maxLength=40,
                               className='FORM_COLUMN_TEXTINPUT'),
                     className='FORM_TEXTINPUT_COLUMN',
-                    width=1
+                    width = data_column_width
                 ),
                 dbc.Col(dcc.Input(id='example_plotname',
                                   type='text',
@@ -54,10 +60,10 @@ xrangelower_input_row = html.Div(
         dbc.Row(
             [
                 dbc.Col(
-                    html.Label('Enter X Range Lower :',
+                    html.Label('X Range Lower :',
                                className='FORM_COLUMN_LABEL'),
                     className='FORM_LABEL_COLUMN',
-                    width=2
+                    width= label_column_width
                 ),
                 dbc.Col(
                     dcc.Input(id='xrangelowerid',
@@ -65,7 +71,7 @@ xrangelower_input_row = html.Div(
                               maxLength=10,
                               className='FORM_COLUMN_TEXTINPUT'),
                     className='FORM_TEXTINPUT_COLUMN',
-                    width=1
+                    width = data_column_width
                 ),
                 
                 dbc.Col(dcc.Input(id='example_textinput',
@@ -96,10 +102,10 @@ xrangeupper_input_row = html.Div(
         dbc.Row(
             [
                 dbc.Col(
-                    html.Label('Enter X Range Upper :',
+                    html.Label('X Range Upper :',
                                className='FORM_COLUMN_LABEL'),
                     className='FORM_LABEL_COLUMN',
-                    width=2
+                    width= label_column_width
                 ),
                 dbc.Col(
                     dcc.Input(id='xrangeupperid',
@@ -107,7 +113,7 @@ xrangeupper_input_row = html.Div(
                               maxLength=10,
                               className='FORM_COLUMN_TEXTINPUT'),
                     className='FORM_TEXTINPUT_COLUMN',
-                    width=1
+                    width = data_column_width
                 ),
 
                 dbc.Col(dcc.Input(id='example_xrangeupper', type='text', value='example', readOnly=True,
@@ -156,7 +162,7 @@ scale_input_row = html.Div(
                     html.Label('Scale :',
                                className='FORM_COLUMN_LABEL'),
                     className='FORM_LABEL_COLUMN',
-                    width=2
+                    width= label_column_width
                 ),
                 dbc.Col(
                     dcc.Dropdown(
@@ -167,9 +173,12 @@ scale_input_row = html.Div(
                         ),
                     #className='FORM_SCALE_COLUMN',
                     className='FORM_DATA_COLUMN',
-                    width=1
+                    width = data_column_width
                 ),
-                dbc.Col(dcc.Input(id='example_scale', type='text', value='scale example', readOnly=True,
+                dbc.Col(dcc.Input(id='example_scale',
+                                  type='text', 
+                                  value='scale example',
+                                  readOnly=True,
                                   className='FORM_COLUMN_EXAMPLE'),
                     className='FORM_EXAMPLE_COLUMN',
                     width=1),
@@ -191,9 +200,9 @@ traceid_input_row = html.Div(
         dbc.Row(
             [
                 dbc.Col(
-                    html.Label('Enter Trace ID :',className='FORM_COLUMN_LABEL'),
+                    html.Label('Trace ID :',className='FORM_COLUMN_LABEL'),
                     className='FORM_LABEL_COLUMN',
-                    width=2
+                    width= label_column_width
                 ),
                 dbc.Col(
                     dcc.Input(id='traceidinput', type='number',
@@ -202,8 +211,7 @@ traceid_input_row = html.Div(
                                   ),
                     #className='FORM_TRACEID_COLUMN',
                     className='FORM_DATA_COLUMN',
-
-                    width=1
+                    width = data_column_width
                 ),
                 dbc.Col(dcc.Input(id='example_traceid',
                                   type='text',
@@ -230,9 +238,9 @@ tracename_input_row = html.Div(
         dbc.Row(
             [
                 dbc.Col(
-                    html.Label('Enter Trace Name :',className='FORM_COLUMN_LABEL'),
+                    html.Label('Trace Name :',className='FORM_COLUMN_LABEL'),
                     className='FORM_LABEL_COLUMN',
-                    width=2
+                    width= label_column_width
                 ),
                 dbc.Col(
                     dcc.Input(id='tracenameinputid', type='text',maxLength=10,
@@ -241,15 +249,21 @@ tracename_input_row = html.Div(
                                   ),
                     #className='FORM_TEXTINPUT_COLUMN',
                     className='FORM_DATA_COLUMN',
-                    width=1
+                    width = data_column_width
                 ),
-                dbc.Col(dcc.Input(id='example_tracename', type='text', value='example', readOnly=True,
+                dbc.Col(dcc.Input(id='example_tracename',
+                                  type='text',
+                                  value='example',
+                                  readOnly=True,
                                   className='FORM_COLUMN_EXAMPLE'),
                     className='FORM_EXAMPLE_COLUMN',
-                    width=1),
+                    width=1
+                    ),
+                
                 dbc.Popover(
                     dbc.PopoverBody('enter trace name'),
                     target="textinput",trigger="hover"),
+                
                 dbc.Popover(dbc.PopoverBody('Plot of Experiment M'),
                     target="example_tracename",trigger="click"), 
                 
@@ -266,9 +280,9 @@ tracecolor_input_row = html.Div(
         dbc.Row(
             [
                 dbc.Col(
-                    html.Label('Select Trace Color :',className='FORM_COLUMN_LABEL'),
+                    html.Label('Trace Color :',className='FORM_COLUMN_LABEL'),
                     className='FORM_LABEL_COLUMN',
-                    width=2
+                    width= label_column_width
                 ),
                 dbc.Col(
                      dbc.Input(
@@ -280,8 +294,9 @@ tracecolor_input_row = html.Div(
                     ),
                     # className='FORM_COLOR_COLUMN',
                     className='FORM_DATA_COLUMN',
-                    width=1
+                    width = data_column_width
                 ),
+                
                 dbc.Col(dcc.Input(id='example_tracecolor',
                                   type='text',
                                   value='example',
@@ -289,9 +304,11 @@ tracecolor_input_row = html.Div(
                                   className='FORM_COLUMN_EXAMPLE'),
                     className='FORM_EXAMPLE_COLUMN',
                     width=1),
+                
                 dbc.Popover(
                     dbc.PopoverBody('enter color'),
                     target="radioitemid",trigger="hover"),
+                
                 dbc.Popover(dbc.PopoverBody('red'),
                     target="example_tracecolor",trigger="click"), 
                 
@@ -333,17 +350,19 @@ symbol_input_row = html.Div(
         dbc.Row(
             [
                 dbc.Col(
-                    html.Label('Select Symbol :',
+                    html.Label('Trace Symbol :',
                                className='FORM_COLUMN_LABEL'),
                     className='FORM_LABEL_COLUMN',
-                    width=2
+                    width= label_column_width
                 ),
+                
                 dbc.Col(
                     symboldd,
                     #className='FORM_COLOR_COLUMN',
                     className='FORM_DATA_COLUMN',
-                    width=1
+                    width = data_column_width
                 ),
+                
                 dbc.Col(dcc.Input(id='example_symbolinput',
                                   type='text',
                                   value='example',
@@ -393,16 +412,16 @@ linestyle_input_row = html.Div(
         dbc.Row(
             [
                 dbc.Col(
-                    html.Label('Select Trace Style :',
+                    html.Label('Trace Line Style :',
                                className='FORM_COLUMN_LABEL'),
                     className='FORM_LABEL_COLUMN',
-                    width=2
+                    width= label_column_width
                 ),
                 dbc.Col(
                     linestyledd,
                     #className='FORM_COLOR_COLUMN',
                     className='FORM_DATA_COLUMN',
-                    width=1
+                    width = data_column_width
                 ),
                 
                 dbc.Col(dcc.Input(id='example_linestyleinput',
@@ -432,9 +451,9 @@ tracefillcolor_input_row = html.Div(
         dbc.Row(
             [
                 dbc.Col(
-                    html.Label('Select Color :',className='FORM_COLUMN_LABEL'),
+                    html.Label('Fill Color :',className='FORM_COLUMN_LABEL'),
                     className='FORM_LABEL_COLUMN',
-                    width=2
+                    width= label_column_width
                 ),
                 dbc.Col(
                      dbc.Input(
@@ -446,15 +465,21 @@ tracefillcolor_input_row = html.Div(
                     ),
                     #className='FORM_COLOR_COLUMN',
                     className='FORM_DATA_COLUMN',
-                    width=1
+                    width = data_column_width
                 ),
-                dbc.Col(dcc.Input(id='example_tracefillcolor', type='text', value='example', readOnly=True,
+                
+                dbc.Col(dcc.Input(id='example_tracefillcolor',
+                                  type='text',
+                                  value='example',
+                                  readOnly=True,
                                   className='FORM_COLUMN_EXAMPLE'),
                     className='FORM_EXAMPLE_COLUMN',
                     width=1),
+                
                 dbc.Popover(
                     dbc.PopoverBody('enter color'),
                     target="colorpickerid",trigger="hover"),
+                
                 dbc.Popover(dbc.PopoverBody('red'),
                     target="example_tracefillcolor",trigger="click"), 
                 
@@ -472,7 +497,7 @@ removesiteaddress_input_row = html.Div(
                 dbc.Col(
                     html.Label('Remove Site Address :',className='FORM_COLUMN_LABEL'),
                     className='FORM_LABEL_COLUMN',
-                    width=2
+                    width= label_column_width
                 ),
                 
                 dbc.Col(
@@ -490,7 +515,7 @@ removesiteaddress_input_row = html.Div(
                                         ),
                     #className='FORM_CHECKBOXINPUT_COLUMN',
                     className='FORM_DATA_COLUMN',
-                    width=1
+                    width = data_column_width
                 ),
                 
                 dbc.Col(dcc.Input(id='example_removesiteaddress',
@@ -522,7 +547,7 @@ uploadxmlfile_input_row = html.Div(
                 dbc.Col(
                     html.Label('Upload XML File :',className='FORM_COLUMN_LABEL'),
                     className='FORM_LABEL_COLUMN',
-                    width=2
+                    width= label_column_width
                 ),
                 dbc.Col(
                       dcc.Upload(
@@ -536,7 +561,7 @@ uploadxmlfile_input_row = html.Div(
                                         ),
                     #className='FORM_UPLOAD_COLUMN',
                     className='FORM_DATA_COLUMN',
-                    width=1
+                    width = data_column_width
                 ),
                 
                 dbc.Col(dcc.Input(id='example_uploadinput', type='text', value='example', readOnly=True,
@@ -567,27 +592,32 @@ datalabel_input_row = html.Div(
         dbc.Row(
             [
                 dbc.Col(
-                    html.Label('Enter Data Label :',className='FORM_COLUMN_LABEL'),
+                    html.Label('Data Label :',className='FORM_COLUMN_LABEL'),
                     className='FORM_LABEL_COLUMN',
-                    width=2
+                    width= label_column_width
                 ),
                 dbc.Col(
-                    dcc.Input(id='datalabelinput',
+                    dcc.Input(id='datalabelinputid',
                               type='text',
                               maxLength=60,
-                              className='FORM_COLUMN_TEXTINPUT'),
-                    className='FORM_TEXTINPUT_COLUMN',
-                    width=1
+                              #className='FORM_COLUMN_TEXTINPUT'),
+                              className='FORM_COLUMN_DATA'),
+                    #className='FORM_TEXTINPUT_COLUMN',
+                    className='FORM_DATA_COLUMN',
+                    width = data_column_width
                 ),
-                dbc.Col(dcc.Input(id='example_textinput', type='text', value='example', readOnly=True,
+                
+                dbc.Col(dcc.Input(id='example_datalabel', type='text', value='example', readOnly=True,
                                   className='FORM_COLUMN_EXAMPLE'),
                     className='FORM_EXAMPLE_COLUMN',
                     width=1),
+                
                 dbc.Popover(
-                    dbc.PopoverBody('enter text'),
-                    target="textinput",trigger="hover"),
-                dbc.Popover(dbc.PopoverBody('3'),
-                    target="example_textinput",trigger="click"), 
+                    dbc.PopoverBody('enter data label'),
+                    target="datalabelinputid",trigger="hover"),
+                
+                dbc.Popover(dbc.PopoverBody('example_datalabel'),
+                    target="example_datalabel",trigger="click"), 
                 
             ],
         className='g-0'),
@@ -602,27 +632,33 @@ datareference_input_row = html.Div(
         dbc.Row(
             [
                 dbc.Col(
-                    html.Label('Enter Text :',className='FORM_COLUMN_LABEL'),
+                    html.Label('Data Reference :',className='FORM_COLUMN_LABEL'),
                     className='FORM_LABEL_COLUMN',
-                    width=2
+                    width = label_column_width
                 ),
+                
                 dbc.Col(
                     dcc.Textarea(
                             id='datareferenceid',
                             value='Textarea content',
                             rows=1,
-                            className='FORM_COLUMN_TEXTAREAINPUT'
+                            #className='FORM_COLUMN_TEXTAREAINPUT'
+                            className='FORM_COLUMN_DATA'
                     ),
-                    className='FORM_TEXTAREAINPUT_COLUMN',
-                    width=1
+                    #className='FORM_TEXTAREAINPUT_COLUMN',
+                    className='FORM_DATA_COLUMN',
+                    width = data_column_width
                 ),
+                
                 dbc.Col(dcc.Input(id='example_datareferenceinput', type='text', value='example', readOnly=True,
                                   className='FORM_COLUMN_EXAMPLE'),
                     className='FORM_EXAMPLE_COLUMN',
                     width=1),
+                
                 dbc.Popover(
                     dbc.PopoverBody('enter multiple lined text'),
-                    target="textareainput",trigger="hover"),
+                    target="datareferenceid",trigger="hover"),
+                
                 dbc.Popover(dbc.PopoverBody('Textarea example content\nwith multiple lines of text'),
                     target="example_datareferenceinput",trigger="click"), 
                 
@@ -638,27 +674,33 @@ datacomment_input_row = html.Div(
         dbc.Row(
             [
                 dbc.Col(
-                    html.Label('Enter Text :',className='FORM_COLUMN_LABEL'),
+                    html.Label('Data Comment :',className='FORM_COLUMN_LABEL'),
                     className='FORM_LABEL_COLUMN',
-                    width=2
+                    width = label_column_width
                 ),
+                
                 dbc.Col(
                     dcc.Textarea(
                             id='datacommentid',
                             value='Textarea content',
                             rows=1,
-                            className='FORM_COLUMN_TEXTAREAINPUT'
+                            #className='FORM_COLUMN_TEXTAREAINPUT'
+                            className='FORM_COLUMN_DATA'
                     ),
-                    className='FORM_TEXTAREAINPUT_COLUMN',
-                    width=1
+                    #className='FORM_TEXTAREAINPUT_COLUMN',
+                    className='FORM_DATA_COLUMN',
+                    width = data_column_width
                 ),
+                
                 dbc.Col(dcc.Input(id='example_datacommentinput', type='text', value='example', readOnly=True,
                                   className='FORM_COLUMN_EXAMPLE'),
                     className='FORM_EXAMPLE_COLUMN',
                     width=1),
+                
                 dbc.Popover(
                     dbc.PopoverBody('enter multiple lined text'),
                     target="datacommentid",trigger="hover"),
+                
                 dbc.Popover(dbc.PopoverBody('Textarea example content\nwith multiple lines of text'),
                     target="example_datacommentinput",trigger="click"), 
                 
@@ -690,29 +732,35 @@ experiment_input_row = html.Div(
         dbc.Row(
             [
                 dbc.Col(
-                    html.Label('Select Option :',className='FORM_COLUMN_LABEL'),
+                    html.Label('Experiment :',className='FORM_COLUMN_LABEL'),
                     className='FORM_LABEL_COLUMN',
-                    width=2
+                    width = label_column_width
                 ),
                 dbc.Col(
                     dcc.Dropdown(
                             id='experimentdropdown',
                             options=[
                                 {'label':i, 'value':i} for i in experiments_df['c'].unique()
-                            ],className='FORM_COLUMN_EXPERIMENTDROPDOWN',
+                            ],
+                            #className='FORM_COLUMN_EXPERIMENTDROPDOWN',
+                            className='FORM_COLUMN_DATA',
                         ),
-                    className='FORM_EXPERIMENTDROPDOWN_COLUMN',
-                    width=1
+                    #className='FORM_EXPERIMENTDROPDOWN_COLUMN',
+                    className='FORM_DATA_COLUMN',
+                    width = data_column_width
                 ),
+                
                 dbc.Col(dcc.Input(id='example_experimentinput', type='text', value='example', readOnly=True,
                                   className='FORM_COLUMN_EXAMPLE'),
                     className='FORM_EXAMPLE_COLUMN',
                     width=1),
+                
                 dbc.Popover(
-                    dbc.PopoverBody('enter number'),
-                    target="numberinput",trigger="hover"),
-                dbc.Popover(dbc.PopoverBody('4'),
-                    target="example_numberinput",trigger="click"), 
+                    dbc.PopoverBody('enter experiment'),
+                    target="experimentdropdown",trigger="hover"),
+                
+                dbc.Popover(dbc.PopoverBody('example experiment'),
+                    target="example_experimentinput",trigger="click"), 
                 
             ],
         className='g-0'),
@@ -726,31 +774,39 @@ dateofannouncement_input_row = html.Div(
         dbc.Row(
             [
                 dbc.Col(
-                    html.Label('Date of Announcement :',className='FORM_COLUMN_LABEL'),
+                    html.Label('Announcement Date :',className='FORM_COLUMN_LABEL'),
                     className='FORM_LABEL_COLUMN',
-                    width=2
+                    width = label_column_width
                 ),
                 dbc.Col(
                      dcc.DatePickerSingle(
-                        id='dataofannouncementid',
+                        id='dateofannouncementid',
                         min_date_allowed=date(2000, 1, 1),
                         max_date_allowed=date(2023, 5, 7),
                         initial_visible_month=date(2023, 1, 1),
                         date=date(2023, 1, 1),
-                       className='FORM_COLUMN_SINGLEDATE',
+                        #className='FORM_COLUMN_SINGLEDATE',
+                        className='FORM_COLUMN_DATA',
                                         ),
-                    className='FORM_SINGLEDATE_COLUMN',
-                    width=1
+                    #className='FORM_SINGLEDATE_COLUMN',
+                    className='FORM_DATA_COLUMN',
+                    width = data_column_width
                 ),
-                dbc.Col(dcc.Input(id='example_numberinput', type='text', value='example', readOnly=True,
+                
+                dbc.Col(dcc.Input(id='example_dateofannouncement',
+                                  type='text',
+                                  value='example',
+                                  readOnly=True,
                                   className='FORM_COLUMN_EXAMPLE'),
                     className='FORM_EXAMPLE_COLUMN',
                     width=1),
+                
                 dbc.Popover(
-                    dbc.PopoverBody('enter number'),
-                    target="radioitemid",trigger="hover"),
+                    dbc.PopoverBody('enter date of announcement'),
+                    target="dateofannouncementid",trigger="hover"),
+                
                 dbc.Popover(dbc.PopoverBody('4'),
-                    target="example_numberinput",trigger="click"), 
+                    target="example_dateofannouncement",trigger="click"), 
                 
             ],
         className='g-0'),
@@ -778,68 +834,37 @@ year_input_row = html.Div(
         dbc.Row(
             [
                 dbc.Col(
-                    html.Label('Select Option :',className='FORM_COLUMN_LABEL'),
+                    html.Label('Year :',className='FORM_COLUMN_LABEL'),
                     className='FORM_LABEL_COLUMN',
-                    width=2
+                    width = label_column_width
                 ),
                 dbc.Col(
                      dcc.Dropdown(
-                        id='yearsdropdown',
+                        id='yearsdropdownid',
                         options=[
                             {'label':i, 'value':i} for i in years_df['c'].unique()
                         ],
-                        className='FORM_COLUMN_YEARDROPDOWN'
+                        #className='FORM_COLUMN_YEARDROPDOWN'
+                        className='FORM_COLUMN_DATA'
                     ),
-                    className='FORM_YEARDROPDOWN_COLUMN',
-                    width=1
+                    #className='FORM_YEARDROPDOWN_COLUMN',
+                    className='FORM_DATA_COLUMN',
+                    width = data_column_width
                 ),
-                dbc.Col(dcc.Input(id='example_numberinput', type='text', value='example', readOnly=True,
+                dbc.Col(dcc.Input(id='example_yearinput',
+                                  type='text',
+                                  value='example',
+                                  readOnly=True,
                                   className='FORM_COLUMN_EXAMPLE'),
                     className='FORM_EXAMPLE_COLUMN',
                     width=1),
-                dbc.Popover(
-                    dbc.PopoverBody('enter number'),
-                    target="radioitemid",trigger="hover"),
-                dbc.Popover(dbc.PopoverBody('4'),
-                    target="example_numberinput",trigger="click"), 
                 
-            ],
-        className='g-0'),
-    ]
-)
-
-# Y Rescale - Exponential
-
-rescalex_input_row = html.Div(
-    [
-        dbc.Row(
-            [
-                dbc.Col(
-                    html.Label('Select Option :',className='FORM_COLUMN_LABEL'),
-                    className='FORM_LABEL_COLUMN',
-                    width=2
-                ),
-                dbc.Col(
-                    dcc.Input(
-                        id="rescalexid",
-                        debounce=True,
-                        placeholder="1e1",
-                        type="text",
-                        ##pattern=u"^(?:\d{3}|\(\d{3}\))([-/.])\d{3}\1\d{4}$",
-                        className='FORM_COLUMN_RESCALEX'
-                        ),
-                    className='FORM_RESCALEX_COLUMN',
-                    width=1
-                ),
-                dbc.Col(dcc.Input(id='example_experimentinput', type='text', value='example', readOnly=True,
-                                  className='FORM_COLUMN_EXAMPLE'),
-                    className='FORM_EXAMPLE_COLUMN',
-                    width=1),
                 dbc.Popover(
-                    dbc.PopoverBody('enter number'),
-                    target="numberinput",trigger="hover"),
-                dbc.Popover(dbc.PopoverBody('4'),
-                    target="example_numberinput",trigger="click"), 
+                    dbc.PopoverBody('select year'),
+                    target="yearsdropdownid",trigger="hover"),
+                
+                dbc.Popover(dbc.PopoverBody('2023'),
+                    target="example_yearinput",trigger="click"), 
                 
             ],
         className='g-0'),
@@ -848,14 +873,14 @@ rescalex_input_row = html.Div(
 
 # X Rescale - Exponential
 
-rescaley_input_row = html.Div(
+rescalex_input_row = html.Div(
     [
         dbc.Row(
             [
                 dbc.Col(
-                    html.Label('Select Option :',className='FORM_COLUMN_LABEL'),
+                    html.Label('Rescale X :',className='FORM_COLUMN_LABEL'),
                     className='FORM_LABEL_COLUMN',
-                    width=2
+                    width = label_column_width
                 ),
                 dbc.Col(
                     dcc.Input(
@@ -864,20 +889,73 @@ rescaley_input_row = html.Div(
                         placeholder="1e1",
                         type="text",
                         ##pattern=u"^(?:\d{3}|\(\d{3}\))([-/.])\d{3}\1\d{4}$",
-                        className='FORM_COLUMN_RESCALEY'
+                        #className='FORM_COLUMN_RESCALEX'
+                        className='FORM_COLUMN_DATA'
                         ),
-                    className='FORM_RESCALEY_COLUMN',
-                    width=1
+                    #className='FORM_RESCALEX_COLUMN',
+                    className='FORM_DATA_COLUMN',
+                    width = data_column_width
                 ),
-                dbc.Col(dcc.Input(id='example_experimentinput', type='text', value='example', readOnly=True,
+                dbc.Col(dcc.Input(id='example_rescalexinput',
+                                  type='text',
+                                  value='example',
+                                  readOnly=True,
                                   className='FORM_COLUMN_EXAMPLE'),
                     className='FORM_EXAMPLE_COLUMN',
                     width=1),
+                
                 dbc.Popover(
-                    dbc.PopoverBody('enter number'),
+                    dbc.PopoverBody('enter rescale x'),
+                    target="rescalexid",trigger="hover"),
+                
+                dbc.Popover(dbc.PopoverBody('example rescale'),
+                    target="example_rescalexinput",trigger="click"), 
+                
+            ],
+        className='g-0'),
+    ]
+)
+
+# Y Rescale - Exponential
+
+rescaley_input_row = html.Div(
+    [
+        dbc.Row(
+            [
+                dbc.Col(
+                    html.Label('Rescale Y :',className='FORM_COLUMN_LABEL'),
+                    className='FORM_LABEL_COLUMN',
+                    width = label_column_width
+                ),
+                dbc.Col(
+                    dcc.Input(
+                        id="rescaleyid",
+                        debounce=True,
+                        placeholder="1e1",
+                        type="text",
+                        ##pattern=u"^(?:\d{3}|\(\d{3}\))([-/.])\d{3}\1\d{4}$",
+                        #className='FORM_COLUMN_RESCALEY'
+                        className='FORM_COLUMN_DATA'
+                        ),
+                    #className='FORM_RESCALEY_COLUMN',
+                    className='FORM_DATA_COLUMN',
+                    width = data_column_width
+                ),
+                
+                dbc.Col(dcc.Input(id='example_rescaleyinput',
+                                  type='text',
+                                  value='example',
+                                  readOnly=True,
+                                  className='FORM_COLUMN_EXAMPLE'),
+                    className='FORM_EXAMPLE_COLUMN',
+                    width=1),
+                
+                dbc.Popover(
+                    dbc.PopoverBody('enter rescale y'),
                     target="numberinput",trigger="hover"),
-                dbc.Popover(dbc.PopoverBody('4'),
-                    target="example_numberinput",trigger="click"), 
+                
+                dbc.Popover(dbc.PopoverBody('rescale y example'),
+                    target="example_rescaleyinput",trigger="click"), 
                 
             ],
         className='g-0'),
@@ -891,29 +969,35 @@ datavalues_input_row = html.Div(
         dbc.Row(
             [
                 dbc.Col(
-                    html.Label('Enter Data Values :',className='FORM_COLUMN_LABEL'),
+                    html.Label('Data Values :',className='FORM_COLUMN_LABEL'),
                     className='FORM_LABEL_COLUMN',
-                    width=2
+                    width = label_column_width
                 ),
                 dbc.Col(
                     dcc.Textarea(
                             id='datavaluesid',
                             value='Textarea content',
                             rows=1,
-                            className='FORM_COLUMN_TEXTAREAINPUT'
+                            className='FORM_COLUMN_DATA'
                     ),
-                    className='FORM_TEXTAREAINPUT_COLUMN',
-                    width=1
+                    className='FORM_DATA_COLUMN',
+                    width = data_column_width
                 ),
-                dbc.Col(dcc.Input(id='example_datavaluesinput', type='text', value='example', readOnly=True,
+                
+                dbc.Col(dcc.Input(id='example_datavaluesinput',
+                                  type='text',
+                                  value='example',
+                                  readOnly=True,
                                   className='FORM_COLUMN_EXAMPLE'),
                     className='FORM_EXAMPLE_COLUMN',
                     width=1),
+                
                 dbc.Popover(
                     dbc.PopoverBody('enter multiple lined text'),
-                    target="datacommentid",trigger="hover"),
+                    target="datavaluesid",trigger="hover"),
+                
                 dbc.Popover(dbc.PopoverBody('Textarea example content\nwith multiple lines of text'),
-                    target="example_datacommentinput",trigger="click"), 
+                    target="example_datavaluesinput",trigger="click"), 
                 
             ],
         className='g-0'),
@@ -933,28 +1017,37 @@ resultype_input_row = html.Div(
         dbc.Row(
             [
                 dbc.Col(
-                    html.Label('Select Option :',className='FORM_COLUMN_LABEL'),
+                    html.Label('Result Type :',
+                               className='FORM_COLUMN_LABEL'),
                     className='FORM_LABEL_COLUMN',
-                    width=2
+                    width = label_column_width
                 ),
                 dbc.Col(
                     dcc.Dropdown(
                     id='resulttypeid',
                     options=[{'label': k, 'value': v} for k, v in resulttypeDict.items()],
-                        className='FORM_COLUMN_RESULTTYPE'
+                        #className='FORM_COLUMN_RESULTTYPE'
+                        className='FORM_COLUMN_DATA'
                         ),
-                    className='FORM_RESULTTYPE_COLUMN',
-                    width=1
+                    #className='FORM_RESULTTYPE_COLUMN',
+                    className='FORM_DATA_COLUMN',
+                    width = data_column_width
                 ),
-                dbc.Col(dcc.Input(id='example_experimentinput', type='text', value='example', readOnly=True,
+                
+                dbc.Col(dcc.Input(id='example_resulttypeinput',
+                                  type='text',
+                                  value='example',
+                                  readOnly=True,
                                   className='FORM_COLUMN_EXAMPLE'),
                     className='FORM_EXAMPLE_COLUMN',
                     width=1),
+                
                 dbc.Popover(
                     dbc.PopoverBody('enter number'),
                     target="numberinput",trigger="hover"),
-                dbc.Popover(dbc.PopoverBody('4'),
-                    target="example_numberinput",trigger="click"), 
+                
+                dbc.Popover(dbc.PopoverBody('result type example'),
+                    target="example_resulttypeinput",trigger="click"), 
                 
             ],
         className='g-0'),
@@ -974,28 +1067,36 @@ limittype_input_row = html.Div(
         dbc.Row(
             [
                 dbc.Col(
-                    html.Label('Select Option :',className='FORM_COLUMN_LABEL'),
+                    html.Label('Limit Type :',className='FORM_COLUMN_LABEL'),
                     className='FORM_LABEL_COLUMN',
-                    width=2
+                    width = label_column_width
                 ),
                 dbc.Col(
                     dcc.Dropdown(
-                        id='llimitypeid',
+                        id='limitypeid',
                         options=[{'label': k, 'value': v} for k, v in limit_typeDict.items()],
-                        className='FORM_COLUMN_LIMITTYPE'
+                        #className='FORM_COLUMN_LIMITTYPE'
+                        className='FORM_COLUMN_DATA'
                         ),
-                    className='FORM_LIMITTYPE_COLUMN',
-                    width=1
+                    #className='FORM_LIMITTYPE_COLUMN',
+                    className='FORM_DATA_COLUMN',
+                    width = data_column_width
                 ),
-                dbc.Col(dcc.Input(id='example_experimentinput', type='text', value='example', readOnly=True,
+                
+                dbc.Col(dcc.Input(id='example_limittypeinput',
+                                  type='text',
+                                  value='example',
+                                  readOnly=True,
                                   className='FORM_COLUMN_EXAMPLE'),
                     className='FORM_EXAMPLE_COLUMN',
                     width=1),
+                
                 dbc.Popover(
                     dbc.PopoverBody('enter number'),
-                    target="numberinput",trigger="hover"),
+                    target="limitypeid",trigger="hover"),
+                
                 dbc.Popover(dbc.PopoverBody('4'),
-                    target="example_numberinput",trigger="click"), 
+                    target="example_limittypeinput",trigger="click"), 
                 
             ],
         className='g-0'),
@@ -1012,28 +1113,33 @@ spin_input_row = html.Div(
         dbc.Row(
             [
                 dbc.Col(
-                    html.Label('Select Option :',className='FORM_COLUMN_LABEL'),
+                    html.Label('Spin Dependency :',className='FORM_COLUMN_LABEL'),
                     className='FORM_LABEL_COLUMN',
-                    width=2
+                    width = label_column_width
                 ),
                 dbc.Col(
                     dcc.Dropdown(
                     id='spinid',
                     options=[{'label': k, 'value': v} for k, v in spinDict.items()],
-                        className='FORM_COLUMN_SPIN'
+                        #className='FORM_COLUMN_SPIN'
+                        className='FORM_COLUMN_DATA'
                         ),
-                    className='FORM_SPIN_COLUMN',
-                    width=1
+                    #className='FORM_SPIN_COLUMN',
+                    className='FORM_DATA_COLUMN',
+                    width = data_column_width
                 ),
-                dbc.Col(dcc.Input(id='example_experimentinput', type='text', value='example', readOnly=True,
+                
+                dbc.Col(dcc.Input(id='example_spindependency', type='text', value='example', readOnly=True,
                                   className='FORM_COLUMN_EXAMPLE'),
                     className='FORM_EXAMPLE_COLUMN',
                     width=1),
+                
                 dbc.Popover(
                     dbc.PopoverBody('enter number'),
                     target="numberinput",trigger="hover"),
+                
                 dbc.Popover(dbc.PopoverBody('4'),
-                    target="example_numberinput",trigger="click"), 
+                    target="example_spindependency",trigger="click"), 
                 
             ],
         className='g-0'),
