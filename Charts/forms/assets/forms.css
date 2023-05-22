@@ -10,8 +10,8 @@
 
 .center {
   text-align: center;
-  color: red;
-}
+  color: #bd6969;
+  }
 
 .PAGE_NOPADDING {
     padding: 0 !important;
@@ -181,36 +181,36 @@
     }
 
 .FORM_TITLE {
-  text-align: center;
-  color: red;
-  font-size: 20px;
-  font-weight: bold;
+    text-align: center;
+    color: #a569bd;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 .FORM_TEXT {
-  text-align: right;
-  color: black;
-  font-size: 20px;
-  font-weight: bold;
+    text-align: right;
+    color: rgb(4, 2, 5);
+    font-size: 20px;
+    font-weight: bold;
 }
 
 .FORM_LABEL{
-  text-align: right;
-  color: black;
-  font-size: 20px;
-  font-weight: bold;
-  padding: 2px;
+    text-align: right;
+    color: rgb(4, 2, 5);
+    font-size: 20px;
+    font-weight: bold;
+    padding: 2px;
 }
 
 .FORM_COLUMN_LABEL{
-  color: black;
-  font-size: 20px;
-  font-weight: bold;
-  text-align:right;
-  padding:0 !important;
-  margin: 0 !important;
-  border-style: solid;
-  width: 100%;
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+    text-align:right;
+    padding:0 !important;
+    margin: 0 !important;
+    border-style: solid;
+    width: 100%;
 }
 
 
@@ -221,30 +221,41 @@
     width: 1;
 }
 
-
-.FORM_COLUMN_RANGEINPUT {
-  font:bold;
+.FORM_COLUMN_DATA {
+  font:bold;
   font-size: 14px;
   width:140px;
 }
 
-.FORM_RANGEINPUT_COLUMN {
-  padding:0 !important;
+.FORM_DATA_COLUMN {
+  padding:0 !important;
   margin: 0 !important;
   border-style: solid;
+}
+
+.FORM_COLUMN_RANGEINPUT {
+    font:bold;
+    font-size: 14px;
+    width:140px;
+}
+
+.FORM_RANGEINPUT_COLUMN {
+    padding:0 !important;
+    margin: 0 !important;
+    border-style: solid;
 }
 
 .FORM_COLUMN_TEXTINPUT {
-  font:bold;
-  font-size: 14px;
-  height: 100%;
-  width:100%;
+    font:bold;
+    font-size: 14px;
+    height: 100%;
+    width:100%;
 }
 
 .FORM_TEXTINPUT_COLUMN {
-  padding:0 !important;
-  margin: 0 !important;
-  border-style: solid;
+    padding:0 !important;
+    margin: 0 !important;
+    border-style: solid;
 }
 
 .FORM_COLUMN_NUMBERINPUT {
@@ -406,115 +417,115 @@
 }
 
 .FORM_LIMITTYPE_COLUMN {
-  padding:0 !important;
-  margin: 0 !important;
-  border-style: solid;
+    padding:0 !important;
+    margin: 0 !important;
+    border-style: solid;
 }
 
 .FORM_COLUMN_LIMITTYPE {
-  font:bold;
-  font-size: 20px;
-  height: 100%;
-  width:100%;
+    font:bold;
+    font-size: 20px;
+    height: 100%;
+    width:100%;
 }
 
 .FORM_RESULTTYPE_COLUMN {
-  padding:0 !important;
-  margin: 0 !important;
-  border-style: solid;
+    padding:0 !important;
+    margin: 0 !important;
+    border-style: solid;
 }
 
 .FORM_COLUMN_RESULTTYPE {
-  font:bold;
-  font-size: 20px;
-  height: 100%;
-  width:100%;
+    font:bold;
+    font-size: 20px;
+    height: 100%;
+    width:100%;
 }
 
 .FORM_SPIN_COLUMN {
-  padding:0 !important;
-  margin: 0 !important;
-  border-style: solid;
+    padding:0 !important;
+    margin: 0 !important;
+    border-style: solid;
 }
 
 .FORM_COLUMN_SPIN {
-  font:bold;
-  font-size: 20px;
-  height: 100%;
-  width:100%;
+    font:bold;
+    font-size: 20px;
+    height: 100%;
+    width:100%;
 }
 
 
 
 .FORM_RESCALEY_COLUMN {
-  padding:0 !important;
-  margin: 0 !important;
-  border-style: solid;
+    padding:0 !important;
+    margin: 0 !important;
+    border-style: solid;
 }
 
 
 .FORM_COLUMN_YEARDROPDOWN{
-  font:bold;
-  font-size: 20px;
-  height: 100%;
-  width:100%;
+    font:bold;
+    font-size: 20px;
+    height: 100%;
+    width:100%;
 }
 
 .FORM_COLOR_COLUMN {
-  padding:0 !important;
-  margin: 0 !important;
-  border-style: solid;
+    padding:0 !important;
+    margin: 0 !important;
+    border-style: solid;
 }
 
 .FORM_COLUMN_COLOR{
-  font:bold;
-  font-size: 20px;
-  height: 100%;
-  width:100%;
+    font:bold;
+    font-size: 20px;
+    height: 100%;
+    width:100%;
 }
 
 .FORM_COLUMN_EXAMPLE {
-  font:bold;
-  font-size: 12px;
-  border-style: none;
-  height: 100%;
-  width:100%;
-  text-decoration: underline;
+    font:bold;
+    font-size: 12px;
+    border-style: none;
+    height: 100%;
+    width:100%;
+    text-decoration: underline;
 }
 
 .FORM_EXAMPLE_COLUMN {
-  padding:0 !important;
-  margin: 0 !important;
-  border-style: solid;
+    padding:0 !important;
+    margin: 0 !important;
+    border-style: solid;
 }
 
 .FORM_SELECTFILE{
-  text-align: left;
-  color: black;
-  font-size: 20px;
-  font-weight: bold;
+    text-align: left;
+    color: purple;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 .FORM_DATA{
-  text-align: left;
-  color: black;
-  font-size: 20px;
-  font-weight: bold;
+    text-align: left;
+    color: purple;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 .FORM_PROMPT{
-  text-align: left;
-  color: black;
-  font-size: 20px;
-  font-weight: bold;
-  padding: 2px;
+    text-align: left;
+    color: purple;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 2px;
 }
 
 .FORM_BOX {
-    height:30px,
-    background-color:green,
-    border:2px solid black,
-    color: purple
+    height:30px;
+    background-color:green;
+    border:2px solid black;
+    color: purple;
 }
 
 
@@ -526,14 +537,14 @@
 }
 
 .COLUMN_DIV {
-    height:100%,
-    background-color:orange,
-    border:2px solid black,
+    height:100%;
+    background-color:orange;
+    border:2px solid black;
     color: purple}
 
 .ALL_ROW {
-    width:100%,
-    height:100%
+    width:100%;
+    height:100%;
     }
 
 .TOP_CHART_ROW {
@@ -542,8 +553,8 @@
     }
 
 .BOTTOM_CHART_ROW {
-    width:100%,
-    height:30%
+    width:100%;
+    height:30%;
     }
 
 .BOTTOM_TABLE_ROW {
@@ -552,18 +563,18 @@
 }
 
 .NOPADDING_CONTENT {
-    padding: 0 !important,
-    padding-left: 0,
-    padding-right:0,
-    margin-left:0,
-    margin-right: 0,
-    border:1px solid black
+    padding: 0 !important;
+    padding-left: 0;
+    padding-right:0;
+    margin-left:0;
+    margin-right: 0;
+    border:1px solid black;
     }
 
 .GRAPH {
-    display: block,
-    height: 100%,
-    width: 100%,
+    display: block;
+    height: 100%;
+    width: 100%;
     }
 
 .TABLE_ROW {
