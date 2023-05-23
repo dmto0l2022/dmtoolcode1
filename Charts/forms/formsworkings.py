@@ -1002,3 +1002,88 @@ spin_input_row = html.Div(
         className='g-0'),
     ]
 )
+
+
+################################################
+## EDIT EXISTING
+################################################
+
+## X RESCALE
+xrescale_input = html.Div(
+    [
+        dbc.Label("Xrescale", html_for="example-Xrescale"),
+        dbc.Input(type="Xrescale", id="example-Xrescale", placeholder="Enter Xrescale"),
+        dbc.FormText(
+            "Enter XRescale",
+            color="secondary",
+        ),
+    ],
+)
+
+## DATA VALUE
+datavalue_input = html.Div(
+    [
+        dbc.Label("Data Value", html_for="example-datavalue"),
+        dbc.Input(type="DataValue", id="example-DataValue", placeholder="Enter Data Value"),
+        dbc.FormText(
+            "Enter Data Value",
+            color="secondary",
+        ),
+    ],
+)
+
+resultype_input = html.Div(
+    [
+        dbc.Label("Result Type", html_for="example-resultype"),
+        dbc.Input(type="ResultType", id="example-resultype", placeholder="Enter Result Type"),
+        dbc.FormText(
+            "Enter Result Type",
+            color="secondary",
+        ),
+    ],
+)
+
+spindependency_input = html.Div(
+    [
+        dbc.Label("Spin Dependency", html_for="example-spindependency"),
+        dbc.Input(type="SpinDependency", id="example-spindependency", placeholder="Enter Spin Dependency"),
+        dbc.FormText(
+            "Enter Spin Dependency",
+            color="secondary",
+        ),
+    ],
+)
+
+measuretype_input = html.Div(
+    [
+        dbc.Label("Measure Type", html_for="example-measuretype"),
+        dbc.Input(type="MeasureType", id="example-measuretype", placeholder="Enter Measure Type"),
+        dbc.FormText(
+            "Enter Measure Type",
+            color="secondary",
+        ),
+    ],
+)
+
+
+public_input = html.Div(
+    [
+        dbc.Label("Public", html_for="example-public"),
+        dbc.Input(type="Public", id="example-public", placeholder="Enter Public"),
+        dbc.FormText(
+            "Enter Public",
+            color="secondary",
+        ),
+    ],
+)
+
+otherusers_input = html.Div(
+    [
+        dbc.Label("Other Users", html_for="example-otherusers"),
+        dbc.Input(type="Other Users", id="example-otherusers", placeholder="Enter Other Users"),
+        dbc.FormText(
+            "Enter Other Users",
+            color="secondary",
+        ),
+    ],
+)

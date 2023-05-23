@@ -34,7 +34,7 @@ plotname_input_row = html.Div(
                 ),
                 dbc.Col(dcc.Input(id='example_plotname',
                                   type='text',
-                                  value='plot name 1',
+                                  value='example',
                                   readOnly=True,
                                   className='FORM_COLUMN_EXAMPLE'),
                     className='FORM_EXAMPLE_COLUMN',
@@ -1012,7 +1012,7 @@ resulttype_lol = [['Theory','Th'],['Project','Proj'],['Experiment','Exp']]
 resulttype_lol
 resulttypeDict = {item[0]: item[1] for item in resulttype_lol}
 
-resultype_input_row = html.Div(
+resulttype_input_row = html.Div(
     [
         dbc.Row(
             [
@@ -1108,7 +1108,7 @@ limittype_input_row = html.Div(
 spin_lol = [['All','All'],['spin-dependent','SD'],['spin-independent','SI']]
 spinDict = {item[0]: item[1] for item in spin_lol}
 
-spin_input_row = html.Div(
+spindependency_input_row = html.Div(
     [
         dbc.Row(
             [
@@ -1148,27 +1148,293 @@ spin_input_row = html.Div(
 
 # Measurement Type - Dropdown
 
+measurementtype_lol = [['All','All'],['Direct','Dir']]
+measurementtypeDict = {item[0]: item[1] for item in measurementtype_lol}
+
+measurementtype_input_row = html.Div(
+    [
+        dbc.Row(
+            [
+                dbc.Col(
+                    html.Label('Measurement Type :',className='FORM_COLUMN_LABEL'),
+                    className='FORM_LABEL_COLUMN',
+                    width = label_column_width
+                ),
+                dbc.Col(
+                    dcc.Dropdown(
+                    id='measurementtypeid',
+                    options=[{'label': k, 'value': v} for k, v in measurementtypeDict.items()],
+                        #className='FORM_COLUMN_SPIN'
+                        className='FORM_COLUMN_DATA'
+                        ),
+                    #className='FORM_SPIN_COLUMN',
+                    className='FORM_DATA_COLUMN',
+                    width = data_column_width
+                ),
+                
+                dbc.Col(dcc.Input(id='example_measurementtype', type='text', value='example', readOnly=True,
+                                  className='FORM_COLUMN_EXAMPLE'),
+                    className='FORM_EXAMPLE_COLUMN',
+                    width=1),
+                
+                dbc.Popover(
+                    dbc.PopoverBody('enter number'),
+                    target="measurementtypeid",trigger="hover"),
+                
+                dbc.Popover(dbc.PopoverBody('4'),
+                    target="example_measurementtype",trigger="click"), 
+                
+            ],
+        className='g-0'),
+    ]
+)
+
+
 # Public Limit - Checkbox
+
+publiclimit_input_row = html.Div(
+    [
+        dbc.Row(
+            [
+                dbc.Col(
+                    html.Label('Public Limit :',className='FORM_COLUMN_LABEL'),
+                    className='FORM_LABEL_COLUMN',
+                    width= label_column_width
+                ),
+                dbc.Col(
+                    dcc.Checklist(
+                            id='publiclimitid',
+                            options=[
+                                   ##{'label': 'New York City', 'value': 'New York City'},
+                                   {'label': 'Yes', 'value': 'Yes'}
+                                   ##{'label': 'San Francisco', 'value': 'San Francisco'},
+                               ],
+                            value=['Yes'],
+                            #className='FORM_COLUMN_CHECKBOXINPUT',
+                            className='FORM_COLUMN_DATA',
+                            labelStyle={'display': 'block'} ,
+                                        ),
+                    #className='FORM_CHECKBOXINPUT_COLUMN',
+                    className='FORM_DATA_COLUMN',
+                    width = data_column_width
+                ),
+                
+                dbc.Col(dcc.Input(id='example_publiclimit', type='text', value='example', readOnly=True,
+                                  className='FORM_COLUMN_EXAMPLE'),
+                    className='FORM_EXAMPLE_COLUMN',
+                    width=1),
+                
+                dbc.Popover(
+                    dbc.PopoverBody('enter number'),
+                    target="publiclimitid",trigger="hover"),
+                
+                dbc.Popover(dbc.PopoverBody('Yes'),
+                    target="example_publiclimit",trigger="click"), 
+                
+            ],
+        className='g-0'),
+    ]
+)
 
 # Other Users - CSV of Users
 
+otherusers_input_row = html.Div(
+    [
+        dbc.Row(
+            [
+                dbc.Col(
+                    html.Label('Other Users :',className='FORM_COLUMN_LABEL'),
+                    className='FORM_LABEL_COLUMN',
+                    width = label_column_width
+                ),
+                
+                dbc.Col(
+                    dcc.Textarea(
+                            id='otherusersid',
+                            value='Textarea content',
+                            rows=1,
+                            #className='FORM_COLUMN_TEXTAREAINPUT'
+                            className='FORM_COLUMN_DATA'
+                    ),
+                    #className='FORM_TEXTAREAINPUT_COLUMN',
+                    className='FORM_DATA_COLUMN',
+                    width = data_column_width
+                ),
+                
+                dbc.Col(dcc.Input(id='example_otherusersinput', type='text', value='example', readOnly=True,
+                                  className='FORM_COLUMN_EXAMPLE'),
+                    className='FORM_EXAMPLE_COLUMN',
+                    width=1),
+                
+                dbc.Popover(
+                    dbc.PopoverBody('enter list of users'),
+                    target="otherusersid",trigger="hover"),
+                
+                dbc.Popover(dbc.PopoverBody('user1, user2, user3'),
+                    target="example_otherusersinput",trigger="click"), 
+                
+            ],
+        className='g-0'),
+    ]
+)
+
+
 # Official - Dropdown
 
-# Experiment Type - Dropdown
+official_input_row = html.Div(
+    [
+        dbc.Row(
+            [
+                dbc.Col(
+                    html.Label('Official Limit :',className='FORM_COLUMN_LABEL'),
+                    className='FORM_LABEL_COLUMN',
+                    width= label_column_width
+                ),
+                dbc.Col(
+                    dcc.Checklist(
+                            id='officiallimitid',
+                            options=[
+                                   ##{'label': 'New York City', 'value': 'New York City'},
+                                   {'label': 'Yes', 'value': 'Yes'}
+                                   ##{'label': 'San Francisco', 'value': 'San Francisco'},
+                               ],
+                            value=['Yes'],
+                            #className='FORM_COLUMN_CHECKBOXINPUT',
+                            className='FORM_COLUMN_DATA',
+                            labelStyle={'display': 'block'} ,
+                                        ),
+                    #className='FORM_CHECKBOXINPUT_COLUMN',
+                    className='FORM_DATA_COLUMN',
+                    width = data_column_width
+                ),
+                
+                dbc.Col(dcc.Input(id='example_officiallimit', type='text', value='example', readOnly=True,
+                                  className='FORM_COLUMN_EXAMPLE'),
+                    className='FORM_EXAMPLE_COLUMN',
+                    width=1),
+                
+                dbc.Popover(
+                    dbc.PopoverBody('toggle checkbox'),
+                    target="officiallimitid",trigger="hover"),
+                
+                dbc.Popover(dbc.PopoverBody('Yes'),
+                    target="example_officiallimit",trigger="click"), 
+                
+            ],
+        className='g-0'),
+    ]
+)
 
-# Year - Dropdown
+# Experiment Type - Dropdown ???
 
 # Greatest Hits - Dropdown
 
-
+greatesthits_input_row = html.Div(
+    [
+        dbc.Row(
+            [
+                dbc.Col(
+                    html.Label('Greates Hit :',className='FORM_COLUMN_LABEL'),
+                    className='FORM_LABEL_COLUMN',
+                    width= label_column_width
+                ),
+                dbc.Col(
+                    dcc.Checklist(
+                            id='greatesthitid',
+                            options=[
+                                   ##{'label': 'New York City', 'value': 'New York City'},
+                                   {'label': 'Yes', 'value': 'Yes'}
+                                   ##{'label': 'San Francisco', 'value': 'San Francisco'},
+                               ],
+                            value=['Yes'],
+                            #className='FORM_COLUMN_CHECKBOXINPUT',
+                            className='FORM_COLUMN_DATA',
+                            labelStyle={'display': 'block'} ,
+                                        ),
+                    #className='FORM_CHECKBOXINPUT_COLUMN',
+                    className='FORM_DATA_COLUMN',
+                    width = data_column_width
+                ),
+                
+                dbc.Col(dcc.Input(id='example_greatesthit', type='text', value='example', readOnly=True,
+                                  className='FORM_COLUMN_EXAMPLE'),
+                    className='FORM_EXAMPLE_COLUMN',
+                    width=1),
+                
+                dbc.Popover(
+                    dbc.PopoverBody('toggle checkbox'),
+                    target="greatesthitid",trigger="hover"),
+                
+                dbc.Popover(dbc.PopoverBody('Yes'),
+                    target="example_greatesthit",trigger="click"), 
+                
+            ],
+        className='g-0'),
+    ]
+)
 
 ##########################
+
+############################################
+# BUTTONS
+############################################
+
+#submit_button =  dbc.Col(dbc.Button("Submit", color="primary"), width="auto")
+
+save_button =  html.Div(dbc.Button("Save", color="primary"), className = "FORM_SAVE_BUTN")
+
+create_button =  html.Div(dbc.Button("Create", color="primary"), className = "FORM_CREATE_BUTN")
+
+submit_button =  html.Div(dbc.Button("Submit", color="primary"), className = "FORM_SUBMIT_BUTN")
+
+cancel_button =  html.Div(dbc.Button("Cancel", color="secondary"), className = "FORM_CANCEL_BUTN")
+
+#cancel_button =  dbc.Col(dbc.Button("Cancel", color="secondary"), width="auto")
+
+button_input_row = html.Div(
+    [
+        dbc.Row(
+            [
+                dbc.Col(
+                    create_button,
+                    className='FORM_BUTTON_COLUMN',
+                    width= 1
+                ),
+
+                dbc.Col(
+                    save_button,
+                    className='FORM_BUTTON_COLUMN',
+                    width= 1
+                ),
+
+                dbc.Col(
+                    submit_button,
+                    className='FORM_BUTTON_COLUMN',
+                    width= 1
+                ),
+                
+                dbc.Col(
+                    cancel_button,
+                    className='FORM_BUTTON_COLUMN',
+                    width= 1
+                ),
+                
+            ],
+        className='g-0'),
+    ]
+)
 
 
 ################################################
 ## NEW PLOT FORM
 ################################################
 
+
+newplot_form = html.Div([
+                plotname_input_row,
+                button_input_row])
+
+'''
 newplot_input = html.Div(
     [
         dbc.Label("New Plot"),
@@ -1242,93 +1508,39 @@ newplot_input = dbc.Row(
     ],
 style={"height": "50%"},
 )
+'''
 
 
-################################################
-## EDIT EXISTING
-################################################
+############################################
+## EDIT LIMIT FORM
+############################################
 
-## X RESCALE
-xrescale_input = html.Div(
-    [
-        dbc.Label("Xrescale", html_for="example-Xrescale"),
-        dbc.Input(type="Xrescale", id="example-Xrescale", placeholder="Enter Xrescale"),
-        dbc.FormText(
-            "Enter XRescale",
-            color="secondary",
-        ),
-    ],
-)
-
-## DATA VALUE
-datavalue_input = html.Div(
-    [
-        dbc.Label("Data Value", html_for="example-datavalue"),
-        dbc.Input(type="DataValue", id="example-DataValue", placeholder="Enter Data Value"),
-        dbc.FormText(
-            "Enter Data Value",
-            color="secondary",
-        ),
-    ],
-)
-
-resultype_input = html.Div(
-    [
-        dbc.Label("Result Type", html_for="example-resultype"),
-        dbc.Input(type="ResultType", id="example-resultype", placeholder="Enter Result Type"),
-        dbc.FormText(
-            "Enter Result Type",
-            color="secondary",
-        ),
-    ],
-)
-
-spindependency_input = html.Div(
-    [
-        dbc.Label("Spin Dependency", html_for="example-spindependency"),
-        dbc.Input(type="SpinDependency", id="example-spindependency", placeholder="Enter Spin Dependency"),
-        dbc.FormText(
-            "Enter Spin Dependency",
-            color="secondary",
-        ),
-    ],
-)
-
-measuretype_input = html.Div(
-    [
-        dbc.Label("Measure Type", html_for="example-measuretype"),
-        dbc.Input(type="MeasureType", id="example-measuretype", placeholder="Enter Measure Type"),
-        dbc.FormText(
-            "Enter Measure Type",
-            color="secondary",
-        ),
-    ],
-)
+edit_limit_form = html.Div(
+        [uploadxmlfile_input_row,
+        datalabel_input_row,
+        datareference_input_row,
+        datacomment_input_row,
+        datavalues_input_row,
+        experiment_input_row,
+        dateofannouncement_input_row,
+        year_input_row,
+        rescaley_input_row,
+        rescalex_input_row])
 
 
-public_input = html.Div(
-    [
-        dbc.Label("Public", html_for="example-public"),
-        dbc.Input(type="Public", id="example-public", placeholder="Enter Public"),
-        dbc.FormText(
-            "Enter Public",
-            color="secondary",
-        ),
-    ],
-)
+############################################
+## EDIT EXISTING LIMIT FORM
+############################################
 
-otherusers_input = html.Div(
-    [
-        dbc.Label("Other Users", html_for="example-otherusers"),
-        dbc.Input(type="Other Users", id="example-otherusers", placeholder="Enter Other Users"),
-        dbc.FormText(
-            "Enter Other Users",
-            color="secondary",
-        ),
-    ],
-)
-
-
+edit_existinglimit_form = html.Div(
+        [rescalex_input_row,
+        datavalues_input_row,
+        resulttype_input_row,
+        spindependency_input_row,
+        measurementtype_input_row,
+        publiclimit_input_row,
+        otherusers_input_row
+        ])
 
 
 #############################################
@@ -1412,7 +1624,7 @@ login_form = html.Div(
 
 
 ###############
-
+'''
 newplotform_container = dbc.Container(
     [
         dbc.Row(
@@ -1434,5 +1646,6 @@ newplotform_container = dbc.Container(
     #       "transform": "translate(-50%, -50%)"},
     className = "CENTRE_FORM_CONTAINER",
 )
+'''
 
 

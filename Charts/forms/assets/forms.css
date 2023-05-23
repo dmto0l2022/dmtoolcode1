@@ -154,30 +154,45 @@
 }
 
 .FORM_SUBMIT_BUTN {
-    position: fixed;
+    /*position: fixed;
     top: 60vh;
     left: 56vw;
     height: 4vh;
     width: 4vw;
     background-color: red;
+    */
     }
 
+.FORM_CREATE_BUTN {
+  /*position: fixed;
+  top: 60vh;
+  left: 56vw;
+  height: 4vh;
+  width: 4vw;
+  background-color: red;
+  */
+  }
+
 .FORM_CANCEL_BUTN {
+    /*
     position: fixed;
     top: 60vh;
     left: 61vw;
     height: 4vh;
     width: 4vw;
     background-color: red;
+    */
     }
 
 .FORM_SAVE_BUTN {
+    /*
     position: fixed;
     top: 60vh;
     left: 61vw;
     height: 4vh;
     width: 4vw;
     background-color: red;
+    */
     }
 
 .FORM_TITLE {
