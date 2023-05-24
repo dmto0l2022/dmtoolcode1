@@ -1,9 +1,53 @@
 import dash
 from dash import dcc
 from dash import html
+import dash_daq as daq
 import dash_bootstrap_components as dbc
 import pandas as pd
 from datetime import date
+
+#######################################################
+
+'''
+ID List
+========
+plotnameid
+xrangelowerid
+xrangeupperid
+scaleid
+traceidid
+tracenameid
+tracecolorid
+symbolid
+linestyleid
+tracefillcolorid
+removesiteaddressid
+uploadxmlfileid
+datalabelid
+datareferenceid
+datacommentid
+experimentid
+dateofannouncementid
+dateofrunstartid
+dateofrunendid
+yearid
+rescalexid
+rescaleyid
+yunitid
+xunitid
+datavaluesid
+resulttypeid
+limittypeid
+spindependencyid
+measurementtypeid
+publiclimitid
+otherusersid
+officialid
+greatesthitid
+'''
+
+#######################################################
+
 
 #######################################################
 ## form variables
@@ -26,7 +70,7 @@ plotname_input_row = html.Div(
                     width = label_column_width
                 ),
                 dbc.Col(
-                    dcc.Input(id='plotnameinputid',
+                    dcc.Input(id='plotnameid',
                               type='text',maxLength=40,
                               className='FORM_COLUMN_TEXTINPUT'),
                     className='FORM_TEXTINPUT_COLUMN',
@@ -42,7 +86,7 @@ plotname_input_row = html.Div(
                 
                 dbc.Popover(
                     dbc.PopoverBody('enter plot unique name'),
-                    target="textinput",trigger="hover"),
+                    target="plotnameid",trigger="hover"),
                 
                 dbc.Popover(dbc.PopoverBody('Plot of Experiment M'),
                     target="example_plotname",trigger="click"), 
@@ -813,6 +857,99 @@ dateofannouncement_input_row = html.Div(
     ]
 )
 
+# Date of Run Start - Date
+
+dateofrunstart_input_row = html.Div(
+    [
+        dbc.Row(
+            [
+                dbc.Col(
+                    html.Label('Date of Run Start :',className='FORM_COLUMN_LABEL'),
+                    className='FORM_LABEL_COLUMN',
+                    width = label_column_width
+                ),
+                dbc.Col(
+                     dcc.DatePickerSingle(
+                        id='dateofrunstartid',
+                        min_date_allowed=date(2000, 1, 1),
+                        max_date_allowed=date(2023, 5, 7),
+                        initial_visible_month=date(2023, 1, 1),
+                        date=date(2023, 1, 1),
+                        #className='FORM_COLUMN_SINGLEDATE',
+                        className='FORM_COLUMN_DATA',
+                                        ),
+                    #className='FORM_SINGLEDATE_COLUMN',
+                    className='FORM_DATA_COLUMN',
+                    width = data_column_width
+                ),
+                
+                dbc.Col(dcc.Input(id='example_dateofrunstart',
+                                  type='text',
+                                  value='example',
+                                  readOnly=True,
+                                  className='FORM_COLUMN_EXAMPLE'),
+                    className='FORM_EXAMPLE_COLUMN',
+                    width=1),
+                
+                dbc.Popover(
+                    dbc.PopoverBody('enter date of run start'),
+                    target="dateofrunstartid",trigger="hover"),
+                
+                dbc.Popover(dbc.PopoverBody('4'),
+                    target="example_dateofrunstart",trigger="click"), 
+                
+            ],
+        className='g-0'),
+    ]
+)
+
+# Date of Run End - Date
+
+dateofrunend_input_row = html.Div(
+    [
+        dbc.Row(
+            [
+                dbc.Col(
+                    html.Label('Date of Run End :',className='FORM_COLUMN_LABEL'),
+                    className='FORM_LABEL_COLUMN',
+                    width = label_column_width
+                ),
+                dbc.Col(
+                     dcc.DatePickerSingle(
+                        id='dateofrunendid',
+                        min_date_allowed=date(2000, 1, 1),
+                        max_date_allowed=date(2023, 5, 7),
+                        initial_visible_month=date(2023, 1, 1),
+                        date=date(2023, 1, 1),
+                        #className='FORM_COLUMN_SINGLEDATE',
+                        className='FORM_COLUMN_DATA',
+                                        ),
+                    #className='FORM_SINGLEDATE_COLUMN',
+                    className='FORM_DATA_COLUMN',
+                    width = data_column_width
+                ),
+                
+                dbc.Col(dcc.Input(id='example_dateofrunend',
+                                  type='text',
+                                  value='example',
+                                  readOnly=True,
+                                  className='FORM_COLUMN_EXAMPLE'),
+                    className='FORM_EXAMPLE_COLUMN',
+                    width=1),
+                
+                dbc.Popover(
+                    dbc.PopoverBody('enter date of run end'),
+                    target="dateofrunendid",trigger="hover"),
+                
+                dbc.Popover(dbc.PopoverBody('4'),
+                    target="example_dateofrunend",trigger="click"), 
+                
+            ],
+        className='g-0'),
+    ]
+)
+
+
 # Year - Dropdown - Integer
 
 years = range(2010,2031)
@@ -821,13 +958,13 @@ years_list
 years_df = pd.DataFrame({'c' : years_list})
 years_df
 
-dd = dcc.Dropdown(
-        id='yearsid',
+'''dd = dcc.Dropdown(
+        id='yearid',
         options=[
             {'label':i, 'value':i} for i in years_df['c'].unique()
         ],
     )
-
+'''
 
 year_input_row = html.Div(
     [
@@ -840,7 +977,7 @@ year_input_row = html.Div(
                 ),
                 dbc.Col(
                      dcc.Dropdown(
-                        id='yearsdropdownid',
+                        id='yearid',
                         options=[
                             {'label':i, 'value':i} for i in years_df['c'].unique()
                         ],
@@ -861,7 +998,7 @@ year_input_row = html.Div(
                 
                 dbc.Popover(
                     dbc.PopoverBody('select year'),
-                    target="yearsid",trigger="hover"),
+                    target="yearid",trigger="hover"),
                 
                 dbc.Popover(dbc.PopoverBody('2023'),
                     target="example_yearinput",trigger="click"), 
@@ -961,6 +1098,99 @@ rescaley_input_row = html.Div(
         className='g-0'),
     ]
 )
+
+# X Unit
+
+xunit_input_row = html.Div(
+    [
+        dbc.Row(
+            [
+                dbc.Col(
+                    html.Label('X Unit :',className='FORM_COLUMN_LABEL'),
+                    className='FORM_LABEL_COLUMN',
+                    width = label_column_width
+                ),
+                dbc.Col(
+                    dcc.Input(
+                        id="xunitid",
+                        debounce=True,
+                        placeholder="1e1",
+                        type="text",
+                        ##pattern=u"^(?:\d{3}|\(\d{3}\))([-/.])\d{3}\1\d{4}$",
+                        #className='FORM_COLUMN_RESCALEY'
+                        className='FORM_COLUMN_DATA'
+                        ),
+                    #className='FORM_RESCALEY_COLUMN',
+                    className='FORM_DATA_COLUMN',
+                    width = data_column_width
+                ),
+                
+                dbc.Col(dcc.Input(id='example_xunitinput',
+                                  type='text',
+                                  value='example',
+                                  readOnly=True,
+                                  className='FORM_COLUMN_EXAMPLE'),
+                    className='FORM_EXAMPLE_COLUMN',
+                    width=1),
+                
+                dbc.Popover(
+                    dbc.PopoverBody('enter x unit'),
+                    target="yunitid",trigger="hover"),
+                
+                dbc.Popover(dbc.PopoverBody('x unit example'),
+                    target="example_xunitinput",trigger="click"), 
+                
+            ],
+        className='g-0'),
+    ]
+)
+
+# Y Unit
+
+yunit_input_row = html.Div(
+    [
+        dbc.Row(
+            [
+                dbc.Col(
+                    html.Label('Y Unit :',className='FORM_COLUMN_LABEL'),
+                    className='FORM_LABEL_COLUMN',
+                    width = label_column_width
+                ),
+                dbc.Col(
+                    dcc.Input(
+                        id="yunitid",
+                        debounce=True,
+                        placeholder="1e1",
+                        type="text",
+                        ##pattern=u"^(?:\d{3}|\(\d{3}\))([-/.])\d{3}\1\d{4}$",
+                        #className='FORM_COLUMN_RESCALEY'
+                        className='FORM_COLUMN_DATA'
+                        ),
+                    #className='FORM_RESCALEY_COLUMN',
+                    className='FORM_DATA_COLUMN',
+                    width = data_column_width
+                ),
+                
+                dbc.Col(dcc.Input(id='example_yunitinput',
+                                  type='text',
+                                  value='example',
+                                  readOnly=True,
+                                  className='FORM_COLUMN_EXAMPLE'),
+                    className='FORM_EXAMPLE_COLUMN',
+                    width=1),
+                
+                dbc.Popover(
+                    dbc.PopoverBody('enter y unit'),
+                    target="yunitid",trigger="hover"),
+                
+                dbc.Popover(dbc.PopoverBody('y unit example'),
+                    target="example_yunitinput",trigger="click"), 
+                
+            ],
+        className='g-0'),
+    ]
+)
+
 
 # Data Values - big text field
 
@@ -1202,17 +1432,9 @@ publiclimit_input_row = html.Div(
                     width= label_column_width
                 ),
                 dbc.Col(
-                    dcc.Checklist(
-                            id='publiclimitid',
-                            options=[
-                                   ##{'label': 'New York City', 'value': 'New York City'},
-                                   {'label': 'Yes', 'value': 'Yes'}
-                                   ##{'label': 'San Francisco', 'value': 'San Francisco'},
-                               ],
-                            value=['Yes'],
-                            #className='FORM_COLUMN_CHECKBOXINPUT',
-                            className='FORM_COLUMN_DATA',
-                            labelStyle={'display': 'block'} ,
+                    daq.BooleanSwitch(id='publiclimitid',
+                                      on=False,
+                                      className='FORM_COLUMN_DATA'
                                         ),
                     #className='FORM_CHECKBOXINPUT_COLUMN',
                     className='FORM_DATA_COLUMN',
@@ -1292,7 +1514,7 @@ official_input_row = html.Div(
                 ),
                 dbc.Col(
                     dcc.Checklist(
-                            id='officiallimitid',
+                            id='officialid',
                             options=[
                                    ##{'label': 'New York City', 'value': 'New York City'},
                                    {'label': 'Yes', 'value': 'Yes'}
@@ -1315,7 +1537,7 @@ official_input_row = html.Div(
                 
                 dbc.Popover(
                     dbc.PopoverBody('toggle checkbox'),
-                    target="officiallimitid",trigger="hover"),
+                    target="officialid",trigger="hover"),
                 
                 dbc.Popover(dbc.PopoverBody('Yes'),
                     target="example_officiallimit",trigger="click"), 
@@ -1509,6 +1731,54 @@ newplot_input = dbc.Row(
 style={"height": "50%"},
 )
 '''
+
+############################################
+## LOAD LIMIT FILE
+############################################
+
+'''
+datavaluesid
+datacommentid
+datalabelid
+datareferenceid
+dateofannouncementid
+dateofrunstartid
+dateofrunendid
+tracecolorid
+linestyleid
+experimentid
+publiclimitid
+resulttypeid
+spindependencyid
+rescalexid
+xunitid
+rescaleyid
+yunitid
+yearid
+'''            
+
+load_limit_file_form = html.Div(
+        [uploadxmlfile_input_row,
+        datavalues_input_row,
+        datacomment_input_row,
+        datalabel_input_row,
+        datareference_input_row,
+        dateofannouncement_input_row,
+        dateofrunstart_input_row,
+        dateofrunend_input_row,
+        tracecolor_input_row,
+        linestyle_input_row,
+        experiment_input_row,
+        publiclimit_input_row,
+        resulttype_input_row,
+        spindependency_input_row,
+        rescalex_input_row,
+        xunit_input_row,
+        rescaley_input_row,
+        yunit_input_row,
+        year_input_row
+    ])
+
 
 
 ############################################
