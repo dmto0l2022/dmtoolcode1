@@ -6,7 +6,7 @@ dash.register_page(__name__, path='/app/showbutton')
 
 layout = html.Div([
     #html.Div(id="hidden_div_for_redirect_callback"),
-    dcc.Location(id="url", refresh=True),
+    dcc.Location(id="url", refresh=True), ## important to allow redirects
     html.Button('Submit', id='submit_button', n_clicks=0),
     dcc.Link(html.Button('LOGIN'),
                            href='/app/applogin')])
@@ -26,7 +26,7 @@ def update_output(n_clicks, value):
 '''
 
 @callback(
-    Output('url', 'href'),
+    Output('url', 'href',allow_duplicate=True), ## duplicate set as all callbacks tartgetting url
     #Output("hidden_div_for_redirect_callback", "children"),
     Input('submit_button', 'n_clicks'),
     prevent_initial_call=True)

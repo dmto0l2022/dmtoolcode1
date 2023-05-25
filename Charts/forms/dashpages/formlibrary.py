@@ -1878,17 +1878,19 @@ enter_emailandpassword  = dbc.Row(
 
 #submit_button =  dbc.Col(dbc.Button("Submit", color="primary"), width="auto")
 
-save_button =  html.Div(dbc.Button("Save", color="primary"), className = "FORM_SAVE_BUTN")
+save_button =  html.Div(dbc.Button("Save",id="save_button1", color="primary"), className = "FORM_SAVE_BUTN")
 
-submit_button =  html.Div(dbc.Button("Submit", color="primary"), className = "FORM_SUBMIT_BUTN")
+submit_button =  html.Div(dbc.Button("Submit", id="submit_button1", color="primary"), className = "FORM_SUBMIT_BUTN")
 
-cancel_button =  html.Div(dbc.Button("Cancel", color="secondary"), className = "FORM_CANCEL_BUTN")
+cancel_button =  html.Div(dbc.Button("Cancel",  id="cancel_button1", color="secondary"), className = "FORM_CANCEL_BUTN")
 
 #cancel_button =  dbc.Col(dbc.Button("Cancel", color="secondary"), width="auto")
 
 login_form = html.Div(
     #[newplot_title,newplot_input3],
-    [emailform_title, enter_emailandpassword, submit_button, cancel_button],
+    [dcc.Location(id="url", refresh=True),
+     emailform_title, enter_emailandpassword,
+     submit_button, cancel_button],
     className = "NOPADDING_CONTENT CENTRE_FORM"
 )
 
