@@ -5,6 +5,6 @@ import formlibrary as fl
 
 dash.register_page(__name__, path='/app/create_new_limit')
 
-newplot_row = fl.newplot_form
+new_limit_row = fl.create_new_limit_form
 
-layout = newplot_row
+layout = new_limit_row

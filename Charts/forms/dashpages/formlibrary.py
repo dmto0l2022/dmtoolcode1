@@ -1896,6 +1896,411 @@ login_form = html.Div(
 
 
 ###############
+
+#### create new Limit form
+
+create_new_limit_form_title = html.Div(html.P(children='Create New Limit', className = "NOPADDING_CONTENT FORM_TITLE"))
+
+
+create_new_limit_form_content  = dbc.Row(
+    [
+        dbc.Col(
+            [
+                html.P(children='Create New Limit', className = "NOPADDING_CONTENT FORM_TITLE")
+            ],
+            width=6,
+        )
+    ],
+    className="g-3",
+)
+
+#submit_button =  dbc.Col(dbc.Button("Submit", color="primary"), width="auto")
+
+save_button =  html.Div(dbc.Button("Save",id="save_button1", color="primary"), className = "FORM_SAVE_BUTN")
+
+submit_button =  html.Div(dbc.Button("Submit", id="submit_button1", color="primary"), className = "FORM_SUBMIT_BUTN")
+
+cancel_button =  html.Div(dbc.Button("Cancel",  id="cancel_button1", color="secondary"), className = "FORM_CANCEL_BUTN")
+
+#cancel_button =  dbc.Col(dbc.Button("Cancel", color="secondary"), width="auto")
+
+create_new_limit_form = html.Div(
+    #[newplot_title,newplot_input3],
+    [dcc.Location(id="url", refresh=True),
+     create_new_limit_form_title,
+     create_new_limit_form_content,
+     submit_button, cancel_button],
+    className = "NOPADDING_CONTENT CENTRE_FORM"
+)
+
+###############
+
+#### edit existing limit form
+
+edit_existing_limit_form_title = html.Div(html.P(children='Edit Existing Limit', className = "NOPADDING_CONTENT FORM_TITLE"))
+
+
+edit_existing_limit_form_content  = dbc.Row(
+    [
+        dbc.Col(
+            [
+                html.P(children='Edit Existing Limit', className = "NOPADDING_CONTENT FORM_TITLE")
+            ],
+            width=6,
+        )
+    ],
+    className="g-3",
+)
+
+#submit_button =  dbc.Col(dbc.Button("Submit", color="primary"), width="auto")
+
+save_button =  html.Div(dbc.Button("Save",id="save_button1", color="primary"), className = "FORM_SAVE_BUTN")
+
+submit_button =  html.Div(dbc.Button("Submit", id="submit_button1", color="primary"), className = "FORM_SUBMIT_BUTN")
+
+cancel_button =  html.Div(dbc.Button("Cancel",  id="cancel_button1", color="secondary"), className = "FORM_CANCEL_BUTN")
+
+#cancel_button =  dbc.Col(dbc.Button("Cancel", color="secondary"), width="auto")
+
+edit_existing_limit_form = html.Div(
+    #[newplot_title,newplot_input3],
+    [dcc.Location(id="url", refresh=True),
+     create_new_limit_form_title,
+     create_new_limit_form_content,
+     submit_button, cancel_button],
+    className = "NOPADDING_CONTENT CENTRE_FORM"
+)
+
+
+###############
+
+#### create new plot form
+
+create_new_plot_form_title = html.Div(html.P(children='Create New Plot', className = "NOPADDING_CONTENT FORM_TITLE"))
+
+
+create_new_plot_form_content  = dbc.Row(
+    [
+        dbc.Col(
+            [
+                html.P(children='Create New Plot', className = "NOPADDING_CONTENT FORM_TITLE")
+            ],
+            width=6,
+        )
+    ],
+    className="g-3",
+)
+
+#submit_button =  dbc.Col(dbc.Button("Submit", color="primary"), width="auto")
+
+save_button =  html.Div(dbc.Button("Save",id="save_button1", color="primary"), className = "FORM_SAVE_BUTN")
+
+submit_button =  html.Div(dbc.Button("Submit", id="submit_button1", color="primary"), className = "FORM_SUBMIT_BUTN")
+
+cancel_button =  html.Div(dbc.Button("Cancel",  id="cancel_button1", color="secondary"), className = "FORM_CANCEL_BUTN")
+
+#cancel_button =  dbc.Col(dbc.Button("Cancel", color="secondary"), width="auto")
+
+create_new_plot_form = html.Div(
+    #[newplot_title,newplot_input3],
+    [dcc.Location(id="url", refresh=True),
+     create_new_plot_form_title,
+     create_new_plot_form_content,
+     submit_button, cancel_button],
+    className = "NOPADDING_CONTENT CENTRE_FORM"
+)
+
+
+###############
+
+#### edit existing plot form
+
+edit_existing_plot_form_title = html.Div(html.P(children='Edit Existing Plot', className = "NOPADDING_CONTENT FORM_TITLE"))
+
+edit_existing_plot_form_content  = dbc.Row(
+    [
+        dbc.Col(
+            [
+                html.P(children='Edit Existing Plot', className = "NOPADDING_CONTENT FORM_TITLE")
+            ],
+            width=6,
+        )
+    ],
+    className="g-3",
+)
+
+#submit_button =  dbc.Col(dbc.Button("Submit", color="primary"), width="auto")
+
+save_button =  html.Div(dbc.Button("Save",id="save_button1", color="primary"), className = "FORM_SAVE_BUTN")
+
+submit_button =  html.Div(dbc.Button("Submit", id="submit_button1", color="primary"), className = "FORM_SUBMIT_BUTN")
+
+cancel_button =  html.Div(dbc.Button("Cancel",  id="cancel_button1", color="secondary"), className = "FORM_CANCEL_BUTN")
+
+#cancel_button =  dbc.Col(dbc.Button("Cancel", color="secondary"), width="auto")
+
+edit_existing_plot_form = html.Div(
+    #[newplot_title,newplot_input3],
+    [dcc.Location(id="url", refresh=True),
+     edit_existing_plot_form_title,
+     edit_existing_plot_form_content,
+     submit_button, cancel_button],
+    className = "NOPADDING_CONTENT CENTRE_FORM"
+)
+
+###############
+
+###############
+
+#### select limits to plot
+
+select_limits_to_plot_form_title = html.Div(html.P(children='Select Limits to Plot', className = "NOPADDING_CONTENT FORM_TITLE"))
+
+select_limits_to_plot_form_content  = dbc.Row(
+    [
+        dbc.Col(
+            [
+                html.P(children='Select Limits to Plot', className = "NOPADDING_CONTENT FORM_TITLE")
+            ],
+            width=6,
+        )
+    ],
+    className="g-3",
+)
+
+#submit_button =  dbc.Col(dbc.Button("Submit", color="primary"), width="auto")
+
+save_button =  html.Div(dbc.Button("Save",id="save_button1", color="primary"), className = "FORM_SAVE_BUTN")
+
+submit_button =  html.Div(dbc.Button("Submit", id="submit_button1", color="primary"), className = "FORM_SUBMIT_BUTN")
+
+cancel_button =  html.Div(dbc.Button("Cancel",  id="cancel_button1", color="secondary"), className = "FORM_CANCEL_BUTN")
+
+#cancel_button =  dbc.Col(dbc.Button("Cancel", color="secondary"), width="auto")
+
+select_limits_to_plot_form = html.Div(
+    #[newplot_title,newplot_input3],
+    [dcc.Location(id="url", refresh=True),
+     edit_existing_plot_form_title,
+     edit_existing_plot_form_content,
+     submit_button, cancel_button],
+    className = "NOPADDING_CONTENT CENTRE_FORM"
+)
+
+
+#### style plot and traces
+
+style_plot_and_traces_form_title = html.Div(html.P(children='Style Plot and Traces', className = "NOPADDING_CONTENT FORM_TITLE"))
+
+style_plot_and_traces_form_content  = dbc.Row(
+    [
+        dbc.Col(
+            [
+                html.P(children='Style Plot and Traces', className = "NOPADDING_CONTENT FORM_TITLE")
+            ],
+            width=6,
+        )
+    ],
+    className="g-3",
+)
+
+#submit_button =  dbc.Col(dbc.Button("Submit", color="primary"), width="auto")
+
+save_button =  html.Div(dbc.Button("Save",id="save_button1", color="primary"), className = "FORM_SAVE_BUTN")
+
+submit_button =  html.Div(dbc.Button("Submit", id="submit_button1", color="primary"), className = "FORM_SUBMIT_BUTN")
+
+cancel_button =  html.Div(dbc.Button("Cancel",  id="cancel_button1", color="secondary"), className = "FORM_CANCEL_BUTN")
+
+#cancel_button =  dbc.Col(dbc.Button("Cancel", color="secondary"), width="auto")
+
+style_plot_and_traces_form_form = html.Div(
+    #[newplot_title,newplot_input3],
+    [dcc.Location(id="url", refresh=True),
+     style_plot_and_traces_form_title,
+     style_plot_and_traces_form_content,
+     submit_button, cancel_button],
+    className = "NOPADDING_CONTENT CENTRE_FORM"
+)
+
+#### show plot
+
+show_plot_form_title = html.Div(html.P(children='Style Plot and Traces', className = "NOPADDING_CONTENT FORM_TITLE"))
+
+show_plot_form_content  = dbc.Row(
+    [
+        dbc.Col(
+            [
+                html.P(children='Style Plot and Traces', className = "NOPADDING_CONTENT FORM_TITLE")
+            ],
+            width=6,
+        )
+    ],
+    className="g-3",
+)
+
+#submit_button =  dbc.Col(dbc.Button("Submit", color="primary"), width="auto")
+
+save_button =  html.Div(dbc.Button("Save",id="save_button1", color="primary"), className = "FORM_SAVE_BUTN")
+
+submit_button =  html.Div(dbc.Button("Submit", id="submit_button1", color="primary"), className = "FORM_SUBMIT_BUTN")
+
+cancel_button =  html.Div(dbc.Button("Cancel",  id="cancel_button1", color="secondary"), className = "FORM_CANCEL_BUTN")
+
+#cancel_button =  dbc.Col(dbc.Button("Cancel", color="secondary"), width="auto")
+
+show_plot_form = html.Div(
+    #[newplot_title,newplot_input3],
+    [dcc.Location(id="url", refresh=True),
+     show_plot_form_title,
+     show_plot_form_content,
+     submit_button, cancel_button],
+    className = "NOPADDING_CONTENT CENTRE_FORM"
+)
+
+#### list user plots
+
+list_user_plots_form_title = html.Div(html.P(children='List User Plots', className = "NOPADDING_CONTENT FORM_TITLE"))
+
+list_user_plots_form_content  = dbc.Row(
+    [
+        dbc.Col(
+            [
+                html.P(children='Style Plot and Traces', className = "NOPADDING_CONTENT FORM_TITLE")
+            ],
+            width=6,
+        )
+    ],
+    className="g-3",
+)
+
+#submit_button =  dbc.Col(dbc.Button("Submit", color="primary"), width="auto")
+
+save_button =  html.Div(dbc.Button("Save",id="save_button1", color="primary"), className = "FORM_SAVE_BUTN")
+
+submit_button =  html.Div(dbc.Button("Submit", id="submit_button1", color="primary"), className = "FORM_SUBMIT_BUTN")
+
+cancel_button =  html.Div(dbc.Button("Cancel",  id="cancel_button1", color="secondary"), className = "FORM_CANCEL_BUTN")
+
+#cancel_button =  dbc.Col(dbc.Button("Cancel", color="secondary"), width="auto")
+
+list_user_plots_form = html.Div(
+    #[newplot_title,newplot_input3],
+    [dcc.Location(id="url", refresh=True),
+     list_user_plots_form_title,
+     list_user_plots_form_content,
+     submit_button, cancel_button],
+    className = "NOPADDING_CONTENT CENTRE_FORM"
+)
+
+
+#### list all limits
+
+list_all_limits_form_title = html.Div(html.P(children='List All Limits', className = "NOPADDING_CONTENT FORM_TITLE"))
+
+list_all_limits_form_content  = dbc.Row(
+    [
+        dbc.Col(
+            [
+                html.P(children='List All Limits', className = "NOPADDING_CONTENT FORM_TITLE")
+            ],
+            width=6,
+        )
+    ],
+    className="g-3",
+)
+
+#submit_button =  dbc.Col(dbc.Button("Submit", color="primary"), width="auto")
+
+save_button =  html.Div(dbc.Button("Save",id="save_button1", color="primary"), className = "FORM_SAVE_BUTN")
+
+submit_button =  html.Div(dbc.Button("Submit", id="submit_button1", color="primary"), className = "FORM_SUBMIT_BUTN")
+
+cancel_button =  html.Div(dbc.Button("Cancel",  id="cancel_button1", color="secondary"), className = "FORM_CANCEL_BUTN")
+
+#cancel_button =  dbc.Col(dbc.Button("Cancel", color="secondary"), width="auto")
+
+list_all_limits_form = html.Div(
+    #[newplot_title,newplot_input3],
+    [dcc.Location(id="url", refresh=True),
+     list_all_limits_form_title,
+     list_all_limits_form_content,
+     submit_button, cancel_button],
+    className = "NOPADDING_CONTENT CENTRE_FORM"
+)
+
+#### show limit
+
+show_limit_form_title = html.Div(html.P(children='Show Limit', className = "NOPADDING_CONTENT FORM_TITLE"))
+
+show_limit_form_content  = dbc.Row(
+    [
+        dbc.Col(
+            [
+                html.P(children='Show Limit', className = "NOPADDING_CONTENT FORM_TITLE")
+            ],
+            width=6,
+        )
+    ],
+    className="g-3",
+)
+
+#submit_button =  dbc.Col(dbc.Button("Submit", color="primary"), width="auto")
+
+save_button =  html.Div(dbc.Button("Save",id="save_button1", color="primary"), className = "FORM_SAVE_BUTN")
+
+submit_button =  html.Div(dbc.Button("Submit", id="submit_button1", color="primary"), className = "FORM_SUBMIT_BUTN")
+
+cancel_button =  html.Div(dbc.Button("Cancel",  id="cancel_button1", color="secondary"), className = "FORM_CANCEL_BUTN")
+
+#cancel_button =  dbc.Col(dbc.Button("Cancel", color="secondary"), width="auto")
+
+show_limit_form = html.Div(
+    #[newplot_title,newplot_input3],
+    [dcc.Location(id="url", refresh=True),
+     show_limit_form_title,
+     show_limit_form_content,
+     submit_button, cancel_button],
+    className = "NOPADDING_CONTENT CENTRE_FORM"
+)
+
+
+#### edit limit
+
+edit_limit_form_title = html.Div(html.P(children='Edit Limit', className = "NOPADDING_CONTENT FORM_TITLE"))
+
+edit_limit_form_content  = dbc.Row(
+    [
+        dbc.Col(
+            [
+                html.P(children='Edit Limit', className = "NOPADDING_CONTENT FORM_TITLE")
+            ],
+            width=6,
+        )
+    ],
+    className="g-3",
+)
+
+#submit_button =  dbc.Col(dbc.Button("Submit", color="primary"), width="auto")
+
+save_button =  html.Div(dbc.Button("Save",id="save_button1", color="primary"), className = "FORM_SAVE_BUTN")
+
+submit_button =  html.Div(dbc.Button("Submit", id="submit_button1", color="primary"), className = "FORM_SUBMIT_BUTN")
+
+cancel_button =  html.Div(dbc.Button("Cancel",  id="cancel_button1", color="secondary"), className = "FORM_CANCEL_BUTN")
+
+#cancel_button =  dbc.Col(dbc.Button("Cancel", color="secondary"), width="auto")
+
+edit_limit_form = html.Div(
+    #[newplot_title,newplot_input3],
+    [dcc.Location(id="url", refresh=True),
+     edit_limit_form_title,
+     edit_limit_form_content,
+     submit_button, cancel_button],
+    className = "NOPADDING_CONTENT CENTRE_FORM"
+)
+
+
 '''
 newplotform_container = dbc.Container(
     [
