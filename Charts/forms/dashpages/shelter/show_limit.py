@@ -4,20 +4,18 @@ import dash_bootstrap_components as dbc
 
 #import formlibrary as fl
 
-dash.register_page(__name__, path='/app/create_new_plot')
-
-###############
-
-#### create new plot form
-
-create_new_plot_form_title = html.Div(html.P(children='Create New Plot', className = "NOPADDING_CONTENT FORM_TITLE"))
+dash.register_page(__name__, path='/app/show_limit')
 
 
-create_new_plot_form_content  = dbc.Row(
+#### show limit
+
+show_limit_form_title = html.Div(html.P(children='Show Limit', className = "NOPADDING_CONTENT FORM_TITLE"))
+
+show_limit_form_content  = dbc.Row(
     [
         dbc.Col(
             [
-                html.P(children='Create New Plot', className = "NOPADDING_CONTENT FORM_TITLE")
+                html.P(children='Show Limit', className = "NOPADDING_CONTENT FORM_TITLE")
             ],
             width=6,
         )
@@ -25,30 +23,31 @@ create_new_plot_form_content  = dbc.Row(
     className="g-3",
 )
 
+#submit_button =  dbc.Col(dbc.Button("Submit", color="primary"), width="auto")
 
-next_button =  html.Div(dbc.Button("Next",  id="next_buttonid", color="secondary"), className = "FORM_CANCEL_BUTN")
+save_button =  html.Div(dbc.Button("Save",id="save_buttonid", color="primary"), className = "FORM_SAVE_BUTN")
 
 cancel_button =  html.Div(dbc.Button("Cancel",  id="cancel_buttonid", color="secondary"), className = "FORM_CANCEL_BUTN")
 
 #cancel_button =  dbc.Col(dbc.Button("Cancel", color="secondary"), width="auto")
 
-create_new_plot_form = html.Div(
+show_limit_form = html.Div(
     #[newplot_title,newplot_input3],
     [dcc.Location(id="url", refresh=True),
-     create_new_plot_form_title,
-     create_new_plot_form_content,
-     next_button, cancel_button],
+     show_limit_form_title,
+     show_limit_form_content,
+     save_button, cancel_button],
     className = "NOPADDING_CONTENT CENTRE_FORM"
 )
 
-new_plot_row = create_new_plot_form
 
-layout = new_plot_row
+layout = show_limit_form
+
 
 @callback(
     Output('url', 'href',allow_duplicate=True), ## duplicate set as all callbacks tartgetting url
     [
-    Input("next_buttonid", "n_clicks"),
+    Input("save_buttonid", "n_clicks"),
     Input("cancel_buttonid", "n_clicks")
         ],
         prevent_initial_call=True
@@ -57,9 +56,9 @@ def button_click(button1,button2):
     #msg = "None of the buttons have been clicked yet"
     prop_id = dash.callback_context.triggered[0]["prop_id"].split('.')[0]
     #msg = prop_id
-    if "next_buttonid" == prop_id :
+    if "save_buttonid" == prop_id :
         #msg = "Button 1 was most recently clicked"
-        href_return = dash.page_registry['pages.select_limits_to_plot']['path']
+        href_return = dash.page_registry['pages.list_all_limits']['path']
         return href_return
     elif "cancel_buttonid" == prop_id:
         #msg = "Button 2 was most recently clicked"
@@ -68,4 +67,4 @@ def button_click(button1,button2):
     else:
         href_return = dash.page_registry['pages.home']['path']
         return href_return
-        
+
