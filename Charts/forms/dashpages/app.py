@@ -21,8 +21,13 @@ import dash_daq as daq
 from datetime import date
 import pandas as pd
 
+PAGES_STYLE = "/assets/pagesstyles.css"
+CONTENT_STYLES = "/assets/content.css"
+#external_stylesheets=[dbc.themes.BOOTSTRAP, PAGES_STYLE, CONTENT_STYLES]
+
+
 COMPONENT_STYLE = "/assets/forms.css"
-external_stylesheets=[dbc.themes.BOOTSTRAP, COMPONENT_STYLE]
+external_stylesheets=[dbc.themes.BOOTSTRAP, COMPONENT_STYLE, PAGES_STYLE, CONTENT_STYLES]
 
 import libraries.formlibrary as fl
 
