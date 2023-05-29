@@ -24,7 +24,7 @@ import pandas as pd
 COMPONENT_STYLE = "/assets/forms.css"
 external_stylesheets=[dbc.themes.BOOTSTRAP, COMPONENT_STYLE]
 
-import formlibrary as fl
+import libraries.formlibrary as fl
 
 #app = JupyterDash(__name__,
 #                  ##requests_pathname_prefix= "/",
